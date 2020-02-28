@@ -24,6 +24,7 @@ class Books extends Component {
         // Sample response
         console.log(data.body.items[0])
 
+
         const cleanData = this.manageResponseProperties(data)
         // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
         this.setState({ books: cleanData })
@@ -69,6 +70,7 @@ class Books extends Component {
         }
         return 0;
       }
+      return this.state.books;
     })
     return (
       <div>

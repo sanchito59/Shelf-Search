@@ -16,6 +16,7 @@ const BookList = (props) => {
             publisher={book.volumeInfo.publisher}
             publishedDate={book.volumeInfo.publishedDate}
             downloadLinkForDevices={book.accessInfo.epub.acsTokenLink}
+            googleBookId={book.id}
             key={i}
           />
         })

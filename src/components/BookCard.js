@@ -2,6 +2,7 @@ import React from 'react';
 import './../App.css';
 
 const BookCard = (props) => {
+
   return (
     <div className="book-card">
       <div>
