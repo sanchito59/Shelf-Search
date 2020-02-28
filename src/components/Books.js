@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import request from 'superagent';
+import './../App.css';
 // Components
 import SearchArea from './SearchArea';
 import BookList from './BookList';
@@ -77,7 +78,7 @@ class Books extends Component {
         />
         {/* sortedBooks defaults to the cleanData unless triggered */}
         <BookList books={sortedBooks} />
-      </div >
+      </div>
     );
   }
 }

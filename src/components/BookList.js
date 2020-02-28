@@ -5,7 +5,7 @@ import BookCard from './BookCard';
 
 const BookList = (props) => {
   return (
-    <div className='list'>
+    <div className='book-list-wrapper'>
       {
         props.books.map((book, i) => {
           return <BookCard

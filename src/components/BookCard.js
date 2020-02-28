@@ -3,8 +3,8 @@ import './../App.css';
 
 const BookCard = (props) => {
   return (
-    <div className="book-container-wrapper">
-      <div className="book-card">
+    <div className="book-card">
+      <div>
         <img src={props.image} alt="book cover thumbnail"></img>
         <h2>{props.title}</h2>
         <h3>Author: {props.author}</h3>
