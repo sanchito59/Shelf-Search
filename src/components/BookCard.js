@@ -1,7 +1,5 @@
 import React from 'react';
 import './../App.css';
-// Components
-import EmbeddedViewer from './EmbeddedViewer';
 
 const BookCard = (props) => {
 
@@ -13,7 +11,6 @@ const BookCard = (props) => {
       <p>{props.publisher}</p>
       <p>Published Date: {props.publishedDate === '0000' ? 'Not available' : props.publishedDate.substring(0, 4)}</p>
       <p>Preview: <a href={props.previewLink} target="_blank" className="preview-link">{props.title}</a></p>
-      <EmbeddedViewer />
     </div>
   )
 }
