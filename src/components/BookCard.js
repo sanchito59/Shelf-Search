@@ -8,7 +8,7 @@ const BookCard = (props) => {
       <div className="desc-list">
         <h2>{props.title}</h2>
         <h3>{props.author}</h3>
-        <p>{props.publisher}</p>
+        <p>Publisher: {props.publisher}</p>
         <p>{props.publishedDate}</p>
       </div>
     </div>

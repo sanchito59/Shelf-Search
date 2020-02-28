@@ -9,6 +9,7 @@ const SearchArea = (props) => {
         <button type='submit'>Search</button>
         <select defaultValue="Sort" onChange={props.handleSort}>
           <option disabled value="Sort">Sort</option>
+          <option value="Alphabetical">A-Z Title</option>
           <option value="Newest">Newest</option>
           <option value="Oldest">Oldest</option>
         </select>

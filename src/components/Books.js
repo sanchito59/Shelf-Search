@@ -57,6 +57,13 @@ class Books extends Component {
       } else if (this.state.sort === "Oldest") {
         // switch 'a' and 'b' to flip sort
         return parseInt(a.volumeInfo.publishedDate.substring(0, 4)) - parseInt(b.volumeInfo.publishedDate.substring(0, 4));
+      } else if (this.state.sort === "Alphabetical") {
+        if (a.volumeInfo.title < b.volumeInfo.title) {
+          return -1;
+        } else if (a.volumeInfo.title > b.volumeInfo.title) {
+          return 1;
+        }
+        return 0;
       }
     })
     return (
