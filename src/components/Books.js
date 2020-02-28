@@ -9,7 +9,8 @@ class Books extends Component {
     super(props);
     this.state = {
       books: [],
-      searchField: ''
+      searchField: '',
+      sort: ''
     }
   }
 
@@ -20,7 +21,6 @@ class Books extends Component {
       .query({ q: this.state.searchField })
       .then((data) => {
         // console.log(data.body.items[0]);
-        console.log(data.body.items[0].volumeInfo.imageLinks.thumbnail);
         this.setState({ books: [...data.body.items] })
       })
   }
@@ -29,11 +29,17 @@ class Books extends Component {
     this.setState({ searchField: e.target.value })
   }
 
+  handleSort = (e) => {
+    this.setState({ sort: e.target.value })
+    console.log(e.target.value);
+  }
+
   render() {
     return (
       <div>
         <SearchArea
           handleSearch={this.handleSearch}
+          handleSort={this.handleSort}
           searchBook={this.searchBook}
         />
         <BookList books={this.state.books} />
