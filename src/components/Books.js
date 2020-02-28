@@ -38,7 +38,7 @@ class Books extends Component {
   manageResponseProperties = (data) => {
     const cleanData = data.body.items.map((book) => {
       if (book.volumeInfo.hasOwnProperty('publishedDate') === false) {
-        // this value is temporary while working on sort functionality
+        // this value is used to check prop in BookCard and display 'Not Available' if === '0000'
         book.volumeInfo['publishedDate'] = '0000';
       } else if (book.volumeInfo.hasOwnProperty('imageLinks') === false) {
         // if the imageLinks.thumbnail property doesn't exist, one is created passing in a hosted image of 'BOOK COVER NOT AVAILABLE' from imgur

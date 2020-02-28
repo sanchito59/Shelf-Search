@@ -7,9 +7,9 @@ const BookCard = (props) => {
       <img src={props.image} alt="book cover thumbnail"></img>
       <div className="desc-list">
         <h2>{props.title}</h2>
-        <h3>{props.author}</h3>
-        <p>Publisher: {props.publisher}</p>
-        <p>{props.publishedDate}</p>
+        <h3>Author: {props.author}</h3>
+        <p>{props.publisher}</p>
+        <p>Published Date: {props.publishedDate == '0000' ? 'Not available' : props.publishedDate.substring(0, 4)}</p>
       </div>
     </div>
   )
