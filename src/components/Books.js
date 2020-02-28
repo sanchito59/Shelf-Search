@@ -18,14 +18,7 @@ class Books extends Component {
       .get("https://www.googleapis.com/books/v1/volumes")
       .query({ q: this.state.searchField })
       .then((data) => {
-        const books = data.body.items
-        for (let i = 0; i < 10; i++) {
-          const bookTitles = books[i].volumeInfo.title
-          console.log(bookTitles);
-
-        }
-        console.log(data);
-        console.log(books);
+        this.setState({ books: [...data.body.items] })
       })
   }
 
