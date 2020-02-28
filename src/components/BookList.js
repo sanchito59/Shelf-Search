@@ -10,6 +10,7 @@ const BookList = (props) => {
         props.books.map((book, i) => {
           return <BookCard
             image={book.volumeInfo.imageLinks.thumbnail}
+            previewLink={book.volumeInfo.previewLink}
             title={book.volumeInfo.title}
             author={book.volumeInfo.authors}
             publisher={book.volumeInfo.publisher}

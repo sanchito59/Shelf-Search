@@ -13,16 +13,30 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 /* BookCard */
 
-.book-container {
-  /* background-color: #2b454d;
-  color: white; */
+.book-container-wrapper {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 375px 375px 375px;
+  grid-gap: 10px;
+  /* background-color: #fff;
+  color: #444; */
   border-radius: 8px;
+}
+
+.book-card {
+  background-color: #444;
+  text-align: left;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 12px;
+  font-size: 150%;
+}
+
+.preview-link {
+  color: white;
 }
 
 /* BookCard End */
