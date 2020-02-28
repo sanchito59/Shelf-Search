@@ -49,8 +49,16 @@ class Books extends Component {
     // new, managed response from mapping
     return cleanData;
   }
-
   render() {
+    const sortedBooks = this.state.books.sort((a, b) => {
+      if (this.state.sort === "Newest") {
+        // substring checks 4 digit year, , i.e. '1994' or '0000' in case of manageResponseData dummy data
+        return parseInt(b.volumeInfo.publishedDate.substring(0, 4)) - parseInt(a.volumeInfo.publishedDate.substring(0, 4));
+      } else if (this.state.sort === "Oldest") {
+        // switch 'a' and 'b' to flip sort
+        return parseInt(a.volumeInfo.publishedDate.substring(0, 4)) - parseInt(b.volumeInfo.publishedDate.substring(0, 4));
+      }
+    })
     return (
       <div>
         <SearchArea
@@ -58,8 +66,9 @@ class Books extends Component {
           handleSort={this.handleSort}
           searchBook={this.searchBook}
         />
-        <BookList books={this.state.books} />
-      </div>
+        {/* sortedBooks defaults to the cleanData unless triggered */}
+        <BookList books={sortedBooks} />
+      </div >
     );
   }
 }
