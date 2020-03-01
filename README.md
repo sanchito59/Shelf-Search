@@ -28,12 +28,13 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ - - - 
 
 ## Sample API Calls:
 
-### [Author Events](http://www.penguinrandomhouse.biz/webservices/rest/#authorevents)
+#### [Penguin Random House - Author Events](http://www.penguinrandomhouse.biz/webservices/rest/#authorevents)
 
-#### **Search for an Author's Events on Penguin Random House:**
+##### **Search for an Author's Events on Penguin Random House:**
 
 GET /resources/authorevents -- search for author events
 
@@ -41,9 +42,19 @@ https://reststop.randomhouse.com/resources/authorevents/?start=0&max=3&expandLev
 
 The returned result can then be used to find a specific event's information, i.e.eventtype, eventdate, eventtime, eventtimeend, location, market, status, telephone, zip, etc.
 
-#### **Search for a specific event, getting expanded details:**
+##### **Search for a specific event, getting expanded details:**
 
 GET /resources/authorevents/EVENTID -- details for a specific author event
 
 https://reststop.randomhouse.com/resources/authorevents/86694/"
+
+### [OpenLibrary API - PDF/.text etc](https://openlibrary.org/developers/api)
+
+##### **Find whether or not a book can be read freely, downloaded as PDF/text:**
+
+*Tested with data from Google Books API ISBN's and it works*
+
+http://openlibrary.org/api/volumes/brief/isbn/STRING_ISBN_VALUE_GOES_HERE.json
+
+http://openlibrary.org/api/volumes/brief/isbn/9780307886156.json
 
