@@ -69,3 +69,21 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+## Sample API Calls:
+
+### [Author Events](http://www.penguinrandomhouse.biz/webservices/rest/#authorevents)
+
+#### **Search for an Author's Events on Penguin Random House:**
+
+GET /resources/authorevents -- search for author events
+
+https://reststop.randomhouse.com/resources/authorevents/?start=0&max=3&expandLevel=1&isbn=0&authorid=0
+
+The returned result can then be used to find a specific event's information, i.e.eventtype, eventdate, eventtime, eventtimeend, location, market, status, telephone, zip, etc.
+
+#### **Search for a specific event, getting expanded details:**
+
+GET /resources/authorevents/EVENTID -- details for a specific author event
+
+https://reststop.randomhouse.com/resources/authorevents/86694/"
+
