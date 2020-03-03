@@ -14,8 +14,8 @@ class Books extends Component {
       sort: ''
     }
   }
-
   searchBook = (e) => {
+    console.log(this);
     e.preventDefault();
     request
       .get("https://www.googleapis.com/books/v1/volumes")
@@ -38,7 +38,6 @@ class Books extends Component {
 
   handleSort = (e) => {
     this.setState({ sort: e.target.value })
-    console.log(e.target.value);
   }
 
   manageResponseProperties = (data) => {
