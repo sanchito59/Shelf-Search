@@ -23,9 +23,8 @@ class Books extends Component {
       .then((data) => {
         // Sample response for multiple books
         // console.log(data.body.items)
-
         // Sample response for one book
-        console.log(data.body.items[0])
+        console.log('Sample Response for One Book', data.body.items[0])
 
         const cleanData = this.manageResponseProperties(data)
         // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
