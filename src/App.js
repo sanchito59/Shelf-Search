@@ -6,8 +6,9 @@ import "./App.css";
 import Header from "./components/Header";
 import Books from "./components/Books";
 
-let CLIENT_ID = "secret!";
-let API_KEY = "secret!";
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ class App extends React.Component {
       email: "",
       url: "",
       access_token: "",
-      bookshelf: []
+      bookshelves: []
     };
   }
 
@@ -48,7 +49,7 @@ class App extends React.Component {
       });
     });
 
-    window.gapi.load("signin2", function () {
+    window.gapi.load("signin2", function() {
       var opts = {
         width: 200,
         height: 50,
@@ -66,6 +67,7 @@ class App extends React.Component {
       isSignedIn: true,
       err: null
     });
+
     var googleUser = this.auth2.currentUser.get().Qt.Ad;
     this.setState({
       googleUser: this.auth2.currentUser.get().Qt.Ad
@@ -75,16 +77,18 @@ class App extends React.Component {
     console.log("access_token: ", access_token);
 
     const request = async () => {
-      // console.log(`Bearer ${this.auth2.currentUser.get().uc.access_token}`);
       const response = await fetch(
-        // sample api call querying volumes, instead of my mylibrary/bookshelves etc.
-        `https://www.googleapis.com/books/v1/volumes?q=harrypotter`
+        // hardcoded userID 116706290539027713662; this fetch returns ALL bookshelves
+        `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves?/volumes?key=${API_KEY}`
+
+        // this fetch returns books from a specific bookshelf- TestBooks
+        // `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves/1001?key=${API_KEY}`
       );
       const json = await response.json();
-      let items = json;
-      console.log("test response in onSuccessfulAuth()", items);
+      let bookshelves = json;
+      console.log("test response of items in onSuccessfulAuth()", bookshelves);
       this.setState({
-        books: items
+        bookshelves: bookshelves
       });
     };
     request();
@@ -99,7 +103,11 @@ class App extends React.Component {
 
   displayLoginStatus() {
     if (this.state.isSignedIn) {
-      return <p>Hello {this.state.googleUser}, you are now signed in!</p>;
+      return (
+        <div>
+          <p>Hello {this.state.googleUser}, you are now signed in!</p>
+        </div>
+      );
     } else {
       return (
         <div>
