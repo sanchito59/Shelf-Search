@@ -77,7 +77,7 @@ class App extends React.Component {
     const request = async () => {
       // console.log(`Bearer ${this.auth2.currentUser.get().uc.access_token}`);
       const response = await fetch(
-        // sample api call querying volumes, not my mylibrary/bookshelves
+        // sample api call querying volumes, instead of my mylibrary/bookshelves etc.
         `https://www.googleapis.com/books/v1/volumes?q=harrypotter`
       );
       const json = await response.json();
