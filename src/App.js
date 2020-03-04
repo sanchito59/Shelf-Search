@@ -18,7 +18,7 @@ class App extends React.Component {
       email: "",
       url: "",
       access_token: "",
-      bookshelf: []
+      bookshelves: []
     };
   }
 
@@ -67,6 +67,7 @@ class App extends React.Component {
       isSignedIn: true,
       err: null
     });
+
     var googleUser = this.auth2.currentUser.get().Qt.Ad;
     this.setState({
       googleUser: this.auth2.currentUser.get().Qt.Ad
@@ -78,16 +79,16 @@ class App extends React.Component {
     const request = async () => {
       const response = await fetch(
         // hardcoded userID 116706290539027713662; this fetch returns ALL bookshelves
-        // `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves?/volumes?key=${API_KEY}`
+        `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves?/volumes?key=${API_KEY}`
 
         // this fetch returns books from a specific bookshelf- TestBooks
-        `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves/1001/volumes?key=${API_KEY}`
+        // `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves/1001?key=${API_KEY}`
       );
       const json = await response.json();
-      let items = json;
-      console.log("test response in onSuccessfulAuth()", items);
+      let bookshelves = json;
+      console.log("test response of items in onSuccessfulAuth()", bookshelves);
       this.setState({
-        books: items
+        bookshelves: bookshelves
       });
     };
     request();
@@ -102,7 +103,11 @@ class App extends React.Component {
 
   displayLoginStatus() {
     if (this.state.isSignedIn) {
-      return <p>Hello {this.state.googleUser}, you are now signed in!</p>;
+      return (
+        <div>
+          <p>Hello {this.state.googleUser}, you are now signed in!</p>
+        </div>
+      );
     } else {
       return (
         <div>
