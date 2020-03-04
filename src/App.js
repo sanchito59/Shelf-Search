@@ -6,8 +6,10 @@ import "./App.css";
 import Header from "./components/Header";
 import Books from "./components/Books";
 
-let CLIENT_ID = "secret!";
-let API_KEY = "secret!";
+let CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+let API_KEY = process.env.REACT_APP_API_KEY;
+console.log(process.env.REACT_APP_GOOGLE_API_KEY);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +50,7 @@ class App extends React.Component {
       });
     });
 
-    window.gapi.load("signin2", function () {
+    window.gapi.load("signin2", function() {
       var opts = {
         width: 200,
         height: 50,
@@ -75,10 +77,12 @@ class App extends React.Component {
     console.log("access_token: ", access_token);
 
     const request = async () => {
-      // console.log(`Bearer ${this.auth2.currentUser.get().uc.access_token}`);
       const response = await fetch(
-        // sample api call querying volumes, instead of my mylibrary/bookshelves etc.
-        `https://www.googleapis.com/books/v1/volumes?q=harrypotter`
+        // hardcoded userID 116706290539027713662; this fetch returns ALL bookshelves
+        // `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves?/volumes?key=${API_KEY}`
+
+        // this fetch returns books from a specific bookshelf- TestBooks
+        `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves/1001/volumes?key=${API_KEY}`
       );
       const json = await response.json();
       let items = json;
