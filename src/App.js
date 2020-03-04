@@ -6,9 +6,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Books from "./components/Books";
 
-let CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-let API_KEY = process.env.REACT_APP_API_KEY;
-console.log(process.env.REACT_APP_GOOGLE_API_KEY);
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 class App extends React.Component {
   constructor(props) {
