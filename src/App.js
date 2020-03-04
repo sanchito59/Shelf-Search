@@ -1,11 +1,13 @@
+// linter ignores this
+/* global gapi */
 import React, { setState, useState } from "react";
 import "./App.css";
-import { GoogleLogin } from "react-google-login";
-import $ from "jquery";
 // Components
 import Header from "./components/Header";
 import Books from "./components/Books";
 
+let CLIENT_ID = "secret!";
+let API_KEY = "secret!";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,90 +15,106 @@ class App extends React.Component {
       isLoggedIn: false,
       name: "",
       email: "",
-      url: ""
+      url: "",
+      access_token: "",
+      bookshelf: []
     };
   }
 
-  responseGoogle = response => {
-    console.log("responseGoogle", response);
-    this.setState({ name: response.profileObj.name });
-    this.setState({ email: response.profileObj.email });
-    this.setState({ url: response.profileObj.imageUrl });
-  };
-
-  // const oauthSignIn = response => {
-  //   console.log("Oauth response: ", response);
-  //   // Google's OAuth 2.0 endpoint for requesting an access token
-  //   var oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth";
-
-  //   // Create <form> element to submit parameters to OAuth 2.0 endpoint.
-  //   var form = document.createElement("form");
-  //   form.setAttribute("method", "GET"); // Send as a GET request.
-  //   form.setAttribute("action", oauth2Endpoint);
-
-  //   // Parameters to pass to OAuth 2.0 endpoint.
-  //   var params = {
-  //     client_id:
-  //       "1051802642054-ismpitdrga2d886kl77h7rr60i579uud.apps.googleusercontent.com",
-  //     redirect_uri: "http://localhost:3000",
-  //     response_type: "token",
-  //     scope: "https://www.googleapis.com/auth/drive.metadata.readonly",
-  //     include_granted_scopes: "true",
-  //     state: "pass-through value"
-  //   };
-
-  //   // Add form parameters as hidden input values.
-  //   for (var p in params) {
-  //     var input = document.createElement("input");
-  //     input.setAttribute("type", "hidden");
-  //     input.setAttribute("name", p);
-  //     input.setAttribute("value", params[p]);
-  //     form.appendChild(input);
-  //   }
-
-  //   // Add form to page and submit it to open the OAuth 2.0 endpoint.
-  //   document.body.appendChild(form);
-  //   form.submit();
+  // responseGoogle = response => {
+  //   console.log(window)
+  //   console.log("responseGoogle", response);
+  //   this.setState({ name: response.profileObj.name });
+  //   this.setState({ email: response.profileObj.email });
+  //   this.setState({ url: response.profileObj.imageUrl });
+  //   this.setState({ access_token: response.accessToken });
+  //   console.log('state:', this.state);
   // };
 
-  // const googleApiCall = response => {
-  //   console.log("googleApiCall response data: ", response);
-  //   var uriHash = window.location.hash; //holds the access token
-  //   console.log(uriHash);
-  //   var access_token = uriHash;
-  //   console.log("access_token: ", access_token);
-  //   var apiURL = `https://www.googleapis.com/books/v1/mylibrary/bookshelves`;
-  //   $.ajax({
-  //     url: apiURL,
-  //     headers: {
-  //       Authorization: "Bearer " + access_token
-  //     },
-  //     success: function(response) {
-  //       console.log("success: ", response);
-  //     },
-  //     error: function(error) {
-  //       console.log("failure: ", error);
-  //     }
-  //   });
-  // };
+  componentDidMount() {
+    const successCallback = this.onSuccessfulAuth.bind(this);
+    window.gapi.load("auth2", () => {
+      this.auth2 = gapi.auth2.init({
+        apiKey: `${API_KEY}`,
+        client_id: `${CLIENT_ID}`,
+        scope: "https://www.googleapis.com/auth/books"
+      });
+
+      this.auth2.then(() => {
+        console.log("initialization");
+        this.setState({
+          isSignedIn: this.auth2.isSignedIn.get()
+        });
+      });
+    });
+
+    window.gapi.load("signin2", function () {
+      var opts = {
+        width: 200,
+        height: 50,
+        client_id: `${CLIENT_ID}`,
+        onsuccess: successCallback
+      };
+      gapi.signin2.render("loginButton", opts);
+    });
+  }
+
+  onSuccessfulAuth() {
+    console.log("succesful login");
+    console.log("this.auth2: ", this.auth2);
+    this.setState({
+      isSignedIn: true,
+      err: null
+    });
+    var googleUser = this.auth2.currentUser.get().Qt.Ad;
+    this.setState({
+      googleUser: this.auth2.currentUser.get().Qt.Ad
+    });
+
+    var access_token = this.auth2.currentUser.get().uc.access_token;
+    console.log("access_token: ", access_token);
+
+    const request = async () => {
+      // console.log(`Bearer ${this.auth2.currentUser.get().uc.access_token}`);
+      const response = await fetch(
+        // sample api call querying volumes, not my mylibrary/bookshelves
+        `https://www.googleapis.com/books/v1/volumes?q=harrypotter`
+      );
+      const json = await response.json();
+      let items = json;
+      console.log("test response in onSuccessfulAuth()", items);
+      this.setState({
+        books: items
+      });
+    };
+    request();
+  }
+
+  onLoginFailed(err) {
+    this.setState({
+      isSignedIn: false,
+      error: err
+    });
+  }
+
+  displayLoginStatus() {
+    if (this.state.isSignedIn) {
+      return <p>Hello {this.state.googleUser}, you are now signed in!</p>;
+    } else {
+      return (
+        <div>
+          <p>You are not signed in.</p>
+          <button id="loginButton"></button>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <h1>Login with Google</h1>
-        <h2> Welcome: {this.state.name}</h2>
-        <h2> Email: {this.state.email}</h2>
-        <img src={this.state.url} alt={this.state.name}></img>
-        <br></br>
-        <button>googleApiCall()</button>
-        <GoogleLogin
-          clientId="1051802642054-ismpitdrga2d886kl77h7rr60i579uud.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={this.responseGoogle}
-          onFailure={this.responseGoogle}
-          cookiePolicy={"single_host_origin"}
-        />
-        <br></br>
+        {this.displayLoginStatus()}
         <br></br>
         <Books />
       </div>
