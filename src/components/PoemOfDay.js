@@ -1,4 +1,5 @@
 import React from 'react';
+import './../PoemOfDay.css';
 
 export default function PoemOfDay(props) {
   setTimeout(() => {
@@ -14,10 +15,10 @@ export default function PoemOfDay(props) {
   }, 1000)
 
   return (
-    <div>
-      <h2>debug hell</h2>
-      <h4>by code sinner</h4>
-      <p>poem body <br></br>
+    <div className="poem-div">
+      <h2 className="poem-title">a...synchronous</h2>
+      <h4 className="poem-author">by code sinner</h4>
+      <p className="poem-body">poem body <br></br>
         test section <br></br>
         goes here, <br></br>
         but lives in <br></br>

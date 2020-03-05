@@ -1,0 +1,20 @@
+.poem-div {
+  margin: 20px;
+  font-family: Caladea, sans-serif;
+  text-align: left;
+  background: grey;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.4);
+  width: 300px;
+  color: white;
+  border: 4px solid white;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.poem-title {
+  text-decoration: underline;
+}
+
+.poem-author {}
+
+.poem-body {}
