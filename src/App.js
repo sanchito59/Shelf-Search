@@ -35,17 +35,26 @@ class App extends React.Component {
     console.log(this);
     e.preventDefault();
     request
+      // branch for different request
+      // &download=epub
       .get("https://www.googleapis.com/books/v1/volumes")
-      .query({ q: this.state.searchField })
+      .query({
+        q: this.state.searchField
+      })
       .then(data => {
         // Sample response for multiple books
         // console.log(data.body.items)
         // Sample response for one book
-        console.log("Sample Response for One Book", data.body.items[0]);
-
-        const cleanData = this.manageResponseProperties(data);
+        console.log("Sample response for one book: ", data.body.items[0]);
+        let cleanData;
+        if (typeof data.body.items !== "undefined") {
+          cleanData = this.manageResponseProperties(data);
+          this.setState({ books: cleanData });
+        } else {
+          // need user notification here
+          console.log("can't find that!");
+        }
         // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
-        this.setState({ books: cleanData });
       });
   };
 
@@ -76,7 +85,7 @@ class App extends React.Component {
   render() {
     const sortedBooks = this.state.books.sort((a, b) => {
       if (this.state.sort === "Newest") {
-        // substring checks 4 digit year, , i.e. '1994' or '0000' in case of manageResponseData dummy data
+        // substring checks 4 digit year, , i.e. '1994' or '0000' in case of manageResponseData data
         return (
           parseInt(b.volumeInfo.publishedDate.substring(0, 4)) -
           parseInt(a.volumeInfo.publishedDate.substring(0, 4))
