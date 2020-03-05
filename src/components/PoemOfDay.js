@@ -15,11 +15,13 @@ export default function PoemOfDay(props) {
 
   return (
     <div>
-      <h2>pod title</h2>
-      <h4>pod author</h4>
+      <h2>debug hell</h2>
+      <h4>by code sinner</h4>
       <p>poem body <br></br>
         test section <br></br>
-        goes here
+        goes here, <br></br>
+        but lives in <br></br>
+        console debug hell
       </p>
     </div>
   );
