@@ -1,13 +1,10 @@
-// linter ignores this
-/* global gapi */
 import React, { setState, useState } from "react";
+import request from "superagent";
 import "./App.css";
 // Components
 import Header from "./components/Header";
-import Books from "./components/Books";
-
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const API_KEY = process.env.REACT_APP_API_KEY;
+import SearchArea from "./components/SearchArea";
+import BookList from "./components/BookList";
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +15,9 @@ class App extends React.Component {
       email: "",
       url: "",
       access_token: "",
-      bookshelves: []
+      books: [],
+      searchField: "",
+      sort: ""
     };
   }
 
@@ -32,99 +31,96 @@ class App extends React.Component {
   //   console.log('state:', this.state);
   // };
 
-  componentDidMount() {
-    const successCallback = this.onSuccessfulAuth.bind(this);
-    window.gapi.load("auth2", () => {
-      this.auth2 = gapi.auth2.init({
-        apiKey: `${API_KEY}`,
-        client_id: `${CLIENT_ID}`,
-        scope: "https://www.googleapis.com/auth/books"
+  searchBook = e => {
+    console.log(this);
+    e.preventDefault();
+    request
+      // branch for different request
+      // &download=epub
+      .get("https://www.googleapis.com/books/v1/volumes")
+      .query({
+        q: this.state.searchField
+      })
+      .then(data => {
+        // Sample response for multiple books
+        // console.log(data.body.items)
+        // Sample response for one book
+        console.log("Sample response for one book: ", data.body.items[0]);
+        let cleanData;
+        if (typeof data.body.items !== "undefined") {
+          cleanData = this.manageResponseProperties(data);
+          this.setState({ books: cleanData });
+        } else {
+          // need user notification here
+          console.log("can't find that!");
+        }
+        // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
       });
+  };
 
-      this.auth2.then(() => {
-        console.log("initialization");
-        this.setState({
-          isSignedIn: this.auth2.isSignedIn.get()
-        });
-      });
+  handleSearch = e => {
+    this.setState({ searchField: e.target.value });
+  };
+
+  handleSort = e => {
+    this.setState({ sort: e.target.value });
+  };
+
+  manageResponseProperties = data => {
+    const cleanData = data.body.items.map(book => {
+      if (book.volumeInfo.hasOwnProperty("publishedDate") === false) {
+        // this value is used to check prop in BookCard and display 'Not Available' if === '0000'
+        book.volumeInfo["publishedDate"] = "0000";
+      } else if (book.volumeInfo.hasOwnProperty("imageLinks") === false) {
+        // if the imageLinks.thumbnail property doesn't exist, one is created passing in a hosted image of 'BOOK COVER NOT AVAILABLE' from imgur
+        book.volumeInfo["imageLinks"] = {
+          thumbnail: "https://i.imgur.com/J5LVHEL.jpg"
+        };
+      } else if (
+        book.volumeInfo.industryIdentifiers[0]["indentifier"] === false
+      ) {
+        book.volumeInfo.industryIdentifiers[0]["indentifier"] = "Unavailable";
+      }
+      return book;
     });
-
-    window.gapi.load("signin2", function() {
-      var opts = {
-        width: 200,
-        height: 50,
-        client_id: `${CLIENT_ID}`,
-        onsuccess: successCallback
-      };
-      gapi.signin2.render("loginButton", opts);
-    });
-  }
-
-  onSuccessfulAuth() {
-    console.log("succesful login");
-    console.log("this.auth2: ", this.auth2);
-    this.setState({
-      isSignedIn: true,
-      err: null
-    });
-
-    var googleUser = this.auth2.currentUser.get().Qt.Ad;
-    this.setState({
-      googleUser: this.auth2.currentUser.get().Qt.Ad
-    });
-
-    var access_token = this.auth2.currentUser.get().uc.access_token;
-    console.log("access_token: ", access_token);
-
-    const request = async () => {
-      const response = await fetch(
-        // hardcoded userID 116706290539027713662; this fetch returns ALL bookshelves
-        `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves?/volumes?key=${API_KEY}`
-
-        // this fetch returns books from a specific bookshelf- TestBooks
-        // `https://www.googleapis.com/books/v1/users/116706290539027713662/bookshelves/1001?key=${API_KEY}`
-      );
-      const json = await response.json();
-      let bookshelves = json;
-      console.log("test response of items in onSuccessfulAuth()", bookshelves);
-      this.setState({
-        bookshelves: bookshelves
-      });
-    };
-    request();
-  }
-
-  onLoginFailed(err) {
-    this.setState({
-      isSignedIn: false,
-      error: err
-    });
-  }
-
-  displayLoginStatus() {
-    if (this.state.isSignedIn) {
-      return (
-        <div>
-          <p>Hello {this.state.googleUser}, you are now signed in!</p>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <p>You are not signed in.</p>
-          <button id="loginButton"></button>
-        </div>
-      );
-    }
-  }
-
+    // new, managed response from mapping
+    return cleanData;
+  };
   render() {
+    const sortedBooks = this.state.books.sort((a, b) => {
+      if (this.state.sort === "Newest") {
+        // substring checks 4 digit year, , i.e. '1994' or '0000' in case of manageResponseData data
+        return (
+          parseInt(b.volumeInfo.publishedDate.substring(0, 4)) -
+          parseInt(a.volumeInfo.publishedDate.substring(0, 4))
+        );
+      } else if (this.state.sort === "Oldest") {
+        // switch 'a' and 'b' to flip sort
+        return (
+          parseInt(a.volumeInfo.publishedDate.substring(0, 4)) -
+          parseInt(b.volumeInfo.publishedDate.substring(0, 4))
+        );
+      } else if (this.state.sort === "Alphabetical") {
+        if (a.volumeInfo.title < b.volumeInfo.title) {
+          return -1;
+        } else if (a.volumeInfo.title > b.volumeInfo.title) {
+          return 1;
+        }
+        return 0;
+      }
+      return this.state.books;
+    });
     return (
       <div className="App">
         <Header />
-        {this.displayLoginStatus()}
         <br></br>
-        <Books />
+        <SearchArea
+          handleSearch={this.handleSearch}
+          handleSort={this.handleSort}
+          searchBook={this.searchBook}
+        />
+        {/* sortedBooks defaults to the cleanData unless triggered */}
+        <BookList books={sortedBooks} />
       </div>
     );
   }
