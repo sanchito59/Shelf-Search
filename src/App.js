@@ -175,7 +175,7 @@ class App extends React.Component {
           searchBook={this.searchBook}
         />
         {/* sortedBooks defaults to the cleanData unless triggered */}
-        {/* <NYTBestsellers bestSellers={this.state.NYTBestsellers} /> */}
+        <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
         <BookList books={sortedBooks} />
       </div>
     );
