@@ -19,6 +19,7 @@ export default function NYTBestsellers(props) {
                 rankLastWeek={book.rank_last_week}
                 weeksOnList={book.weeks_on_list}
                 amazonLink={book.amazon_product_url}
+                description={book.book_details[0].description}
                 key={i}
               />
             })

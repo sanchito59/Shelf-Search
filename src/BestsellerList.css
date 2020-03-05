@@ -39,3 +39,21 @@
   height: 250px;
   font-family: Georgia;
 }
+
+.bestseller-rank {
+  font-size: 60px;
+}
+
+.bestseller-title {
+  text-decoration: underline;
+  color: white;
+}
+
+.bestseller-title:hover {
+  color: #282c34;
+}
+
+.bestseller-blurb {
+  font-size: 12px;
+  font-weight: bold;
+}
