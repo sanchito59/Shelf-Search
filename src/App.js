@@ -15,9 +15,11 @@ class App extends React.Component {
       email: "",
       url: "",
       access_token: "",
+
       books: [],
       searchField: "",
-      sort: ""
+      sort: "",
+      ebookCheck: "",
     };
   }
 
@@ -34,28 +36,47 @@ class App extends React.Component {
   searchBook = e => {
     console.log(this);
     e.preventDefault();
-    request
-      // branch for different request
-      // &download=epub
-      .get("https://www.googleapis.com/books/v1/volumes")
-      .query({
-        q: this.state.searchField
-      })
-      .then(data => {
-        // Sample response for multiple books
-        // console.log(data.body.items)
-        // Sample response for one book
-        console.log("Sample response for one book: ", data.body.items[0]);
-        let cleanData;
-        if (typeof data.body.items !== "undefined") {
-          cleanData = this.manageResponseProperties(data);
-          this.setState({ books: cleanData });
-        } else {
-          // need user notification here
-          console.log("can't find that!");
-        }
-        // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
-      });
+    if (this.state.ebookFilter === 'ebook-param') {
+      console.log('ebookfilter api state: ', this.state)
+      request
+        // branch for different request
+        // &download=epub
+        .get("https://www.googleapis.com/books/v1/volumes")
+        .query({
+          q: this.state.searchField + "&download=epub"
+        })
+        .then(data => {
+          // console.log("Sample response for multiple books", data.body.items)
+          // console.log("Sample response for one book: ", data.body.items[0])
+          let cleanData;
+          if (typeof data.body.items !== "undefined") {
+            cleanData = this.manageResponseProperties(data);
+            // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
+            this.setState({ books: cleanData });
+          } else {
+            // need user notification here
+            console.log("can't find that!");
+          }
+        });
+    } else {
+      request
+        .get("https://www.googleapis.com/books/v1/volumes")
+        .query({
+          q: this.state.searchField
+        })
+        .then(data => {
+          // console.log("Sample response for multiple books", data.body.items)
+          // console.log("Sample response for one book: ", data.body.items[0])
+          let cleanData;
+          if (typeof data.body.items !== "undefined") {
+            cleanData = this.manageResponseProperties(data);
+            this.setState({ books: cleanData });
+            console.log('api state:', this.state)
+          } else {
+            console.log("can't find that!");
+          }
+        });
+    }
   };
 
   handleSearch = e => {
@@ -65,6 +86,11 @@ class App extends React.Component {
   handleSort = e => {
     this.setState({ sort: e.target.value });
   };
+
+  handleEbookFilter = e => {
+    this.setState({ ebookCheck: e.target.value });
+    console.log(e.target.value)
+  }
 
   manageResponseProperties = data => {
     const cleanData = data.body.items.map(book => {
@@ -76,10 +102,10 @@ class App extends React.Component {
         book.volumeInfo["imageLinks"] = {
           thumbnail: "https://i.imgur.com/J5LVHEL.jpg"
         };
-      } else if (
-        book.volumeInfo.industryIdentifiers[0]["indentifier"] === false
-      ) {
-        book.volumeInfo.industryIdentifiers[0]["indentifier"] = "Unavailable";
+      } else if (book.volumeInfo.industryIdentifiers[0].hasOwnProperty("indentifier") === false) {
+        book.volumeInfo.industryIdentifiers[0]['indentifier'] = {
+          identifier: "Unavailable"
+        }
       }
       return book;
     });
@@ -117,6 +143,7 @@ class App extends React.Component {
         <SearchArea
           handleSearch={this.handleSearch}
           handleSort={this.handleSort}
+          handleEbookFilter={this.handleEbookFilter}
           searchBook={this.searchBook}
         />
         {/* sortedBooks defaults to the cleanData unless triggered */}
