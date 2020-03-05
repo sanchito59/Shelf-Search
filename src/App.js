@@ -76,6 +76,8 @@ class App extends React.Component {
         book.volumeInfo["imageLinks"] = {
           thumbnail: "https://i.imgur.com/J5LVHEL.jpg"
         };
+      } else if (book.volumeInfo["industryIdentifiers"] === false) {
+        book.volumeInfo["industryIdentifiers"] = "Unavailable";
       }
       return book;
     });
