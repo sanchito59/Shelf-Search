@@ -19,6 +19,8 @@ class App extends React.Component {
       access_token: "",
 
       NYTBestsellers: [],
+      bestsellerISBNs: [],
+      bestSellerCoverLinks: [],
       books: [],
       searchField: "",
       sort: "",
@@ -40,23 +42,54 @@ class App extends React.Component {
       { method: 'get', }).then(response => {
         return response.json();
       }).then(json => {
-        // let books = json.results;
-        // let book = json.results[0];
-        // let title = json.results[0].book_details[0].title;
-        // let author = json.results[0].book_details[0].author;
-        // let currentRank = json.results[0].rank;
-        // let rankLastWeek = json.results[0].rank_last_week;
-        // let weeksOnList = json.results[0].weeks_on_list;
+        let books = json.results;
         // console.log('books: ', books)
+        // let book = json.results[0];
         // console.log('one book: ', book)
-        // console.log('book title: ', title)
-        // console.log('book author: ', author)
-        // console.log('current rank: ', currentRank)
-        // console.log('rank last week: ', rankLastWeek)
-        // console.log('weeks on list: ', weeksOnList)
+        let bestSellerData = [];
+        for (let i = 0; i < 15; i++) {
+          bestSellerData.push(books[i].isbns[0].isbn10);
+        }
+        // console.log(bestSellerData);
+        // books.forEach(function () {
+        // console.log(books.isbns)
+        // })
+        // let newBestSellerData;
+        // this.bestSellerCovers(bestSellerData);
         this.setState({ NYTBestsellers: json.results });
+        this.setState({ bestsellerISBNs: bestSellerData });
       });
   }
+
+  // EATING UP API CALL LIMITS
+  // bestSellerCovers = isbnArr => {
+  //   for (let i = 0; i < 15; i++) {
+  //     fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbnArr[i], {
+  //       method: 'get'
+  //     })
+  //       .then(response => { return response.json(); })
+  //       .then(data => {
+  //         console.log(data)
+  //         let bookCoverLinks = [];
+  //         for (let i = 0; i < 15; i++) {
+  //           bookCoverLinks.push(data.items[i].volumeInfo.imageLinks.thumbnail);
+  //         }
+  //         console.log('bookCoverLinks: ', bookCoverLinks);
+  //         this.setState({ bestSellerCoverLinks: bookCoverLinks })
+  //         // var img = data.items[0].volumeInfo.imageLinks.thumbnail;
+  //         // img = img.replace(/^http:\/\//i, 'https://');
+  //         // $('#cover-' + id).attr('src', img);
+  //       })
+  //       .catch(error => {
+  //         console.log(error);
+  //         console.log('Googel API Error: Defaulting to archival images for book #' + ' ISBN: ' + isbnArr[i]);
+  //         // var index = id - 1;
+  //         // var img = archivedImages[index];
+  //         // $('#cover-' + id).attr('src', img);
+  //       });
+  //   }
+  // };
+
   componentDidMount() {
     this.getBestsellersNYT();
   }
