@@ -1,4 +1,4 @@
-import React, { setState, useState } from "react";
+import React from "react";
 import request from "superagent";
 import "./App.css";
 // Components
@@ -6,25 +6,29 @@ import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
 import BookList from "./components/BookList";
 import NYTBestsellers from './components/NYTBestsellers';
+import PoemOfDay from './components/PoemOfDay';
 
 const NYT_KEY = process.env.REACT_APP_NYT_KEY;
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Google API
       isLoggedIn: false,
       name: "",
       email: "",
       url: "",
       access_token: "",
-
-      NYTBestsellers: [],
-      bestsellerISBNs: [],
-      bestSellerCoverLinks: [],
       books: [],
       searchField: "",
       sort: "",
       ebookCheck: "",
+      // NYT API
+      NYTBestsellers: [],
+      bestsellerISBNs: [],
+      bestSellerCoverLinks: [],
+      // Poems One API
+      poemOfDay: [],
     };
   }
 
@@ -46,7 +50,7 @@ class App extends React.Component {
         let books = json.results;
         // console.log('books: ', books)
         let book = json.results[0];
-        console.log('one book: ', book)
+        // console.log('one book: ', book)
         let bestSellerData = [];
         for (let i = 0; i < 15; i++) {
           bestSellerData.push(books[i].isbns[0].isbn10);
@@ -94,8 +98,26 @@ class App extends React.Component {
   //   }
   // };
 
+  getPoemOfTheDay = () => {
+    fetch('https://api.poems.one/pod', {
+      method: 'get',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      const singlePoem = json.contents.poems[0];
+      console.log(singlePoem.poem.title)
+      console.log(singlePoem.poem.author)
+      console.log(singlePoem.poem.poem)
+      this.setState({ poemOfDay: singlePoem })
+      console.log(this.state)
+    }).catch(error => {
+      console.log('Uh oh, ', error);
+    })
+  }
+
   componentDidMount() {
     this.getBestsellersNYT();
+    this.getPoemOfTheDay();
   }
 
   searchBook = e => {
@@ -205,6 +227,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <br></br>
+        <PoemOfDay poem={this.state.poemOfDay} />
         <SearchArea
           handleSearch={this.handleSearch}
           handleSort={this.handleSort}
