@@ -37,6 +37,7 @@ class App extends React.Component {
   //   this.setState({ access_token: response.accessToken });
   //   console.log('state:', this.state);
   // };
+
   getBestsellersNYT = () => {
     fetch('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=' + NYT_KEY,
       { method: 'get', }).then(response => {
