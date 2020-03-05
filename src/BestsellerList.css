@@ -1,0 +1,41 @@
+.header {
+  font-family: Caladea, sans-serif;
+}
+
+.outer-card-row {
+  text-align: left;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 200px;
+  grid-gap: 30px;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: grey;
+  color: white;
+  float: left;
+}
+
+.amazon-button {
+  background-color: #FF9900;
+  border: none;
+  color: #000000;
+  padding: 10px 30px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.amazon-button:hover {
+  background-color: rgb(240, 144, 1);
+}
+
+.bestseller-card {
+  display: table-cell;
+  width: 200px;
+  height: 250px;
+  font-family: Georgia;
+}

@@ -12,29 +12,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-/* BookCard */
-
-.book-list-wrapper {
-  margin: 20px;
-  display: grid;
-  grid-template-columns: 400px 400px 400px;
-  grid-gap: 10px;
-  border-radius: 8px;
-}
-
-.book-card {
-  background-color: #444;
-  text-align: left;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 12px;
-  font-size: 150%;
-}
-
-.preview-link {
-  color: white;
-}
-
-/* BookCard End */
