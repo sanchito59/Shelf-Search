@@ -5,7 +5,9 @@ import "./App.css";
 import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
 import BookList from "./components/BookList";
+import NYTBestsellers from './components/NYTBestsellers';
 
+const NYT_KEY = 'secret!';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,7 @@ class App extends React.Component {
       url: "",
       access_token: "",
 
+      NYTBestsellers: [],
       books: [],
       searchField: "",
       sort: "",
@@ -32,6 +35,31 @@ class App extends React.Component {
   //   this.setState({ access_token: response.accessToken });
   //   console.log('state:', this.state);
   // };
+  getBestsellersNYT = () => {
+    fetch('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=' + NYT_KEY,
+      { method: 'get', }).then(response => {
+        return response.json();
+      }).then(json => {
+        // let books = json.results;
+        // let book = json.results[0];
+        // let title = json.results[0].book_details[0].title;
+        // let author = json.results[0].book_details[0].author;
+        // let currentRank = json.results[0].rank;
+        // let rankLastWeek = json.results[0].rank_last_week;
+        // let weeksOnList = json.results[0].weeks_on_list;
+        // console.log('books: ', books)
+        // console.log('one book: ', book)
+        // console.log('book title: ', title)
+        // console.log('book author: ', author)
+        // console.log('current rank: ', currentRank)
+        // console.log('rank last week: ', rankLastWeek)
+        // console.log('weeks on list: ', weeksOnList)
+        this.setState({ NYTBestsellers: json.results });
+      });
+  }
+  componentDidMount() {
+    this.getBestsellersNYT();
+  }
 
   searchBook = e => {
     console.log(this);
@@ -147,6 +175,7 @@ class App extends React.Component {
           searchBook={this.searchBook}
         />
         {/* sortedBooks defaults to the cleanData unless triggered */}
+        <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
         <BookList books={sortedBooks} />
       </div>
     );
