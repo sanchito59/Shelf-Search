@@ -2,7 +2,6 @@ import React from 'react';
 import './../BestsellerList.css'
 
 export default function BestsellerList(props) {
-
   return (
     <div>
       <div className="bestseller-card">

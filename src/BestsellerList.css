@@ -1,3 +1,7 @@
+.header {
+  font-family: Caladea, sans-serif;
+}
+
 .outer-card-row {
   text-align: left;
   margin: 20px;
@@ -11,20 +15,10 @@
   float: left;
 }
 
-/* .outer-card-row {
-  display: table;
-  width: 100%;
-  height: 250px;
-  padding: 4px;
-  margin-bottom: 10px;
-  background-color: grey;
-  color: white;
-} */
-
 .amazon-button {
   background-color: #FF9900;
   border: none;
-  color: white;
+  color: #000000;
   padding: 10px 30px;
   border-radius: 4px;
   text-align: center;
@@ -35,8 +29,13 @@
   cursor: pointer;
 }
 
+.amazon-button:hover {
+  background-color: rgb(240, 144, 1);
+}
+
 .bestseller-card {
   display: table-cell;
   width: 200px;
   height: 250px;
+  font-family: Georgia;
 }

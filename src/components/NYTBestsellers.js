@@ -9,7 +9,7 @@ export default function NYTBestsellers(props) {
     return (
       <div>
         <div className='outer-card-row'>
-          <h1>This Week's NYT Bestsellers: </h1>
+          <h1 className='header'>This Week's NYT Bestsellers: </h1>
           {
             props.bestSellers.map((book, i) => {
               return <BestsellerList
