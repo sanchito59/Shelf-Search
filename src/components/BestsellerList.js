@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function BestsellerList(props) {
   return (
-    // figma research!
     <div>
       <div>
         <h4>#{props.currentRank} - {props.title}</h4>

@@ -7,7 +7,7 @@ import SearchArea from "./components/SearchArea";
 import BookList from "./components/BookList";
 import NYTBestsellers from './components/NYTBestsellers';
 
-const NYT_KEY = 'secret!';
+const NYT_KEY = process.env.REACT_APP_NYT_KEY;
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -175,7 +175,7 @@ class App extends React.Component {
           searchBook={this.searchBook}
         />
         {/* sortedBooks defaults to the cleanData unless triggered */}
-        <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
+        {/* <NYTBestsellers bestSellers={this.state.NYTBestsellers} /> */}
         <BookList books={sortedBooks} />
       </div>
     );
