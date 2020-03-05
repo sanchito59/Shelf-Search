@@ -14,7 +14,7 @@ const BookCard = (props) => {
         <p>ISBN: {props.ISBN}</p>
         <p>Preview: <a href={props.previewLink} target="_blank" className="preview-link">{props.title}</a></p>
         {/* need to error handle links without downloads */}
-        <p><a className="preview-link" href={props.downloadLinkForDevices}>Download for Device</a></p>
+        {/* <p><a className="preview-link" href={props.downloadLinkForDevices}>Download for Device</a></p> */}
       </div>
     </div>
   )
