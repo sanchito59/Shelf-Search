@@ -7,7 +7,7 @@ import SearchArea from "./components/SearchArea";
 import BookList from "./components/BookList";
 import NYTBestsellers from './components/NYTBestsellers';
 
-const NYT_KEY = 'ALX00lDTEN98KTKuhGuAqnq37xGYLIet';
+const NYT_KEY = 'secret!';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,20 +40,20 @@ class App extends React.Component {
       { method: 'get', }).then(response => {
         return response.json();
       }).then(json => {
-        let books = json.results;
-        let book = json.results[0];
-        let title = json.results[0].book_details[0].title;
-        let author = json.results[0].book_details[0].author;
-        let currentRank = json.results[0].rank;
-        let rankLastWeek = json.results[0].rank_last_week;
-        let weeksOnList = json.results[0].weeks_on_list;
-        console.log('books: ', books)
-        console.log('one book: ', book)
-        console.log('book title: ', title)
-        console.log('book author: ', author)
-        console.log('current rank: ', currentRank)
-        console.log('rank last week: ', rankLastWeek)
-        console.log('weeks on list: ', weeksOnList)
+        // let books = json.results;
+        // let book = json.results[0];
+        // let title = json.results[0].book_details[0].title;
+        // let author = json.results[0].book_details[0].author;
+        // let currentRank = json.results[0].rank;
+        // let rankLastWeek = json.results[0].rank_last_week;
+        // let weeksOnList = json.results[0].weeks_on_list;
+        // console.log('books: ', books)
+        // console.log('one book: ', book)
+        // console.log('book title: ', title)
+        // console.log('book author: ', author)
+        // console.log('current rank: ', currentRank)
+        // console.log('rank last week: ', rankLastWeek)
+        // console.log('weeks on list: ', weeksOnList)
         this.setState({ NYTBestsellers: json.results });
       });
   }

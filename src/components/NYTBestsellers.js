@@ -7,14 +7,16 @@ export default function NYTBestsellers(props) {
   console.log('nyt props: ', props)
   return (
     <div>
+      <h1>This Week's NYT Bestsellers: </h1>
       {
         props.bestSellers.map((book, i) => {
           return <BestsellerList
             title={book.book_details[0].title}
-          // author={}
-          // currentRank={}
-          // rankLastWeek={}
-          // weeksOnList={}
+            author={book.book_details[0].author}
+            currentRank={book.rank}
+            rankLastWeek={book.rank_last_week}
+            weeksOnList={book.weeks_on_list}
+            key={i}
           />
         })
       }
