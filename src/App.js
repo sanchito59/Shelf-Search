@@ -58,6 +58,9 @@ class App extends React.Component {
         // this.bestSellerCovers(bestSellerData);
         this.setState({ NYTBestsellers: json.results });
         this.setState({ bestsellerISBNs: bestSellerData });
+      })
+      .catch(error => {
+        console.log('Uh oh, ', error);
       });
   }
 
