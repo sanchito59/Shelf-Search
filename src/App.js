@@ -55,12 +55,6 @@ class App extends React.Component {
         for (let i = 0; i < 15; i++) {
           bestSellerData.push(books[i].isbns[0].isbn10);
         }
-        // console.log(bestSellerData);
-        // books.forEach(function () {
-        // console.log(books.isbns)
-        // })
-        // let newBestSellerData;
-        // this.bestSellerCovers(bestSellerData);
         this.setState({ NYTBestsellers: json.results });
         this.setState({ bestsellerISBNs: bestSellerData });
       })
@@ -68,35 +62,6 @@ class App extends React.Component {
         console.log('Uh oh, ', error);
       });
   }
-
-  // EATING UP API CALL LIMITS
-  // bestSellerCovers = isbnArr => {
-  //   for (let i = 0; i < 15; i++) {
-  //     fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbnArr[i], {
-  //       method: 'get'
-  //     })
-  //       .then(response => { return response.json(); })
-  //       .then(data => {
-  //         console.log(data)
-  //         let bookCoverLinks = [];
-  //         for (let i = 0; i < 15; i++) {
-  //           bookCoverLinks.push(data.items[i].volumeInfo.imageLinks.thumbnail);
-  //         }
-  //         console.log('bookCoverLinks: ', bookCoverLinks);
-  //         this.setState({ bestSellerCoverLinks: bookCoverLinks })
-  //         // var img = data.items[0].volumeInfo.imageLinks.thumbnail;
-  //         // img = img.replace(/^http:\/\//i, 'https://');
-  //         // $('#cover-' + id).attr('src', img);
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //         console.log('Googel API Error: Defaulting to archival images for book #' + ' ISBN: ' + isbnArr[i]);
-  //         // var index = id - 1;
-  //         // var img = archivedImages[index];
-  //         // $('#cover-' + id).attr('src', img);
-  //       });
-  //   }
-  // };
 
   getPoemOfTheDay = () => {
     fetch('https://api.poems.one/pod', {

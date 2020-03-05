@@ -1,10 +1,11 @@
 import React from 'react';
 
 export default function PoemOfDay(props) {
-  // logging 3 times
   setTimeout(() => {
     if (typeof (props.poem.poem) === 'undefined') {
+      // logging 3 times?
       console.log('need to mount?');
+      // debugger;
     } else {
       console.log('poem of day title: ', props.poem.poem.title);
       console.log('poem of day author: ', props.poem.poem.author);
