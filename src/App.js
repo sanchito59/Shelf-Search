@@ -105,19 +105,18 @@ class App extends React.Component {
       return response.json();
     }).then(json => {
       const singlePoem = json.contents.poems[0];
-      console.log(singlePoem.poem.title)
-      console.log(singlePoem.poem.author)
-      console.log(singlePoem.poem.poem)
+      // console.log(singlePoem.poem.title)
+      // console.log(singlePoem.poem.author)
+      // console.log(singlePoem.poem.poem)
       this.setState({ poemOfDay: singlePoem })
-      console.log(this.state)
     }).catch(error => {
       console.log('Uh oh, ', error);
     })
   }
 
   componentDidMount() {
-    this.getBestsellersNYT();
     this.getPoemOfTheDay();
+    this.getBestsellersNYT();
   }
 
   searchBook = e => {
