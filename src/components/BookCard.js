@@ -7,7 +7,6 @@ import './../BookCardStyle.css'
 
 const BookCard = (props) => {
   // const [properties, set] = useSpring(() => ({ xys: [0, 0, 0.8], config: { mass: 50, tension: 300, friction: 150 } }))
-  console.log('bookcard props: ', props)
   return (
     <animated.div
       class="book-card"
