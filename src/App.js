@@ -1,14 +1,19 @@
+// Functionality
 import React from "react";
 import request from "superagent";
-import "./App.css";
+import { Switch, Route } from 'react-router-dom';
 // Components
 import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
 import BookList from "./components/BookList";
 import NYTBestsellers from './components/NYTBestsellers';
 import PoemOfDay from './components/PoemOfDay';
-
+import Test from './components/Test'
+// Style/Assets
+import "./App.css";
+// Secrets
 const NYT_KEY = process.env.REACT_APP_NYT_KEY;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -189,18 +194,25 @@ class App extends React.Component {
     });
     return (
       <div className="App">
-        <Header />
-        <br></br>
-        <PoemOfDay poem={this.state.poemOfDay} />
-        <SearchArea
-          handleSearch={this.handleSearch}
-          handleSort={this.handleSort}
-          handleEbookFilter={this.handleEbookFilter}
-          searchBook={this.searchBook}
-        />
-        {/* sortedBooks defaults to the cleanData unless triggered */}
-        <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
-        <BookList books={sortedBooks} />
+        <Switch>
+          <Header />
+          <br></br>
+          {/* <Route exact path='/' render={() =>
+            <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
+          } /> */}
+          <Route exact path="/" component={Header} />
+          <Route path="/test" component={Test} />
+          <Route path="/poemOfDay" component={PoemOfDay} />
+          <Route path='/bookSearch' render={() =>
+            <SearchArea
+              handleSearch={this.handleSearch}
+              handleSort={this.handleSort}
+              handleEbookFilter={this.handleEbookFilter}
+              searchBook={this.searchBook} />
+          } />
+          {/* sortedBooks defaults to the cleanData unless triggered */}
+          <BookList books={sortedBooks} />
+        </Switch>
       </div>
     );
   }
