@@ -17,39 +17,22 @@ export default function PoemOfDay(props) {
     }
   }, 1000)
 
-  const buttonStyle = {
-    container: {},
-    text: {},
-    buttons: {},
+  const textstyle = {
     play: {
       hover: {
-        backgroundColor: 'GhostWhite'
+        backgroundColor: 'black',
+        color: 'white'
       },
       button: {
         padding: '4',
+        fontFamily: 'Helvetica',
+        fontSize: '1.0em',
         cursor: 'pointer',
         pointerEvents: 'none',
         outline: 'none',
-        backgroundColor: 'Gainsboro',
-        border: 'solid 1px rgba(255,255,255,1)',
-        borderRadius: 6
-      }
-    },
-    pause: {
-      play: {},
-      hover: {}
-    },
-    stop: {
-      play: {
-        hover: {},
-        button: {}
+        backgroundColor: 'inherit',
+        border: 'none'
       },
-      resume: {
-        play: {
-          hover: {},
-          button: {}
-        }
-      }
     }
   }
 
@@ -62,12 +45,18 @@ export default function PoemOfDay(props) {
       <h4 className="poem-author">{typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.author}</h4>
       <p className="poem-body">
         {typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.poem}
+        <br></br>
+        <br></br>
         <Speech
+          // How to style... 
+          stop={true}
           textAsButton={true}
           displayText='Listen'
-          style={buttonStyle}
+          style={textstyle}
           text={typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.poem}
         />
+        {/* This doesn't really work */}
+        {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
       </p>
     </div >
   );
