@@ -1,6 +1,7 @@
 // Functionality
 import React from 'react';
-import { Link } from 'react-router-dom';
+// Components
+import Navlinks from './Navlinks.js';
 // Styles/Assets
 import './../App.css';
 
@@ -8,7 +9,7 @@ function Header() {
   return (
     <header className="App-header">
       <h1><i className="fas fa-book"></i> Book Search</h1>
-      <Link to='/'>Home</Link> | <Link to='poemOfDay'>Poetry</Link> | <Link to='/bookSearch'>Search for Books</Link>
+      <Navlinks />
     </header>
   )
 }
