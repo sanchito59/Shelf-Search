@@ -1,7 +1,11 @@
 import React from "react";
+// Components
+import BookList from './BookList'
+// Styles/Assets
 import "./../App.css";
 
 const SearchArea = props => {
+  console.log('search props: ', props)
   return (
     <div className="search-area">
       <form action="" onSubmit={props.searchBook}>
@@ -23,6 +27,7 @@ const SearchArea = props => {
           <option value="Oldest">Oldest</option>
         </select>
       </form>
+      <BookList books={props.books} />
     </div>
   );
 };
