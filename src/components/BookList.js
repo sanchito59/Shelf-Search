@@ -4,6 +4,7 @@ import './../App.css';
 import BookCard from './BookCard';
 
 const BookList = (props) => {
+  console.log(props);
   return (
     <div className='book-list-wrapper'>
       {

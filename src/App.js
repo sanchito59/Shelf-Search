@@ -35,6 +35,7 @@ class App extends React.Component {
       // Poems One API
       poemOfDay: [],
     };
+    this.searchBook = this.searchBook.bind(this);
   }
 
   // responseGoogle = response => {
@@ -199,18 +200,19 @@ class App extends React.Component {
           <Route exact path='/' render={() =>
             <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
           } />
-          <Route exact path="/" component={Header} />
           <Route path="/test" component={Test} />
-          <Route path="/poemOfDay" component={PoemOfDay} />
+          <Route path="/poemOfDay" render={() =>
+            <PoemOfDay poem={this.state.poemOfDay} />} />
           <Route path='/bookSearch' render={() =>
             <SearchArea
               handleSearch={this.handleSearch}
               handleSort={this.handleSort}
               handleEbookFilter={this.handleEbookFilter}
-              searchBook={this.searchBook} />
+              searchBook={this.searchBook}
+              books={sortedBooks}
+            />
           } />
           {/* sortedBooks defaults to the cleanData unless triggered */}
-          <BookList books={sortedBooks} />
         </Switch>
       </div>
     );
