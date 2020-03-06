@@ -1,4 +1,6 @@
 import React from 'react';
+import Speech from 'react-speech';
+// Styles/Assets
 import './../PoemOfDay.css';
 
 export default function PoemOfDay(props) {
@@ -15,14 +17,58 @@ export default function PoemOfDay(props) {
     }
   }, 1000)
 
+  const buttonStyle = {
+    container: {},
+    text: {},
+    buttons: {},
+    play: {
+      hover: {
+        backgroundColor: 'GhostWhite'
+      },
+      button: {
+        padding: '4',
+        cursor: 'pointer',
+        pointerEvents: 'none',
+        outline: 'none',
+        backgroundColor: 'Gainsboro',
+        border: 'solid 1px rgba(255,255,255,1)',
+        borderRadius: 6
+      }
+    },
+    pause: {
+      play: {},
+      hover: {}
+    },
+    stop: {
+      play: {
+        hover: {},
+        button: {}
+      },
+      resume: {
+        play: {
+          hover: {},
+          button: {}
+        }
+      }
+    }
+  }
+
+
   return (
-    <div className="poem-div">
+    <div className="poem-div" >
       {/* This works, but if you change 'props.poem.description' it breaks */}
-      <h1 className="poem-of-the-day">{props.poem.description}</h1>
+      < h1 className="poem-of-the-day" > {props.poem.description}</h1>
       <h2 className="poem-title">{typeof props.poem.description === 'undefined' ? 'Test Title' : props.poem.poem.title}</h2>
       <h4 className="poem-author">{typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.author}</h4>
-      {/* needs to be processed and displayed as poetry */}
-      <p className="poem-body">{typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.poem}</p>
-    </div>
+      <p className="poem-body">
+        {typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.poem}
+        <Speech
+          textAsButton={true}
+          displayText='Listen'
+          style={buttonStyle}
+          text={typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.poem}
+        />
+      </p>
+    </div >
   );
 }
