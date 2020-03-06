@@ -194,12 +194,11 @@ class App extends React.Component {
     });
     return (
       <div className="App">
+        <Header />
         <Switch>
-          <Header />
-          <br></br>
-          {/* <Route exact path='/' render={() =>
+          <Route exact path='/' render={() =>
             <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
-          } /> */}
+          } />
           <Route exact path="/" component={Header} />
           <Route path="/test" component={Test} />
           <Route path="/poemOfDay" component={PoemOfDay} />
