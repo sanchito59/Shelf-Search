@@ -11,7 +11,7 @@
   border-radius: 6px;
 }
 
-.poem-title {
+.poem-title, .poem-of-the-day {
   text-decoration: underline;
 }
 
