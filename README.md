@@ -59,3 +59,4 @@ http://openlibrary.org/api/volumes/brief/isbn/STRING_ISBN_VALUE_GOES_HERE.json
 
 http://openlibrary.org/api/volumes/brief/isbn/9780307886156.json
 
+Research 8:00am-
