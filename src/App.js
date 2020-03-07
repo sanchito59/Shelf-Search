@@ -35,8 +35,8 @@ class App extends React.Component {
       // OpenLibrary API
       bookResult: [],
     };
-    this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
-    this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
+    // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
+    // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
     this.searchForBooks = this.searchForBooks.bind(this);
   }
 
@@ -220,15 +220,14 @@ class App extends React.Component {
           } />
           <Route path="/poemOfDay" render={() =>
             <PoemOfDay poem={this.state.poemOfDay} />} />
-          {/* sortedBooks defaults to the cleanData unless triggered */}
+          {/* sortedBooks defaults to cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>
             <SearchArea
               handleSearch={this.handleSearch}
               handleSort={this.handleSort}
               handleEbookFilter={this.handleEbookFilter}
               searchForBooks={this.searchForBooks}
-              books={sortedBooks}
-            />
+              books={sortedBooks} />
           } />
         </Switch>
       </div>

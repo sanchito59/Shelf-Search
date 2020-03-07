@@ -8,10 +8,7 @@ const SearchArea = props => {
   console.log('search props: ', props)
   return (
     <div className="search-area">
-      <form action=""
-        // onSubmit={props.searchOpenLibrary}
-        onSubmit={props.searchForBooks}
-      >
+      <form action="" onSubmit={props.searchForBooks}>
         <input
           onChange={props.handleSearch}
           type="text"
@@ -20,7 +17,7 @@ const SearchArea = props => {
         <button type="submit">Search</button>
         <input type="checkbox" id="ebook-param" value="ebook-param" onChange={props.handleEbookFilter}></input>
         <label htmlFor="ebook-param">e-book</label>
-        {/* add logic to only show when booklist mounts */}
+        {/* add logic to only show when booklist mounts? */}
         <select defaultValue="Sort" onChange={props.handleSort}>
           <option disabled value="Sort">
             Sort

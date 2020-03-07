@@ -4,7 +4,7 @@ import './../App.css';
 import BookCard from './BookCard';
 
 const BookList = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className='book-list-wrapper'>
       {
@@ -18,6 +18,7 @@ const BookList = (props) => {
             publishedDate={book.volumeInfo.publishedDate}
             downloadLinkForDevices={book.accessInfo.epub.acsTokenLink}
             googleBookId={book.id}
+            // Need error handling for 'TypeError: Cannot read property '0' of undefined' on some queries
             ISBN={book.volumeInfo.industryIdentifiers[0].identifier}
             key={i}
           />
