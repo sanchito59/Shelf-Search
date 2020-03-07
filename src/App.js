@@ -5,10 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 // Components
 import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
-import BookList from "./components/BookList";
 import NYTBestsellers from './components/NYTBestsellers';
 import PoemOfDay from './components/PoemOfDay';
-import Test from './components/Test'
 // Style/Assets
 import "./App.css";
 // Secrets
@@ -34,8 +32,12 @@ class App extends React.Component {
       bestSellerCoverLinks: [],
       // Poems One API
       poemOfDay: [],
+      // OpenLibrary API
+      bookResult: [],
     };
-    this.searchBook = this.searchBook.bind(this);
+    this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
+    this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
+    this.searchForBooks = this.searchForBooks.bind(this);
   }
 
   // responseGoogle = response => {
@@ -85,19 +87,12 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.getPoemOfTheDay();
-    this.getBestsellersNYT();
-  }
-
-  searchBook = e => {
+  searchGoogleBooks = e => {
     console.log(this);
     e.preventDefault();
     if (this.state.ebookFilter === 'ebook-param') {
       console.log('ebookfilter api state: ', this.state)
       request
-        // branch for different request
-        // &download=epub
         .get("https://www.googleapis.com/books/v1/volumes")
         .query({
           q: this.state.searchField + "&download=epub"
@@ -110,10 +105,10 @@ class App extends React.Component {
             cleanData = this.manageResponseProperties(data);
             // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
             this.setState({ books: cleanData });
-          } else {
-            // need user notification here
-            console.log("can't find that!");
           }
+          // need user notification here
+        }).catch(error => {
+          console.log('Uh oh, ', error);
         });
     } else {
       request
@@ -129,12 +124,35 @@ class App extends React.Component {
             cleanData = this.manageResponseProperties(data);
             this.setState({ books: cleanData });
             console.log('api state:', this.state)
-          } else {
-            console.log("can't find that!");
           }
+          // need user notification here
+        }).catch(error => {
+          console.log('Uh oh, ', error);
         });
     }
   };
+
+  searchOpenLibrary = () => {
+    fetch(`http://openlibrary.org/search.json?q=${this.state.searchField}`, {
+      method: 'get',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      console.log(json);
+    }).catch(error => {
+      console.log('Uh oh, ', error);
+    })
+  }
+
+  componentDidMount() {
+    this.getPoemOfTheDay();
+    this.getBestsellersNYT();
+  }
+
+  searchForBooks = e => {
+    this.searchGoogleBooks(e);
+    this.searchOpenLibrary();
+  }
 
   handleSearch = e => {
     this.setState({ searchField: e.target.value });
@@ -200,19 +218,18 @@ class App extends React.Component {
           <Route exact path='/' render={() =>
             <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
           } />
-          <Route path="/test" component={Test} />
           <Route path="/poemOfDay" render={() =>
             <PoemOfDay poem={this.state.poemOfDay} />} />
+          {/* sortedBooks defaults to the cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>
             <SearchArea
               handleSearch={this.handleSearch}
               handleSort={this.handleSort}
               handleEbookFilter={this.handleEbookFilter}
-              searchBook={this.searchBook}
+              searchForBooks={this.searchForBooks}
               books={sortedBooks}
             />
           } />
-          {/* sortedBooks defaults to the cleanData unless triggered */}
         </Switch>
       </div>
     );
