@@ -32,8 +32,11 @@ class App extends React.Component {
       bestSellerCoverLinks: [],
       // Poems One API
       poemOfDay: [],
+      // OpenLibrary API
+      bookResult: [],
     };
-    this.searchBook = this.searchBook.bind(this);
+    this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
+    this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
   }
 
   // responseGoogle = response => {
@@ -83,12 +86,25 @@ class App extends React.Component {
     })
   }
 
+  searchOpenLibrary = e => {
+    e.preventDefault();
+    fetch(`http://openlibrary.org/search.json?q=${this.state.searchField}`, {
+      method: 'get',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      console.log(json);
+    }).catch(error => {
+      console.log('Uh oh, ', error);
+    })
+  }
+
   componentDidMount() {
     this.getPoemOfTheDay();
     this.getBestsellersNYT();
   }
 
-  searchBook = e => {
+  searchGoogleBooks = e => {
     console.log(this);
     e.preventDefault();
     if (this.state.ebookFilter === 'ebook-param') {
@@ -200,16 +216,17 @@ class App extends React.Component {
           } />
           <Route path="/poemOfDay" render={() =>
             <PoemOfDay poem={this.state.poemOfDay} />} />
+          {/* sortedBooks defaults to the cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>
             <SearchArea
               handleSearch={this.handleSearch}
               handleSort={this.handleSort}
               handleEbookFilter={this.handleEbookFilter}
-              searchBook={this.searchBook}
+              searchOpenLibrary={this.searchOpenLibrary}
+              searchGoogleBooks={this.searchGoogleBooks}
               books={sortedBooks}
             />
           } />
-          {/* sortedBooks defaults to the cleanData unless triggered */}
         </Switch>
       </div>
     );

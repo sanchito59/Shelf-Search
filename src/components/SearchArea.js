@@ -8,7 +8,10 @@ const SearchArea = props => {
   console.log('search props: ', props)
   return (
     <div className="search-area">
-      <form action="" onSubmit={props.searchBook}>
+      <form action=""
+        // onSubmit={props.searchOpenLibrary}
+        onSubmit={props.searchGoogleBooks}
+      >
         <input
           onChange={props.handleSearch}
           type="text"
