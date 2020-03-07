@@ -10,7 +10,7 @@ const SearchArea = props => {
     <div className="search-area">
       <form action=""
         // onSubmit={props.searchOpenLibrary}
-        onSubmit={props.searchGoogleBooks}
+        onSubmit={props.searchForBooks}
       >
         <input
           onChange={props.handleSearch}
