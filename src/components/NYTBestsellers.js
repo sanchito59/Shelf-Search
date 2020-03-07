@@ -2,6 +2,7 @@ import React from 'react';
 import './../BestsellerList.css';
 // Components
 import BestsellerList from './BestsellerList';
+import EmbeddedBook from './EmbeddedBook';
 
 export default function NYTBestsellers(props) {
   // console.log('nyt props: ', props.bestSellers)

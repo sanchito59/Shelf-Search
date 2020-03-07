@@ -5,10 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 // Components
 import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
-import BookList from "./components/BookList";
 import NYTBestsellers from './components/NYTBestsellers';
 import PoemOfDay from './components/PoemOfDay';
-import Test from './components/Test'
 // Style/Assets
 import "./App.css";
 // Secrets
@@ -200,7 +198,6 @@ class App extends React.Component {
           <Route exact path='/' render={() =>
             <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
           } />
-          <Route path="/test" component={Test} />
           <Route path="/poemOfDay" render={() =>
             <PoemOfDay poem={this.state.poemOfDay} />} />
           <Route path='/bookSearch' render={() =>
