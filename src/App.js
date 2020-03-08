@@ -57,7 +57,7 @@ class App extends React.Component {
       }).then(json => {
         let books = json.results;
         // console.log('books: ', books)
-        let book = json.results[0];
+        // let book = json.results[0];
         // console.log('one book: ', book)
         let bestSellerData = [];
         for (let i = 0; i < 15; i++) {
@@ -136,10 +136,10 @@ class App extends React.Component {
     }).then(response => {
       return response.json();
     }).then(json => {
-      // console.log(json.numFound);
-      // console.log(json.docs);
-      console.log('one openlib book: ', json.docs[0]);
-      this.setState({})
+      let books = json.docs;
+      // console.log('openlib: ', books);
+      // console.log('one openlib book: ', json.docs[0]);
+      this.setState({ openLibraryBooks: books })
     }).catch(error => {
       console.log('Uh oh, ', error);
     })
@@ -228,7 +228,8 @@ class App extends React.Component {
               handleSort={this.handleSort}
               handleEbookFilter={this.handleEbookFilter}
               searchForBooks={this.searchForBooks}
-              books={sortedBooks} />
+              books={sortedBooks}
+              openLibraryBooks={this.state.openLibraryBooks} />
           } />
         </Switch>
       </div>
