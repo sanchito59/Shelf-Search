@@ -5,7 +5,7 @@ import './../Navlinks.css';
 
 export default function Navlinks() {
   return (
-    <div class='navlinks'>
+    <div className='navlinks'>
       <Link to='/'>Home</Link> | <Link to='poemOfDay'>Poetry</Link> | <Link to='/bookSearch'>Search for Books</Link>
     </div>
   );
