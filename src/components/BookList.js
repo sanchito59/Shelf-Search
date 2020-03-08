@@ -26,8 +26,6 @@ const BookList = (props) => {
             />
           })
         }
-      </div>
-      <div className='book-list-wrapper'>
         {
           props.openLibraryBooks.map((book, i) => {
             return <OpenLibraryBookCard
