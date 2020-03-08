@@ -22,7 +22,7 @@ class App extends React.Component {
       email: "",
       url: "",
       access_token: "",
-      books: [],
+      googleBooks: [],
       searchField: "",
       sort: "",
       ebookCheck: "",
@@ -33,7 +33,7 @@ class App extends React.Component {
       // Poems One API
       poemOfDay: [],
       // OpenLibrary API
-      bookResult: [],
+      openLibraryBooks: [],
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
@@ -88,7 +88,6 @@ class App extends React.Component {
   }
 
   searchGoogleBooks = e => {
-    console.log(this);
     e.preventDefault();
     if (this.state.ebookFilter === 'ebook-param') {
       console.log('ebookfilter api state: ', this.state)
@@ -104,7 +103,7 @@ class App extends React.Component {
           if (typeof data.body.items !== "undefined") {
             cleanData = this.manageResponseProperties(data);
             // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
-            this.setState({ books: cleanData });
+            this.setState({ googleBooks: cleanData });
           }
           // need user notification here
         }).catch(error => {
@@ -122,8 +121,7 @@ class App extends React.Component {
           let cleanData;
           if (typeof data.body.items !== "undefined") {
             cleanData = this.manageResponseProperties(data);
-            this.setState({ books: cleanData });
-            console.log('api state:', this.state)
+            this.setState({ googleBooks: cleanData });
           }
           // need user notification here
         }).catch(error => {
@@ -138,7 +136,10 @@ class App extends React.Component {
     }).then(response => {
       return response.json();
     }).then(json => {
-      console.log(json);
+      // console.log(json.numFound);
+      // console.log(json.docs);
+      console.log('one openlib book: ', json.docs[0]);
+      this.setState({})
     }).catch(error => {
       console.log('Uh oh, ', error);
     })
@@ -188,7 +189,7 @@ class App extends React.Component {
     return cleanData;
   };
   render() {
-    const sortedBooks = this.state.books.sort((a, b) => {
+    const sortedBooks = this.state.googleBooks.sort((a, b) => {
       if (this.state.sort === "Newest") {
         // substring checks 4 digit year, , i.e. '1994' or '0000' in case of manageResponseData data
         return (
@@ -209,7 +210,7 @@ class App extends React.Component {
         }
         return 0;
       }
-      return this.state.books;
+      return this.state.googleBooks;
     });
     return (
       <div className="App">
