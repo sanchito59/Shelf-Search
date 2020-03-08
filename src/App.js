@@ -137,7 +137,7 @@ class App extends React.Component {
       return response.json();
     }).then(json => {
       let books = json.docs;
-      // console.log('openlib: ', books);
+      console.log('openlib: ', books);
       // console.log('one openlib book: ', json.docs[0]);
       this.setState({ openLibraryBooks: books })
     }).catch(error => {
@@ -165,7 +165,6 @@ class App extends React.Component {
 
   handleEbookFilter = e => {
     this.setState({ ebookCheck: e.target.value });
-    console.log(e.target.value)
   }
 
   manageResponseProperties = data => {
