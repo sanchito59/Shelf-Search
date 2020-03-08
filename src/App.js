@@ -131,7 +131,7 @@ class App extends React.Component {
   };
 
   searchOpenLibrary = () => {
-    fetch(`http://openlibrary.org/search.json?q=${this.state.searchField}`, {
+    fetch(`https://openlibrary.org/search.json?q=${this.state.searchField}`, {
       method: 'get',
     }).then(response => {
       return response.json();
