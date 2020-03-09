@@ -7,7 +7,11 @@ export default function PoemSearch(props) {
   return (
     <div className="search-area">
       <form onSubmit={props.poemSearch}>
-        <input placeholder="Wordsworth, Poe, Shakespeare"></input>
+        <input
+          placeholder="Wordsworth, Poe, Shakespeare"
+          onChange={props.handlePoemSearch}
+          type="text"
+        ></input>
         <button>Search</button>
       </form>
     </div>

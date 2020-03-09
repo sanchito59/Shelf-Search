@@ -35,6 +35,9 @@ class App extends React.Component {
       // OpenLibrary API
       openLibraryBooks: [],
       openLibPDFs: [],
+      // PoetryDB API
+      poetryDBpoems: [],
+      poemSearchField: '',
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
@@ -184,6 +187,19 @@ class App extends React.Component {
 
   poemSearch() {
     console.log('pinged!')
+    const query = this.state.poemSearchField;
+    fetch(`http://poetrydb.org/author/${query}`, {
+      method: 'get',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      let results = json;
+      console.log('poemSearch: ', results);
+      // console.log('one openlib book: ', json.docs[0]);
+      this.setState({ poetryDBpoems: results })
+    }).catch(error => {
+      console.log('Uh oh, ', error);
+    })
   }
 
   componentDidMount() {
@@ -201,6 +217,10 @@ class App extends React.Component {
   handleSearch = e => {
     this.setState({ searchField: e.target.value });
   };
+
+  handlePoemSearch = e => {
+    this.setState({ poemSearchField: e.target.value });
+  }
 
   handleSort = e => {
     this.setState({ sort: e.target.value });
@@ -265,6 +285,7 @@ class App extends React.Component {
             <PoemOfDayPage
               poem={this.state.poemOfDay}
               poemSearch={this.poemSearch}
+              handlePoemSearch={this.handlePoemSearch}
             />} />
           {/* sortedBooks defaults to cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>

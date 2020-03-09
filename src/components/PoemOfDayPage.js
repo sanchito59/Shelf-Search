@@ -21,7 +21,9 @@ export default function PoemOfDay(props) {
 
   return (
     <div>
-      <PoemSearch poemSearch={props.poemSearch} />
+      <PoemSearch
+        poemSearch={props.poemSearch}
+        handlePoemSearch={props.handlePoemSearch} />
       <PoemOfTheDay poem={props.poem} />
     </div>
   );
