@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
 import NYTBestsellers from './components/NYTBestsellers';
-import PoemOfDayPage from './components/PoemOfDayPage';
+import PoetryPage from './components/PoetryPage';
 // Style/Assets
 import "./App.css";
 // Secrets
@@ -281,8 +281,8 @@ class App extends React.Component {
           <Route exact path='/' render={() =>
             <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
           } />
-          <Route path="/poemOfDay" render={() =>
-            <PoemOfDayPage
+          <Route path="/poetry" render={() =>
+            <PoetryPage
               poem={this.state.poemOfDay}
               poemSearch={this.poemSearch}
               handlePoemSearch={this.handlePoemSearch}

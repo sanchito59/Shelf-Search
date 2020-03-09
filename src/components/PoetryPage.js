@@ -1,7 +1,6 @@
 import React from 'react';
 // Components
 import PoemSearch from './PoemSearch';
-import PoemList from './PoemList';
 import PoemOfTheDay from './PoemOfTheDay';
 // Styles/Assets
 import './../PoemOfDay.css';
