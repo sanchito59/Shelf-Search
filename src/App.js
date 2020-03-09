@@ -147,21 +147,25 @@ class App extends React.Component {
 
   searchForPDFs() {
     setTimeout(() => {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 100; i++) {
         if (typeof this.state.openLibraryBooks[i] !== 'undefined') {
-          let isbn = this.state.openLibraryBooks[i].isbn[0];
-          console.log('isbn: ', isbn)
-          fetch(`https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
-            method: 'get',
-          }).then(response => {
-            return response.json();
-          }).then(json => {
-            console.log('pdf search: ', json);
-          }).catch(error => {
-            console.log('error: ', error)
-          })
+          if (typeof this.state.openLibraryBooks[i].isbn === 'undefined') {
+            console.log('information not available');
+          } else {
+            let isbn = this.state.openLibraryBooks[i].isbn[0];
+            console.log('isbn: ', isbn)
+            fetch(`https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
+              method: 'get',
+            }).then(response => {
+              return response.json();
+            }).then(json => {
+              console.log('pdf search: ', json);
+            }).catch(error => {
+              console.log('error: ', error)
+            })
+          }
         } else {
-          console.log('hmmm, there seems to be no ISBN');
+          console.log('Hmmm, there seems to be no ISBN.');
         }
       }
     }, 1000)
