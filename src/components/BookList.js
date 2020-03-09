@@ -6,18 +6,29 @@ import OpenLibraryBookCard from './OpenLibraryBookCard';
 import EmbeddedBook from './EmbeddedBook';
 
 const BookList = (props) => {
+  console.log('BookList props: ', props);
+  const ebookURL = {
+    color: 'black'
+  }
   return (
     <div>
-      {console.log(props)}
+      {/* Titles are lost with this method! */}
+      {/* {
+        props.availableEbooks.map((ebook, i) => {
+          return <div><a style={ebookURL} href={ebook.itemURL} key={i}>- EBOOK -</a> <br></br></div>
+        })
+      } */}
       <div className='book-list-wrapper'>
         {
           props.availableEbooks.map((ebook, i) => {
-            return <EmbeddedBook
+            return <div><EmbeddedBook
               ebookURL={ebook.itemURL}
               key={i}
-            />
+            /> <br></br></div>
           })
         }
+      </div>
+      <div className='book-list-wrapper'>
         {
           props.books.map((book, i) => {
             return <BookCard
