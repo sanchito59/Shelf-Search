@@ -34,6 +34,7 @@ class App extends React.Component {
       poemOfDay: [],
       // OpenLibrary API
       openLibraryBooks: [],
+      openLibPDFs: [],
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
@@ -146,7 +147,7 @@ class App extends React.Component {
   }
 
   searchForPDFs() {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     setTimeout(() => {
       for (let i = 0; i < 100; i++) {
         if (typeof this.state.openLibraryBooks[i] !== 'undefined') {
@@ -164,7 +165,8 @@ class App extends React.Component {
               return response.json();
             }).then(json => {
               if (json.items.length > 0) {
-                console.log(json)
+                console.log('ebook access: ', json.items)
+                this.setState({ openLibPDFs: json.items })
               } else {
                 console.log('no ebook/PDF available!');
               }
@@ -263,7 +265,8 @@ class App extends React.Component {
               handleEbookFilter={this.handleEbookFilter}
               searchForBooks={this.searchForBooks}
               books={sortedBooks}
-              openLibraryBooks={this.state.openLibraryBooks} />
+              openLibraryBooks={this.state.openLibraryBooks}
+              availableEbooks={this.state.openLibPDFs} />
           } />
         </Switch>
       </div>

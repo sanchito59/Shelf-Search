@@ -3,12 +3,21 @@ import './../App.css';
 // Components
 import BookCard from './BookCard';
 import OpenLibraryBookCard from './OpenLibraryBookCard';
+import EmbeddedBook from './EmbeddedBook';
 
 const BookList = (props) => {
-  // console.log(props);
   return (
     <div>
+      {console.log(props)}
       <div className='book-list-wrapper'>
+        {
+          props.availableEbooks.map((ebook, i) => {
+            return <EmbeddedBook
+              ebookURL={ebook.itemURL}
+              key={i}
+            />
+          })
+        }
         {
           props.books.map((book, i) => {
             return <BookCard
