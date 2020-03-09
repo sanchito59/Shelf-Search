@@ -159,7 +159,11 @@ class App extends React.Component {
             }).then(response => {
               return response.json();
             }).then(json => {
-              console.log('pdf search: ', json);
+              if (json.items.length > 0) {
+                console.log(json)
+              } else {
+                console.log('no ebook/PDF available!');
+              }
             }).catch(error => {
               console.log('error: ', error)
             })

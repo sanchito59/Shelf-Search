@@ -32,6 +32,7 @@ const BookList = (props) => {
               title={book.title}
               author={book.author_name}
               publisher={book.publisher}
+              // needs error handling/data management
               ISBN={book.isbn}
               publishedDate={book.publish_date}
               key={i}
