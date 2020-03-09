@@ -146,6 +146,7 @@ class App extends React.Component {
   }
 
   searchForPDFs() {
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
     setTimeout(() => {
       for (let i = 0; i < 100; i++) {
         if (typeof this.state.openLibraryBooks[i] !== 'undefined') {
@@ -154,7 +155,10 @@ class App extends React.Component {
           } else {
             let isbn = this.state.openLibraryBooks[i].isbn[0];
             console.log('isbn: ', isbn)
-            fetch(`https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
+            fetch(
+              // using the heroku proxy URL to get around CORS hits the rate limit quickly
+              // proxyurl + 
+              `https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
               method: 'get',
             }).then(response => {
               return response.json();
