@@ -1,7 +1,8 @@
 import React from 'react';
 // Components
-import PoemOfTheDay from './PoemOfTheDay';
 import PoemSearch from './PoemSearch';
+import PoemList from './PoemList';
+import PoemOfTheDay from './PoemOfTheDay';
 // Styles/Assets
 import './../PoemOfDay.css';
 
@@ -23,7 +24,9 @@ export default function PoemOfDay(props) {
     <div>
       <PoemSearch
         poemSearch={props.poemSearch}
-        handlePoemSearch={props.handlePoemSearch} />
+        handlePoemSearch={props.handlePoemSearch}
+        poemList={props.poemList}
+      />
       <PoemOfTheDay poem={props.poem} />
     </div>
   );

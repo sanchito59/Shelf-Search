@@ -1,4 +1,6 @@
 import React from 'react';
+// Components
+import PoemList from './PoemList';
 // Styles/Assets
 import "./../App.css";
 
@@ -14,6 +16,9 @@ export default function PoemSearch(props) {
         ></input>
         <button>Search</button>
       </form>
+      <PoemList
+        poemList={props.poemList}
+      />
     </div>
   );
 }

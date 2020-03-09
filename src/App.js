@@ -151,7 +151,6 @@ class App extends React.Component {
   }
 
   searchForPDFs() {
-    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     setTimeout(() => {
       for (let i = 0; i < 100; i++) {
         if (typeof this.state.openLibraryBooks[i] !== 'undefined') {
@@ -161,6 +160,7 @@ class App extends React.Component {
             let isbn = this.state.openLibraryBooks[i].isbn[0];
             console.log('isbn: ', isbn)
             fetch(
+              // const proxyurl = "https://cors-anywhere.herokuapp.com/";
               // using the heroku proxy URL to get around CORS hits the rate limit quickly
               // proxyurl + 
               `https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
@@ -195,7 +195,7 @@ class App extends React.Component {
     }).then(json => {
       let results = json;
       console.log('poemSearch: ', results);
-      // console.log('one openlib book: ', json.docs[0]);
+      // console.log('poemSearch: ', results[0]);
       this.setState({ poetryDBpoems: results })
     }).catch(error => {
       console.log('Uh oh, ', error);
@@ -286,6 +286,7 @@ class App extends React.Component {
               poem={this.state.poemOfDay}
               poemSearch={this.poemSearch}
               handlePoemSearch={this.handlePoemSearch}
+              poemList={this.poetryDBpoems}
             />} />
           {/* sortedBooks defaults to cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>
