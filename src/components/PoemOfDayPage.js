@@ -1,6 +1,7 @@
 import React from 'react';
 // Components
-import PoemOfTheDay from './PoemOfTheDay'
+import PoemOfTheDay from './PoemOfTheDay';
+import PoemSearch from './PoemSearch';
 // Styles/Assets
 import './../PoemOfDay.css';
 
@@ -20,6 +21,7 @@ export default function PoemOfDay(props) {
 
   return (
     <div>
+      <PoemSearch poemSearch={props.poemSearch} />
       <PoemOfTheDay poem={props.poem} />
     </div>
   );

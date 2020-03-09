@@ -38,6 +38,7 @@ class App extends React.Component {
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
+    this.poemSearch = this.poemSearch.bind(this);
     this.searchForBooks = this.searchForBooks.bind(this);
   }
 
@@ -181,6 +182,10 @@ class App extends React.Component {
     }, 1000)
   }
 
+  poemSearch() {
+    console.log('pinged!')
+  }
+
   componentDidMount() {
     this.getPoemOfTheDay();
     this.getBestsellersNYT();
@@ -257,7 +262,10 @@ class App extends React.Component {
             <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
           } />
           <Route path="/poemOfDay" render={() =>
-            <PoemOfDayPage poem={this.state.poemOfDay} />} />
+            <PoemOfDayPage
+              poem={this.state.poemOfDay}
+              poemSearch={this.poemSearch}
+            />} />
           {/* sortedBooks defaults to cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>
             <SearchArea
