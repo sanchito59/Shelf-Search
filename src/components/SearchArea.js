@@ -30,6 +30,7 @@ const SearchArea = props => {
       <BookList
         books={props.books}
         openLibraryBooks={props.openLibraryBooks}
+        availableEbooks={props.availableEbooks}
       />
     </div>
   );

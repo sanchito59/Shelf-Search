@@ -34,6 +34,7 @@ class App extends React.Component {
       poemOfDay: [],
       // OpenLibrary API
       openLibraryBooks: [],
+      openLibPDFs: [],
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
@@ -145,14 +146,51 @@ class App extends React.Component {
     })
   }
 
+  searchForPDFs() {
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    setTimeout(() => {
+      for (let i = 0; i < 100; i++) {
+        if (typeof this.state.openLibraryBooks[i] !== 'undefined') {
+          if (typeof this.state.openLibraryBooks[i].isbn === 'undefined') {
+            console.log('information not available');
+          } else {
+            let isbn = this.state.openLibraryBooks[i].isbn[0];
+            console.log('isbn: ', isbn)
+            fetch(
+              // using the heroku proxy URL to get around CORS hits the rate limit quickly
+              // proxyurl + 
+              `https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
+              method: 'get',
+            }).then(response => {
+              return response.json();
+            }).then(json => {
+              if (json.items.length > 0) {
+                console.log('ebook access: ', json.items)
+                this.setState({ openLibPDFs: json.items })
+              } else {
+                console.log('no ebook/PDF available!');
+              }
+            }).catch(error => {
+              console.log('error: ', error)
+            })
+          }
+        } else {
+          console.log('Hmmm, there seems to be no ISBN.');
+        }
+      }
+    }, 1000)
+  }
+
   componentDidMount() {
     this.getPoemOfTheDay();
     this.getBestsellersNYT();
   }
 
   searchForBooks = e => {
+    this.setState({ openLibPDFs: [] }) // Wipe EmbeddedBook in BookList each search
     this.searchGoogleBooks(e);
     this.searchOpenLibrary();
+    this.searchForPDFs();
   }
 
   handleSearch = e => {
@@ -228,7 +266,8 @@ class App extends React.Component {
               handleEbookFilter={this.handleEbookFilter}
               searchForBooks={this.searchForBooks}
               books={sortedBooks}
-              openLibraryBooks={this.state.openLibraryBooks} />
+              openLibraryBooks={this.state.openLibraryBooks}
+              availableEbooks={this.state.openLibPDFs} />
           } />
         </Switch>
       </div>

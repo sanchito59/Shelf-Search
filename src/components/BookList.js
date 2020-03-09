@@ -3,11 +3,31 @@ import './../App.css';
 // Components
 import BookCard from './BookCard';
 import OpenLibraryBookCard from './OpenLibraryBookCard';
+import EmbeddedBook from './EmbeddedBook';
 
 const BookList = (props) => {
-  // console.log(props);
+  console.log('BookList props: ', props);
+  const ebookURL = {
+    color: 'black'
+  }
   return (
     <div>
+      {/* Titles are lost with this method! */}
+      {/* {
+        props.availableEbooks.map((ebook, i) => {
+          return <div><a style={ebookURL} href={ebook.itemURL} key={i}>- EBOOK -</a> <br></br></div>
+        })
+      } */}
+      <div className='book-list-wrapper'>
+        {
+          props.availableEbooks.map((ebook, i) => {
+            return <div><EmbeddedBook
+              ebookURL={ebook.itemURL}
+              key={i}
+            /> <br></br></div>
+          })
+        }
+      </div>
       <div className='book-list-wrapper'>
         {
           props.books.map((book, i) => {
@@ -32,6 +52,7 @@ const BookList = (props) => {
               title={book.title}
               author={book.author_name}
               publisher={book.publisher}
+              // needs error handling/data management
               ISBN={book.isbn}
               publishedDate={book.publish_date}
               key={i}
