@@ -286,7 +286,7 @@ class App extends React.Component {
               poem={this.state.poemOfDay}
               poemSearch={this.poemSearch}
               handlePoemSearch={this.handlePoemSearch}
-              poemList={this.poetryDBpoems}
+              poemList={this.state.poetryDBpoems}
             />} />
           {/* sortedBooks defaults to cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>

@@ -14,9 +14,7 @@ export default function PoemOfDay(props) {
       console.log('need to mount?');
       // debugger;
     } else {
-      console.log('poem of day title: ', props.poem.poem.title);
-      console.log('poem of day author: ', props.poem.poem.author);
-      console.log('poem of day poem: ', props.poem.poem.poem);
+      console.log('poem of day: ', props.poem.poem);
     }
   }, 1000)
 

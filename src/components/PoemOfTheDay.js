@@ -2,7 +2,6 @@ import React from 'react';
 import Speech from 'react-speech';
 
 export default function PoemOfTheDay(props) {
-  console.log('poem of day props: ', props);
   const textstyle = {
     play: {
       hover: {

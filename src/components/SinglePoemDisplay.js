@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default function SinglePoemDisplay(props) {
-  console.log('singlepoemdisplay props: ', props);
+  console.log('singlePoemDisplay props: ', props);
   return (
-    <div>SinglePoemDisplay</div>
+    <div></div>
   );
 }
