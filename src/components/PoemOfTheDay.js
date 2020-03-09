@@ -35,7 +35,7 @@ export default function PoemOfTheDay(props) {
         textAsButton={true}
         displayText='Listen'
         style={textstyle}
-        text={typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.poem}
+        text={typeof props.poem.description === 'undefined' ? 'Test Poem' : props.poem.poem.poem}
       />
       {/* This doesn't really work */}
       {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
