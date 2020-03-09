@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
 import NYTBestsellers from './components/NYTBestsellers';
-import PoemOfDay from './components/PoemOfDay';
+import PoemOfDayPage from './components/PoemOfDayPage';
 // Style/Assets
 import "./App.css";
 // Secrets
@@ -257,7 +257,7 @@ class App extends React.Component {
             <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
           } />
           <Route path="/poemOfDay" render={() =>
-            <PoemOfDay poem={this.state.poemOfDay} />} />
+            <PoemOfDayPage poem={this.state.poemOfDay} />} />
           {/* sortedBooks defaults to cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>
             <SearchArea
