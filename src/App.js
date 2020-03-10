@@ -11,7 +11,7 @@ import PoetryPage from './components/PoetryPage';
 import "./App.css";
 // Secrets
 const NYT_KEY = process.env.REACT_APP_NYT_KEY;
-
+const GOOD_READS_KEY = process.env.REACT_APP_GOOD_READS_KEY
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -76,21 +76,23 @@ class App extends React.Component {
       });
   }
 
-  getPoemOfTheDay = () => {
-    fetch('https://api.poems.one/pod', {
-      method: 'get',
-    }).then(response => {
-      return response.json();
-    }).then(json => {
-      const singlePoem = json.contents.poems[0];
-      // console.log(singlePoem.poem.title)
-      // console.log(singlePoem.poem.author)
-      // console.log(singlePoem.poem.poem)
-      this.setState({ poemOfDay: singlePoem })
-    }).catch(error => {
-      console.log('PoemOfDay uh oh, ', error);
-    })
-  }
+
+  // RIP TO FREE APIs
+  // getPoemOfTheDay = () => {
+  //   fetch('https://api.poems.one/pod', {
+  //     method: 'get',
+  //   }).then(response => {
+  //     return response.json();
+  //   }).then(json => {
+  //     const singlePoem = json.contents.poems[0];
+  //     // console.log(singlePoem.poem.title)
+  //     // console.log(singlePoem.poem.author)
+  //     // console.log(singlePoem.poem.poem)
+  //     this.setState({ poemOfDay: singlePoem })
+  //   }).catch(error => {
+  //     console.log('PoemOfDay uh oh, ', error);
+  //   })
+  // }
 
   searchGoogleBooks = e => {
     e.preventDefault();
@@ -203,7 +205,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getPoemOfTheDay();
+    // this.getPoemOfTheDay();
     this.getBestsellersNYT();
   }
 
