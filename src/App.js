@@ -222,7 +222,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.findAuthorEvents();
-    // this.getBestsellersNYT();
+    this.getBestsellersNYT();
   }
 
   searchForBooks = e => {
