@@ -1,0 +1,32 @@
+.outerDiv {
+  text-align: left;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.innerDiv {
+  text-align: left;
+  background-color: #F4FCFF;
+  padding: 20px;
+}
+
+.eventDate {
+  float: left;
+  background-color: #DAF5FF;
+}
+
+.eventTitle {
+  font-size: 20px;
+  color: #00445E;
+}
+
+.addressQueryStyle {
+  color: #00445E;
+  text-decoration: none;
+}
+
+.addressQueryStyle:hover {
+  color: black;
+  text-decoration: underline;
+}

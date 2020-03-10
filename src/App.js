@@ -94,7 +94,7 @@ class App extends React.Component {
       // All Events
       // console.log(events);
       // One Event
-      console.log(events[0]);
+      // console.log(events[0]);
       // Event Title
       // console.log(events[0].childNodes[5].innerText);
       // Event Speaker
@@ -113,9 +113,12 @@ class App extends React.Component {
         event.address = events[i].childNodes[7].innerText;
         event.city = events[i].childNodes[9].innerText;
         event.state = events[i].childNodes[21].innerText;
-        eventsArray.push(event);
+        event.date = events[i].childNodes[15].innerText;
+        event.access = events[i].childNodes[31].innerText;
+        event.sourceURL = events[i].childNodes[35].innerText;
+        eventsArray.push(event); // This doesn't contain all info, XML is inconsistent
       }
-      console.log(eventsArray);
+      // console.log(eventsArray);
       return eventsArray;
     }).then(eventsArray => {
       this.setState({ bookEvents: eventsArray });
