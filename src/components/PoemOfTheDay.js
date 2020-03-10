@@ -138,8 +138,8 @@ export default function PoemOfTheDay(props) {
     <div>
       <div style={poemDiv}>
         <h1>Poem of the Day</h1>
-        <h2>{samplePoems[poemOfTheDayIndex].title}</h2>
-        <h4>BY <span style={poemAuthor}>{samplePoems[poemOfTheDayIndex].author}</span></h4>
+        <h2>{samplePoems[4].title}</h2>
+        <h4>BY <span style={poemAuthor}>{samplePoems[4].author}</span></h4>
         <div style={poemBody}>
           <Speech
             // How to style... 
@@ -148,13 +148,13 @@ export default function PoemOfTheDay(props) {
             rate="0.7" // Not perfect, cadence is too quick
             displayText='Listen'
             style={textstyle}
-            text={samplePoems[poemOfTheDayIndex].lines.join('') // Works but not the best solution?
+            text={samplePoems[4].lines.join('') // Works but not the best solution?
             }
           />
           {/* This doesn't really work */}
           {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
           {
-            samplePoems[poemOfTheDayIndex].lines.map((line, i) => {
+            samplePoems[4].lines.map((line, i) => {
               // console.log(i, ': ', line)
               return <li style={listStyle}>{line}</li>
             })

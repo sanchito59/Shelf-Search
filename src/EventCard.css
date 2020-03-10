@@ -3,21 +3,29 @@
   margin: 20px;
   border: 2px solid black;
   border-radius: 8px;
+  width: 65%;
 }
 
 .innerDiv {
   text-align: left;
   background-color: #F4FCFF;
   padding: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
-.eventDate {
-  float: left;
+.eventTitleDiv {
   background-color: #DAF5FF;
+  height: 4rem;
+  padding: 5px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 2px solid black;
 }
 
 .eventTitle {
   font-size: 20px;
+  padding-left: 15px;
   color: #00445E;
 }
 

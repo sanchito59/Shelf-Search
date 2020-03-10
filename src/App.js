@@ -87,25 +87,9 @@ class App extends React.Component {
     }).then(response => {
       return response.text();
     }).then(function (data) {
-      console.log('parsed data: ', data);
       let parser = new DOMParser();
       let xmlDoc = parser.parseFromString(data, 'text/html');
       let events = xmlDoc.getElementsByTagName('event');
-      // All Events
-      // console.log(events);
-      // One Event
-      // console.log(events[0]);
-      // Event Title
-      // console.log(events[0].childNodes[5].innerText);
-      // Event Speaker
-      // console.log(events[0].childNodes[?].innerText);
-      // Event Address
-      // console.log(events[0].childNodes[7].innerText);
-      // Event City
-      // console.log(events[0].childNodes[9].innerText);
-      // Event State
-      // console.log(events[0].childNodes[21].innerText);
-      // let event = {};
       let eventsArray = [];
       for (let i = 0; i < events.length; i++) {
         let event = {};

@@ -7,19 +7,21 @@ export default function Event(props) {
   return (
     <div>
       <h1>Events Near You!</h1>
-      {
-        props.events.map((event, i) => {
-          return <EventCard
-            eventTitle={event.title}
-            eventAddress={event.address}
-            eventCity={event.city}
-            eventState={event.state}
-            date={event.date} // Needs processing
-            URL={event.sourceURL}
-            key={i}
-          />
-        })
-      }
+      <div>
+        {
+          props.events.map((event, i) => {
+            return <EventCard
+              eventTitle={event.title}
+              eventAddress={event.address}
+              eventCity={event.city}
+              eventState={event.state}
+              date={event.date} // Needs processing
+              URL={event.sourceURL}
+              key={i}
+            />
+          })
+        }
+      </div>
     </div>
   );
 }
