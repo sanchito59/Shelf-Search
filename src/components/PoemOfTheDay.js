@@ -20,25 +20,28 @@ export default function PoemOfTheDay(props) {
       },
     }
   }
-  return <div className="poem-div" >
-    {/* This works, but if you change 'props.poem.description' it breaks */}
-    < h1 className="poem-of-the-day" > {props.poem.description}</h1>
-    <h2 className="poem-title">{typeof props.poem.description === 'undefined' ? 'Test Title' : props.poem.poem.title}</h2>
-    <h4 className="poem-author">{typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.author}</h4>
-    <p className="poem-body">
-      {typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.poem}
-      <br></br>
-      <br></br>
-      <Speech
-        // How to style... 
-        stop={true}
-        textAsButton={true}
-        displayText='Listen'
-        style={textstyle}
-        text={typeof props.poem.description === 'undefined' ? 'Test Poem' : props.poem.poem.poem}
-      />
-      {/* This doesn't really work */}
-      {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
-    </p>
-  </div >
+  return (
+    <div>PoemOfTheDay API went subscription based mid project!</div>
+  );
+  // return <div className="poem-div" >
+  //   {/* This works, but if you change 'props.poem.description' it breaks */}
+  //   < h1 className="poem-of-the-day" > {props.poem.description}</h1>
+  //   <h2 className="poem-title">{typeof props.poem.description === 'undefined' ? 'Test Title' : props.poem.poem.title}</h2>
+  //   <h4 className="poem-author">{typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.author}</h4>
+  //   <p className="poem-body">
+  //     {typeof props.poem.description === 'undefined' ? 'Test Author' : props.poem.poem.poem}
+  //     <br></br>
+  //     <br></br>
+  //     <Speech
+  //       // How to style... 
+  //       stop={true}
+  //       textAsButton={true}
+  //       displayText='Listen'
+  //       style={textstyle}
+  //       text={typeof props.poem.description === 'undefined' ? 'Test Poem' : props.poem.poem.poem}
+  //     />
+  //     {/* This doesn't really work */}
+  //     {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
+  //   </p>
+  // </div >
 }

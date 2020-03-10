@@ -88,7 +88,7 @@ class App extends React.Component {
       // console.log(singlePoem.poem.poem)
       this.setState({ poemOfDay: singlePoem })
     }).catch(error => {
-      console.log('Uh oh, ', error);
+      console.log('PoemOfDay uh oh, ', error);
     })
   }
 
