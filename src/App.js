@@ -4,9 +4,10 @@ import request from "superagent";
 import { Switch, Route } from 'react-router-dom';
 // Components
 import Header from "./components/Header";
+import PoetryPage from './components/PoetryPage';
+import EventsPage from './components/EventsPage';
 import SearchArea from "./components/SearchArea";
 import NYTBestsellers from './components/NYTBestsellers';
-import PoetryPage from './components/PoetryPage';
 // Style/Assets
 import "./App.css";
 // Secrets
@@ -40,10 +41,12 @@ class App extends React.Component {
       poemSearchField: '',
       // GoodReads API
       bookEvents: [],
+      eventSearchField: '',
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
     this.poemSearch = this.poemSearch.bind(this);
+    this.findAuthorEvents = this.findAuthorEvents.bind(this);
     this.searchForBooks = this.searchForBooks.bind(this);
   }
 
@@ -78,7 +81,7 @@ class App extends React.Component {
 
   findAuthorEvents = () => {
     // e.preventDefault();
-    const zip_input = '97204';
+    const zip_input = this.state.eventSearchField;
     fetch(`https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
       method: 'get',
     }).then(response => {
@@ -96,7 +99,9 @@ class App extends React.Component {
       console.log(events[0].childNodes[5].innerText);
       // Event Address
       console.log(events[0].childNodes[7].innerText);
-      this.setState({ bookevents: events })
+      return events;
+    }).then(events => {
+      this.setState({ bookEvents: events });
     }).catch(error => {
       console.log('author event error: ', error)
     })
@@ -231,6 +236,11 @@ class App extends React.Component {
     this.setState({ poemSearchField: e.target.value });
   }
 
+  handleEventSearch = e => {
+    this.setState({ eventSearchField: e.target.value })
+    console.log(e.target.value)
+  }
+
   handleSort = e => {
     this.setState({ sort: e.target.value });
   };
@@ -297,6 +307,13 @@ class App extends React.Component {
               poemList={this.state.poetryDBpoems}
             />} />
           {/* sortedBooks defaults to cleanData unless triggered */}
+          <Route path='/events' render={() =>
+            <EventsPage
+              events={this.state.bookEvents}
+              searchForEvents={this.findAuthorEvents}
+              handleEventSearch={this.handleEventSearch}
+            />
+          } />
           <Route path='/bookSearch' render={() =>
             <SearchArea
               handleSearch={this.handleSearch}
