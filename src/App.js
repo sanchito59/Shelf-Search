@@ -77,22 +77,20 @@ class App extends React.Component {
   }
 
 
-  // RIP TO FREE APIs
-  // getPoemOfTheDay = () => {
-  //   fetch('https://api.poems.one/pod', {
-  //     method: 'get',
-  //   }).then(response => {
-  //     return response.json();
-  //   }).then(json => {
-  //     const singlePoem = json.contents.poems[0];
-  //     // console.log(singlePoem.poem.title)
-  //     // console.log(singlePoem.poem.author)
-  //     // console.log(singlePoem.poem.poem)
-  //     this.setState({ poemOfDay: singlePoem })
-  //   }).catch(error => {
-  //     console.log('PoemOfDay uh oh, ', error);
-  //   })
-  // }
+  findAuthorEvents = () => {
+    // e.preventDefault();
+    const zip_input = '97204';
+    fetch(`https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
+      method: 'get',
+    }).then(response => {
+      // console.log(response);
+      return response.text();
+    }).then(function (data) {
+      console.log('parse: ', data);
+    }).catch(error => {
+      console.log('author event error: ', error)
+    })
+  }
 
   searchGoogleBooks = e => {
     e.preventDefault();
@@ -206,6 +204,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // this.getPoemOfTheDay();
+    this.findAuthorEvents();
     this.getBestsellersNYT();
   }
 

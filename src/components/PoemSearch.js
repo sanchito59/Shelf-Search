@@ -5,7 +5,7 @@ import PoemList from './PoemList';
 import "./../App.css";
 
 export default function PoemSearch(props) {
-  console.log('poem search props: ', props)
+  // console.log('poem search props: ', props)
   return (
     <div className="search-area">
       <form onSubmit={props.poemSearch}>

@@ -135,7 +135,7 @@ export default function PoemOfTheDay(props) {
   }
   const poemOfTheDayIndex = Math.floor(Math.random() * 5);
   return (
-    <div>{console.log(samplePoems[poemOfTheDayIndex])}
+    <div>
       <div style={poemDiv}>
         <h1>Poem of the Day</h1>
         <h2>{samplePoems[poemOfTheDayIndex].title}</h2>
