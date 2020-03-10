@@ -133,7 +133,7 @@ export default function PoemOfTheDay(props) {
       },
     }
   }
-  const poemOfTheDayIndex = Math.ceil(Math.random() * 4);
+  const poemOfTheDayIndex = Math.floor(Math.random() * 5);
   return (
     <div>{console.log(samplePoems[poemOfTheDayIndex])}
       <div style={poemDiv}>
