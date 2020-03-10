@@ -10,7 +10,7 @@ export default function PoemList(props) {
       <PoemOfTheDay />
       {
         props.poemList.map((poem, i) => {
-          console.log(poem.lines)
+          // console.log(poem.lines)
           return <SinglePoemDisplay
             title={poem.title}
             author={poem.author}

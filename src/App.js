@@ -4,9 +4,10 @@ import request from "superagent";
 import { Switch, Route } from 'react-router-dom';
 // Components
 import Header from "./components/Header";
+import PoetryPage from './components/PoetryPage';
+import EventsPage from './components/EventsPage';
 import SearchArea from "./components/SearchArea";
 import NYTBestsellers from './components/NYTBestsellers';
-import PoetryPage from './components/PoetryPage';
 // Style/Assets
 import "./App.css";
 // Secrets
@@ -38,10 +39,14 @@ class App extends React.Component {
       // PoetryDB API
       poetryDBpoems: [],
       poemSearchField: '',
+      // GoodReads API
+      bookEvents: [],
+      eventSearchField: '',
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
     this.poemSearch = this.poemSearch.bind(this);
+    this.findAuthorEvents = this.findAuthorEvents.bind(this);
     this.searchForBooks = this.searchForBooks.bind(this);
   }
 
@@ -61,9 +66,6 @@ class App extends React.Component {
         return response.json();
       }).then(json => {
         let books = json.results;
-        // console.log('books: ', books)
-        // let book = json.results[0];
-        // console.log('one book: ', book)
         let bestSellerData = [];
         for (let i = 0; i < 15; i++) {
           bestSellerData.push(books[i].isbns[0].isbn10);
@@ -77,22 +79,37 @@ class App extends React.Component {
   }
 
 
-  // RIP TO FREE APIs
-  // getPoemOfTheDay = () => {
-  //   fetch('https://api.poems.one/pod', {
-  //     method: 'get',
-  //   }).then(response => {
-  //     return response.json();
-  //   }).then(json => {
-  //     const singlePoem = json.contents.poems[0];
-  //     // console.log(singlePoem.poem.title)
-  //     // console.log(singlePoem.poem.author)
-  //     // console.log(singlePoem.poem.poem)
-  //     this.setState({ poemOfDay: singlePoem })
-  //   }).catch(error => {
-  //     console.log('PoemOfDay uh oh, ', error);
-  //   })
-  // }
+  findAuthorEvents = () => {
+    // e.preventDefault();
+    const zip_input = this.state.eventSearchField;
+    fetch(`https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
+      method: 'get',
+    }).then(response => {
+      return response.text();
+    }).then(function (data) {
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(data, 'text/html');
+      let events = xmlDoc.getElementsByTagName('event');
+      let eventsArray = [];
+      for (let i = 0; i < events.length; i++) {
+        let event = {};
+        event.title = events[i].childNodes[5].innerText;
+        event.address = events[i].childNodes[7].innerText;
+        event.city = events[i].childNodes[9].innerText;
+        event.state = events[i].childNodes[21].innerText;
+        event.date = events[i].childNodes[15].innerText;
+        event.access = events[i].childNodes[31].innerText;
+        event.sourceURL = events[i].childNodes[35].innerText;
+        eventsArray.push(event); // This doesn't contain all info, XML is inconsistent
+      }
+      // console.log(eventsArray);
+      return eventsArray;
+    }).then(eventsArray => {
+      this.setState({ bookEvents: eventsArray });
+    }).catch(error => {
+      console.log('author event error: ', error)
+    })
+  }
 
   searchGoogleBooks = e => {
     e.preventDefault();
@@ -109,7 +126,6 @@ class App extends React.Component {
           let cleanData;
           if (typeof data.body.items !== "undefined") {
             cleanData = this.manageResponseProperties(data);
-            // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
             this.setState({ googleBooks: cleanData });
           }
           // need user notification here
@@ -205,8 +221,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.getPoemOfTheDay();
-    this.getBestsellersNYT();
+    this.findAuthorEvents();
+    // this.getBestsellersNYT();
   }
 
   searchForBooks = e => {
@@ -222,6 +238,11 @@ class App extends React.Component {
 
   handlePoemSearch = e => {
     this.setState({ poemSearchField: e.target.value });
+  }
+
+  handleEventSearch = e => {
+    this.setState({ eventSearchField: e.target.value })
+    console.log(e.target.value)
   }
 
   handleSort = e => {
@@ -249,7 +270,6 @@ class App extends React.Component {
       }
       return book;
     });
-    // new, managed response from mapping
     return cleanData;
   };
   render() {
@@ -291,6 +311,13 @@ class App extends React.Component {
               poemList={this.state.poetryDBpoems}
             />} />
           {/* sortedBooks defaults to cleanData unless triggered */}
+          <Route path='/events' render={() =>
+            <EventsPage
+              events={this.state.bookEvents}
+              searchForEvents={this.findAuthorEvents}
+              handleEventSearch={this.handleEventSearch}
+            />
+          } />
           <Route path='/bookSearch' render={() =>
             <SearchArea
               handleSearch={this.handleSearch}

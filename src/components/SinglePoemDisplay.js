@@ -61,7 +61,7 @@ export default function SinglePoemDisplay(props) {
         {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
         {
           props.poem.map((line, i) => {
-            console.log(i, ': ', line)
+            // console.log(i, ': ', line)
             return <li style={listStyle}>{line}</li>
           })
         }
