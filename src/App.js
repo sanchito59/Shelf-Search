@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import SearchArea from "./components/SearchArea";
 import NYTBestsellers from './components/NYTBestsellers';
-import PoemOfDay from './components/PoemOfDay';
+import PoetryPage from './components/PoetryPage';
 // Style/Assets
 import "./App.css";
 // Secrets
@@ -35,9 +35,13 @@ class App extends React.Component {
       // OpenLibrary API
       openLibraryBooks: [],
       openLibPDFs: [],
+      // PoetryDB API
+      poetryDBpoems: [],
+      poemSearchField: '',
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
+    this.poemSearch = this.poemSearch.bind(this);
     this.searchForBooks = this.searchForBooks.bind(this);
   }
 
@@ -84,7 +88,7 @@ class App extends React.Component {
       // console.log(singlePoem.poem.poem)
       this.setState({ poemOfDay: singlePoem })
     }).catch(error => {
-      console.log('Uh oh, ', error);
+      console.log('PoemOfDay uh oh, ', error);
     })
   }
 
@@ -147,7 +151,6 @@ class App extends React.Component {
   }
 
   searchForPDFs() {
-    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
     setTimeout(() => {
       for (let i = 0; i < 100; i++) {
         if (typeof this.state.openLibraryBooks[i] !== 'undefined') {
@@ -157,6 +160,7 @@ class App extends React.Component {
             let isbn = this.state.openLibraryBooks[i].isbn[0];
             console.log('isbn: ', isbn)
             fetch(
+              // const proxyurl = "https://cors-anywhere.herokuapp.com/";
               // using the heroku proxy URL to get around CORS hits the rate limit quickly
               // proxyurl + 
               `https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
@@ -181,6 +185,23 @@ class App extends React.Component {
     }, 1000)
   }
 
+  poemSearch() {
+    console.log('pinged!')
+    const query = this.state.poemSearchField;
+    fetch(`http://poetrydb.org/author/${query}`, {
+      method: 'get',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      let results = json;
+      console.log('poemSearch: ', results);
+      // console.log('poemSearch: ', results[0]);
+      this.setState({ poetryDBpoems: results })
+    }).catch(error => {
+      console.log('Uh oh, ', error);
+    })
+  }
+
   componentDidMount() {
     this.getPoemOfTheDay();
     this.getBestsellersNYT();
@@ -196,6 +217,10 @@ class App extends React.Component {
   handleSearch = e => {
     this.setState({ searchField: e.target.value });
   };
+
+  handlePoemSearch = e => {
+    this.setState({ poemSearchField: e.target.value });
+  }
 
   handleSort = e => {
     this.setState({ sort: e.target.value });
@@ -256,8 +281,13 @@ class App extends React.Component {
           <Route exact path='/' render={() =>
             <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
           } />
-          <Route path="/poemOfDay" render={() =>
-            <PoemOfDay poem={this.state.poemOfDay} />} />
+          <Route path="/poetry" render={() =>
+            <PoetryPage
+              poem={this.state.poemOfDay}
+              poemSearch={this.poemSearch}
+              handlePoemSearch={this.handlePoemSearch}
+              poemList={this.state.poetryDBpoems}
+            />} />
           {/* sortedBooks defaults to cleanData unless triggered */}
           <Route path='/bookSearch' render={() =>
             <SearchArea
