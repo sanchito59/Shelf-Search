@@ -38,6 +38,8 @@ class App extends React.Component {
       // PoetryDB API
       poetryDBpoems: [],
       poemSearchField: '',
+      // GoodReads API
+      bookEvents: [],
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
@@ -61,9 +63,6 @@ class App extends React.Component {
         return response.json();
       }).then(json => {
         let books = json.results;
-        // console.log('books: ', books)
-        // let book = json.results[0];
-        // console.log('one book: ', book)
         let bestSellerData = [];
         for (let i = 0; i < 15; i++) {
           bestSellerData.push(books[i].isbns[0].isbn10);
@@ -83,10 +82,21 @@ class App extends React.Component {
     fetch(`https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
       method: 'get',
     }).then(response => {
-      // console.log(response);
       return response.text();
     }).then(function (data) {
-      console.log('parse: ', data);
+      console.log('parsed data: ', data);
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(data, 'text/html');
+      let events = xmlDoc.getElementsByTagName('event');
+      // All Events
+      console.log(events);
+      // One Event
+      console.log(events[0]);
+      // Event Title
+      console.log(events[0].childNodes[5].innerText);
+      // Event Address
+      console.log(events[0].childNodes[7].innerText);
+      this.setState({ bookevents: events })
     }).catch(error => {
       console.log('author event error: ', error)
     })
@@ -107,7 +117,6 @@ class App extends React.Component {
           let cleanData;
           if (typeof data.body.items !== "undefined") {
             cleanData = this.manageResponseProperties(data);
-            // able to pass cleanData into books instead of the spread of 'data.body.items' because it is a managed response in a mapped format
             this.setState({ googleBooks: cleanData });
           }
           // need user notification here
@@ -203,9 +212,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.getPoemOfTheDay();
     this.findAuthorEvents();
-    this.getBestsellersNYT();
+    // this.getBestsellersNYT();
   }
 
   searchForBooks = e => {
@@ -248,7 +256,6 @@ class App extends React.Component {
       }
       return book;
     });
-    // new, managed response from mapping
     return cleanData;
   };
   render() {
