@@ -41,7 +41,7 @@ class App extends React.Component {
       poemSearchField: '',
       // GoodReads API
       bookEvents: [],
-      eventSearchField: '',
+      eventSearchField: '97204',
     };
     // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
     // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
