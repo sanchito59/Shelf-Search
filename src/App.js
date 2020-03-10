@@ -92,16 +92,33 @@ class App extends React.Component {
       let xmlDoc = parser.parseFromString(data, 'text/html');
       let events = xmlDoc.getElementsByTagName('event');
       // All Events
-      console.log(events);
+      // console.log(events);
       // One Event
       console.log(events[0]);
       // Event Title
-      console.log(events[0].childNodes[5].innerText);
+      // console.log(events[0].childNodes[5].innerText);
+      // Event Speaker
+      // console.log(events[0].childNodes[?].innerText);
       // Event Address
-      console.log(events[0].childNodes[7].innerText);
-      return events;
-    }).then(events => {
-      this.setState({ bookEvents: events });
+      // console.log(events[0].childNodes[7].innerText);
+      // Event City
+      // console.log(events[0].childNodes[9].innerText);
+      // Event State
+      // console.log(events[0].childNodes[21].innerText);
+      // let event = {};
+      let eventsArray = [];
+      for (let i = 0; i < events.length; i++) {
+        let event = {};
+        event.title = events[i].childNodes[5].innerText;
+        event.address = events[i].childNodes[7].innerText;
+        event.city = events[i].childNodes[9].innerText;
+        event.state = events[i].childNodes[21].innerText;
+        eventsArray.push(event);
+      }
+      console.log(eventsArray);
+      return eventsArray;
+    }).then(eventsArray => {
+      this.setState({ bookEvents: eventsArray });
     }).catch(error => {
       console.log('author event error: ', error)
     })
