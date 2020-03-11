@@ -19,6 +19,7 @@ export default function SinglePoemDisplay(props) {
 
   const poemBody = {
     fontFamily: 'Caladea, sans-serif',
+    paddingBottom: '24px'
   }
 
   // Speech
