@@ -4,7 +4,6 @@ import BookshelfCard from './BookshelfCard';
 
 export default function TrendingBookshelf(props) {
   // console.log('bookshelf props: ', props)
-
   const grid = {
     margin: '20px',
     paddingLeft: '20px',

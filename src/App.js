@@ -43,22 +43,10 @@ class App extends React.Component {
       bookEvents: [],
       eventSearchField: '97204',
     };
-    // this.searchGoogleBooks = this.searchGoogleBooks.bind(this);
-    // this.searchOpenLibrary = this.searchOpenLibrary.bind(this);
     this.poemSearch = this.poemSearch.bind(this);
     this.findAuthorEvents = this.findAuthorEvents.bind(this);
     this.searchForBooks = this.searchForBooks.bind(this);
   }
-
-  // responseGoogle = response => {
-  //   console.log(window)
-  //   console.log("responseGoogle", response);
-  //   this.setState({ name: response.profileObj.name });
-  //   this.setState({ email: response.profileObj.email });
-  //   this.setState({ url: response.profileObj.imageUrl });
-  //   this.setState({ access_token: response.accessToken });
-  //   console.log('state:', this.state);
-  // };
 
   getBestsellersNYT = () => {
     fetch('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=' + NYT_KEY,
@@ -214,7 +202,6 @@ class App extends React.Component {
     }).then(json => {
       let results = json;
       console.log('poemSearch: ', results);
-      // console.log('poemSearch: ', results[0]);
       this.setState({ poetryDBpoems: results })
     }).catch(error => {
       console.log('Uh oh, ', error);
@@ -311,7 +298,6 @@ class App extends React.Component {
               handlePoemSearch={this.handlePoemSearch}
               poemList={this.state.poetryDBpoems}
             />} />
-          {/* sortedBooks defaults to cleanData unless triggered */}
           <Route path='/events' render={() =>
             <EventsPage
               events={this.state.bookEvents}
