@@ -15,7 +15,7 @@ export default function Event(props) {
               eventAddress={event.address}
               eventCity={event.city}
               eventState={event.state}
-              date={event.date} // Needs processing
+              date={event.date}
               URL={event.sourceURL}
               key={i}
             />

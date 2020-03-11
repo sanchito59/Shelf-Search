@@ -45,7 +45,7 @@ const trendingBooksList =
     {
       title: 'Harry Potter and the Philosopher\'s Stone',
       author: 'J.K. Rowling',
-      publisher: 'Aruther A. Levine Books',
+      publisher: 'Arthur A. Levine Books',
       ISBN: '133829914X',
       coverIMG: philosopherStone,
       pages: '336 pages',

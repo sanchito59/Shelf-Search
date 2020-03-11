@@ -40,6 +40,7 @@ const BookList = (props) => {
         {
           props.openLibraryBooks.map((book, i) => {
             return <OpenLibraryBookCard
+              coverIMG={'https://i.imgur.com/J5LVHEL.jpg'}
               title={book.title}
               author={book.author_name}
               publisher={book.publisher}

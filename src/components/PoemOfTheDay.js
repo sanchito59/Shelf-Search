@@ -142,7 +142,6 @@ export default function PoemOfTheDay(props) {
         <h4>BY <span style={poemAuthor}>{samplePoems[4].author}</span></h4>
         <div style={poemBody}>
           <Speech
-            // How to style... 
             stop={true}
             textAsButton={true}
             rate="0.7" // Not perfect, cadence is too quick
@@ -154,8 +153,7 @@ export default function PoemOfTheDay(props) {
           {/* This doesn't really work */}
           {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
           {
-            samplePoems[4].lines.map((line, i) => {
-              // console.log(i, ': ', line)
+            samplePoems[4].lines.map((line) => {
               return <li style={listStyle}>{line}</li>
             })
           }
