@@ -206,7 +206,7 @@ class App extends React.Component {
   poemSearch() {
     console.log('pinged!')
     const query = this.state.poemSearchField;
-    fetch(`https://poetrydb.org/author/${query}`, {
+    fetch(`http://poetrydb.org/author/${query}`, {
       method: 'get',
       header: 'no-cors',
     }).then(response => {
