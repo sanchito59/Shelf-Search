@@ -66,6 +66,19 @@ class App extends React.Component {
       });
   }
 
+  quoteOfTheDay = () => {
+    fetch('https://quotes.rest/qod?language=en', {
+      method: 'get',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      const qodResult = json.contents.quotes[0];
+      this.setState({ quoteOfTheDay: qodResult })
+    }).catch(error => {
+      console.log('Quote of the Day Error: ', error);
+    })
+  }
+
 
   findAuthorEvents = () => {
     // e.preventDefault();
@@ -209,8 +222,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.findAuthorEvents();
     this.getBestsellersNYT();
+    this.findAuthorEvents();
   }
 
   searchForBooks = e => {
