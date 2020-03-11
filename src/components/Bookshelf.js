@@ -7,6 +7,7 @@ export default function TrendingBookshelf(props) {
 
   const grid = {
     margin: '20px',
+    paddingLeft: '20px',
     display: 'grid',
     gridTemplateColumns: '400px 400px 400px',
     gridGap: '30px',
@@ -33,6 +34,7 @@ export default function TrendingBookshelf(props) {
           }
         </div>
       </div>
+      <hr></hr>
       <div>
         <h1>{props.classicLitTitle}</h1>
         <div style={grid}>
@@ -51,6 +53,7 @@ export default function TrendingBookshelf(props) {
           }
         </div>
       </div>
+      <hr></hr>
       <div>
         <h1>{props.sciFiTitle}</h1>
         <div style={grid}>
@@ -69,6 +72,7 @@ export default function TrendingBookshelf(props) {
           }
         </div>
       </div>
+      <hr></hr>
     </div>
   );
 }
