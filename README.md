@@ -1,6 +1,20 @@
-## [Live Demo](https://romantic-colden-e9cd5b.netlify.com/) **NYT bestseller list API key isn't hosted**
+## Live Demo of [Shelf Search](https://romantic-colden-e9cd5b.netlify.com/) - **NYT and Goodreads API keys aren't currently hosted**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Shelf Search](https://romantic-colden-e9cd5b.netlify.com/) is a webapp based around finding information about literary events in your area, poetry, and ebook/PDF availability. On [Shelf Search](https://romantic-colden-e9cd5b.netlify.com/), you are able to search for a book by author, title, genre, etc., and the query will return any available PDFs/ebooks if found. As well, you can search for poetry by author and pull up all available poems, with built in text-to-speech buttons for audio playback. The site also contains other literary features, such as a dynamic New York Time's Bestseller List for reading suggestions and tools to find literary events in your area or with a general zip-code search.
+
+## Technologies 
+
+* JavaScript
+* React.js
+* Webpack / NPM
+* CSS3/SASS/SCSS HTML5
+* API
+
+## Future Plans / Stretch Goals
+
+* User accounts / authentication
+* Full CRUD user bookshelves built from queried results
+* Book stats tracker, i.e.how many books read, average time per page, average page length of books read, book rating, etc.
 
 ## Available Scripts
 
@@ -24,40 +38,3 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
----
-
-## Sample API Calls:
-
-#### [Penguin Random House - Author Events](http://www.penguinrandomhouse.biz/webservices/rest/#authorevents)
-
-##### **Search for an Author's Events on Penguin Random House:**
-
-GET /resources/authorevents -- search for author events
-
-https://reststop.randomhouse.com/resources/authorevents/?start=0&max=3&expandLevel=1&isbn=0&authorid=0
-
-The returned result can then be used to find a specific event's information, i.e.eventtype, eventdate, eventtime, eventtimeend, location, market, status, telephone, zip, etc.
-
-##### **Search for a specific event, getting expanded details:**
-
-GET /resources/authorevents/EVENTID -- details for a specific author event
-
-https://reststop.randomhouse.com/resources/authorevents/86694/"
-
-### [OpenLibrary API - PDF/.text etc](https://openlibrary.org/developers/api)
-
-##### **Find whether or not a book can be read freely, downloaded as PDF/text:**
-
-_Tested with data from Google Books API ISBN's and it works_
-
-http://openlibrary.org/api/volumes/brief/isbn/STRING_ISBN_VALUE_GOES_HERE.json
-
-http://openlibrary.org/api/volumes/brief/isbn/9780307886156.json
-
-Research 8:00am-10:00
-Refactor w/ Routing 10:00 AM - Now
