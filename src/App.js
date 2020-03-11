@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import PoetryPage from './components/PoetryPage';
 import EventsPage from './components/EventsPage';
 import SearchArea from "./components/SearchArea";
-import NYTBestsellers from './components/NYTBestsellers';
+import Homepage from './components/Homepage';
 // Style/Assets
 import "./App.css";
 // Secrets
@@ -302,7 +302,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path='/' render={() =>
-            <NYTBestsellers bestSellers={this.state.NYTBestsellers} />
+            <Homepage bestSellers={this.state.NYTBestsellers} />
           } />
           <Route path="/poetry" render={() =>
             <PoetryPage
