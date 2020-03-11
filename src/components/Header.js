@@ -8,7 +8,7 @@ import './../App.css';
 function Header() {
   return (
     <header className="App-header">
-      <h1><i className="fas fa-book"></i> Book Search</h1>
+      <h1><i className="fas fa-book"></i> Shelf Search</h1>
       <Navlinks />
     </header>
   )
