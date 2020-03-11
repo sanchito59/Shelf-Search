@@ -42,8 +42,6 @@ class App extends React.Component {
       // GoodReads API
       bookEvents: [],
       eventSearchField: '97204',
-      // Quote of the Day
-      quote: '',
     };
     this.poemSearch = this.poemSearch.bind(this);
     this.findAuthorEvents = this.findAuthorEvents.bind(this);
@@ -225,10 +223,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getBestsellersNYT();
-    this.quoteOfTheDay();
-    setTimeout(() => {
-      this.findAuthorEvents();
-    }, 1500)
+    this.findAuthorEvents();
   }
 
   searchForBooks = e => {
@@ -304,9 +299,7 @@ class App extends React.Component {
     });
     return (
       <div className="App">
-        <Header
-          props={this.state.quoteOfTheDay}
-        />
+        <Header />
         <Switch>
           <Route exact path='/' render={() =>
             <Homepage bestSellers={this.state.NYTBestsellers} />

@@ -13,6 +13,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-shadow: 1.5px 1.5px #282c34;
 }
 
 .shelf-search-title {
@@ -21,7 +22,11 @@
 
 .quote-of-the-day {
   float: left;
-  text-align: left;
+  width: 50%;
+  font-size: 17px;
+  font-weight: bold;
+  text-shadow: 1.5px 1.5px #282c34;
+  font-family: Poppins, sans-serif;
 }
 
 /* Header End */

@@ -5,25 +5,42 @@ import Navlinks from './Navlinks.js';
 // Styles/Assets
 import './../App.css';
 
-function Header(props) {
-  console.log('header props: ', props)
-  setTimeout(() => {
-    // logging 5 times?	
-    if (typeof props.quote === 'undefined') {
-      console.log('need to mount?');
-      // debugger;	
-    } else {
-      console.log('qod: ', props.quote);
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // Quote of the Day
+      quoteOfTheDay: '',
     }
-  }, 1500)
+  }
 
-  return (
-    <header className="App-header">
-      <p className='quote-of-the-day'>TEST QUOTE{props.quote}</p>
-      <h1 className="shelf-search-title"><i className="fas fa-book"></i> Shelf Search</h1>
-      <Navlinks />
-    </header>
-  )
+  quoteOfTheDay = () => {
+    fetch('https://quotes.rest/qod?language=en', {
+      method: 'get',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      const qodResult = json.contents.quotes[0];
+      this.setState({ quoteOfTheDay: qodResult })
+    }).catch(error => {
+      console.log('Quote of the Day Error: ', error);
+    })
+  }
+
+  componentDidMount() {
+    console.log(this.state)
+    this.quoteOfTheDay();
+  }
+
+  render() {
+    return (
+      <header className="App-header" >
+        <p className='quote-of-the-day'>{this.state.quoteOfTheDay.quote} <br></br> - {this.state.quoteOfTheDay.author}</p>
+        <h1 className="shelf-search-title"><i className="fas fa-book"></i> Shelf Search</h1>
+        <Navlinks />
+      </header>
+    )
+  }
 }
 
 export default Header;
