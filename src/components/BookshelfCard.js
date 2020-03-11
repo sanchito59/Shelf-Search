@@ -3,7 +3,7 @@ import React from 'react';
 import './../BookCardStyle.css'
 
 export default function BookshelfCard(props) {
-  console.log('bookshelf card: ', props)
+  // console.log('bookshelf card: ', props)
   return (
     <div className="bookshelfCard">
       <img src={props.coverIMG} alt="book cover thumbnail" className='bookshelfIMG'></img>

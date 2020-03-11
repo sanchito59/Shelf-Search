@@ -4,10 +4,11 @@ import EventCard from './EventCard';
 
 export default function Event(props) {
   // console.log('event props: ', props)
+  const eventList = {}
   return (
     <div>
       <h1>Events Near You!</h1>
-      <div>
+      <div style={eventList}>
         {
           props.events.map((event, i) => {
             return <EventCard

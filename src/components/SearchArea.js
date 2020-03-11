@@ -16,7 +16,7 @@ const SearchArea = props => {
         ></input>
         <button type="submit">Search</button>
         <input type="checkbox" id="ebook-param" value="ebook-param" onChange={props.handleEbookFilter}></input>
-        <label htmlFor="ebook-param">e-book</label>
+        <label htmlFor="ebook-param">e-book </label>
         {/* add logic to only show when booklist mounts? */}
         <select defaultValue="Sort" onChange={props.handleSort}>
           <option disabled value="Sort">

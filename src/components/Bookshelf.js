@@ -6,10 +6,10 @@ export default function TrendingBookshelf(props) {
   // console.log('bookshelf props: ', props)
   const grid = {
     margin: '20px',
-    paddingLeft: '20px',
+    // paddingLeft: '10px',
     display: 'grid',
     gridTemplateColumns: '400px 400px 400px',
-    gridGap: '30px',
+    gridGap: '25px',
     borderRadius: '8px',
   }
 
