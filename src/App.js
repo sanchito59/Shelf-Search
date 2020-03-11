@@ -42,6 +42,8 @@ class App extends React.Component {
       // GoodReads API
       bookEvents: [],
       eventSearchField: '97204',
+      // Quote of the Day
+      quote: '',
     };
     this.poemSearch = this.poemSearch.bind(this);
     this.findAuthorEvents = this.findAuthorEvents.bind(this);
@@ -64,6 +66,19 @@ class App extends React.Component {
       .catch(error => {
         console.log('Uh oh, ', error);
       });
+  }
+
+  quoteOfTheDay = () => {
+    fetch('https://quotes.rest/qod?language=en', {
+      method: 'get',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      const qodResult = json.contents.quotes[0];
+      this.setState({ quoteOfTheDay: qodResult })
+    }).catch(error => {
+      console.log('Quote of the Day Error: ', error);
+    })
   }
 
 
@@ -209,8 +224,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.findAuthorEvents();
     this.getBestsellersNYT();
+    this.quoteOfTheDay();
+    setTimeout(() => {
+      this.findAuthorEvents();
+    }, 1500)
   }
 
   searchForBooks = e => {
@@ -286,7 +304,9 @@ class App extends React.Component {
     });
     return (
       <div className="App">
-        <Header />
+        <Header
+          props={this.state.quoteOfTheDay}
+        />
         <Switch>
           <Route exact path='/' render={() =>
             <Homepage bestSellers={this.state.NYTBestsellers} />
