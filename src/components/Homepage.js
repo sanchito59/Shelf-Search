@@ -4,6 +4,7 @@ import NYTBestsellers from './NYTBestsellers';
 import Bookshelf from './Bookshelf';
 // Styles/Assets
 import crazyRichAsians from './../assets/bookCovers/crazyRichAsians.jpg'
+
 const trendingBooksList =
   [
     {
@@ -14,61 +15,102 @@ const trendingBooksList =
       coverIMG: crazyRichAsians,
       pages: '544 pages',
     },
-    //     {title: ,
-    //     author: ,
-    //   publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},
-    //     {title: ,
-    //     author: ,
-    //   publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},
-    //     {title: ,
-    //     author: ,
-    //   publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},
-    //   ]
-    // const classicLiteratureList =
-    //   [
-    //     {title: ,
-    //       author: ,
-    //     publisher: ,
-    //   ISBN: ,
-    //   coverIMG: ,},{title: ,
-    //     author: ,
-    //   publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},{title: ,
-    //   author: ,
-    // publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},{title: ,
-    //   author: ,
-    // publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},
-    //   ]
-    // const sciFiList =
-    //   [{title: ,
-    //     author: ,
-    //   publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},{title: ,
-    //   author: ,
-    // publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},{title: ,
-    //   author: ,
-    // publisher: ,
-    // ISBN: ,
-    // coverIMG: ,},
-    //     {title: ,
-    //       author: ,
-    //     publisher: ,
-    //   ISBN: ,
-    //   coverIMG: ,},
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+  ]
+
+const classicLiteratureList =
+  [
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+  ]
+
+const sciFiList =
+  [
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
+    {
+      title: 'Crazy Rich Asians',
+      author: 'Kevin Kwan',
+      publisher: 'Anchor',
+      ISBN: '9780345803788',
+      coverIMG: crazyRichAsians,
+      pages: '544 pages',
+    },
   ]
 
 export default function Homepage(props) {
@@ -76,17 +118,13 @@ export default function Homepage(props) {
     <div>
       <NYTBestsellers bestSellers={props.bestSellers} />
       <Bookshelf
-        title={'Currently Trending'}
+        currentlyTrendingTitle={'Currently Trending'}
         trendingBooks={trendingBooksList}
-      />
-      {/* <Bookshelf
-        title={'Classic Literature'}
+        classicLitTitle={'Classic Literature'}
         classicLiterature={classicLiteratureList}
-      />
-      <Bookshelf
-        title={'Sci-Fi'}
+        sciFiTitle={'Sci-Fi Hits'}
         sciFi={sciFiList}
-      /> */}
+      />
     </div>
   );
 }

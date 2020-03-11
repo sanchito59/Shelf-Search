@@ -10,6 +10,7 @@ export default function BookshelfCard(props) {
       <h2>{props.title}</h2>
       <h4>Author: {props.author}</h4>
       <p>Publisher: {props.publisher}</p>
+      <p>{props.pageCount}</p>
       <p>ISBN: {props.ISBN}</p>
     </div>
   );
