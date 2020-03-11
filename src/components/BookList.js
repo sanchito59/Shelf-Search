@@ -9,7 +9,7 @@ const BookList = (props) => {
   // console.log('BookList props: ', props);
   return (
     <div>
-      <div className='book-list-wrapper'>
+      <div className='embedded-book-wrapper'>
         {
           props.availableEbooks.map((ebook, i) => {
             return <div><EmbeddedBook
