@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // Styles/Assets
-import './../Navlinks.css';
+import './../Navlinks.scss';
 
 export default function Navlinks() {
   return (
     <div className='navlinks'>
-      <Link to='/'>Home</Link> | <Link to='/bookSearch'> Search for Books</Link> | <Link to='/events'>Events</Link> | <Link to='/poetry'>Poetry</Link>
+      <ul>
+        <li><Link to='/' className='navlink'>Home | </Link></li> <li><Link to='/bookSearch' className='navlink'> Search for Books | </Link></li> <li><Link to='/events' className='navlink'>Events | </Link></li> <li><Link to='/poetry' className='navlink'>Poetry</Link></li>
+        <div class="underbar"></div>
+      </ul>
     </div>
   );
 }
