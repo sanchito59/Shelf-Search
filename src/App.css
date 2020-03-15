@@ -38,3 +38,15 @@
 }
 
 /* Search End */
+
+@media only screen and (max-width: 600px) {
+  .quote-of-the-day {
+    font-size: 14px;
+    width: 85%;
+    margin-bottom: 0px;
+  }
+  .shelf-search-title {
+    font-size: 30px;
+    margin-bottom: 0px;
+  }
+}
