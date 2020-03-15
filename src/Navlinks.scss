@@ -13,9 +13,7 @@
 }
 
 .underbar {
-  width: 0;
   height: 5px;
-  background: rgba(100, 100, 200, 0);
   left: 40%;
   top: 322px;
   position: absolute;
@@ -47,4 +45,42 @@ li {
     background: rgb(179, 125, 125);
   }
   cursor: pointer;
+}
+
+// Mobile Responsiveness
+@media only screen and (max-width: 600px) {
+  .underbar {
+    height: 5px;
+    left: 40%;
+    top: 414px;
+    position: absolute;
+    -webkit-transition: 0.5s ease;
+  }
+
+  li {
+    list-style: none;
+    float: left;
+    -webkit-transition: 0.5s ease;
+    &:nth-of-type(1):hover ~ .underbar {
+      left: 12%;
+      width: 70px;
+      background: rgb(179, 125, 125);
+    }
+    &:nth-of-type(2):hover ~ .underbar {
+      left: 26%;
+      width: 178.5px;
+      background: rgb(179, 125, 125);
+    }
+    &:nth-of-type(3):hover ~ .underbar {
+      left: 62.2%;
+      width: 85.5px;
+      background: rgb(179, 125, 125);
+    }
+    &:nth-of-type(4):hover ~ .underbar {
+      left: 79.25%;
+      width: 90px;
+      background: rgb(179, 125, 125);
+    }
+    cursor: pointer;
+  }
 }
