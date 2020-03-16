@@ -1,23 +1,17 @@
 import React from 'react';
 // Components
 import BookshelfCard from './BookshelfCard';
+// Styles/Assets
+import './../Bookshelf.scss'
 
 export default function TrendingBookshelf(props) {
   // console.log('bookshelf props: ', props)
-  const grid = {
-    margin: '20px',
-    // paddingLeft: '10px',
-    display: 'grid',
-    gridTemplateColumns: '400px 400px 400px',
-    gridGap: '25px',
-    borderRadius: '8px',
-  }
 
   return (
     <div>
       <div>
         <h1>{props.currentlyTrendingTitle}</h1>
-        <div style={grid}>
+        <div className='bookshelf-grid'>
           {
             props.trendingBooks.map((book, i) => {
               return <BookshelfCard
@@ -36,7 +30,7 @@ export default function TrendingBookshelf(props) {
       <hr></hr>
       <div>
         <h1>{props.classicLitTitle}</h1>
-        <div style={grid}>
+        <div className='bookshelf-grid'>
           {
             props.classicLiterature.map((book, i) => {
               return <BookshelfCard
@@ -55,7 +49,7 @@ export default function TrendingBookshelf(props) {
       <hr></hr>
       <div>
         <h1>{props.sciFiTitle}</h1>
-        <div style={grid}>
+        <div className='bookshelf-grid'>
           {
             props.sciFi.map((book, i) => {
               return <BookshelfCard

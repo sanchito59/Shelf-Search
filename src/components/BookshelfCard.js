@@ -9,9 +9,9 @@ export default function BookshelfCard(props) {
       <img src={props.coverIMG} alt="book cover thumbnail" className='bookshelfIMG'></img>
       <h2>{props.title}</h2>
       <h4>Author: {props.author}</h4>
-      <p>Publisher: {props.publisher}</p>
+      <p className='publisher'>Publisher: {props.publisher}</p>
       <p>{props.pageCount}</p>
-      <p>ISBN: {props.ISBN}</p>
+      <p className='ISBN'>ISBN: {props.ISBN}</p>
     </div>
   );
 }
