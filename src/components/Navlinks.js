@@ -10,7 +10,7 @@ export default function Navlinks() {
         <li><Link to='/' className='navlink'>Home |</Link></li>
         <li><Link to='/bookSearch' className='navlink'>Search for Books |</Link></li> <li><Link to='/events' className='navlink'>Events |</Link></li>
         <li><Link to='/poetry' className='navlink'>Poetry</Link></li>
-        <div class="underbar"></div>
+        <div className="underbar"></div>
       </ul>
     </div>
   );
