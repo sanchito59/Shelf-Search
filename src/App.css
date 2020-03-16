@@ -37,6 +37,20 @@
   margin-top: 12px;
 }
 
+.search-input {
+  text-indent: 10px;
+  padding: 8px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-image: url('./assets/searchicon.png');
+  background-position: 2.5px 5px;
+  background-repeat: no-repeat;
+}
+
+.search-input:hover {
+  border: 2px solid rgb(151, 139, 139);
+}
+
 .search-button {
   background-color: rgb(204, 186, 107);
   border-radius: 8px;

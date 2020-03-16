@@ -10,6 +10,7 @@ const SearchArea = props => {
     <div className="search-area">
       <form action="" onSubmit={props.searchForBooks}>
         <input
+          className="search-input"
           onChange={props.handleSearch}
           type="text"
           placeholder="cats, sci-fi, Absurdist philosophy etc."

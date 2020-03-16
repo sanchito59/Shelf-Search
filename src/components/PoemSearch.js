@@ -9,8 +9,9 @@ export default function PoemSearch(props) {
   return (
     <div className="search-area">
       <form onSubmit={props.poemSearch}>
-        <i className='fas fa-search'></i>
+        {/* <i className='fas fa-search'></i> */}
         <input
+          className="search-input"
           placeholder="Wordsworth, Poe, Shakespeare"
           onChange={props.handlePoemSearch}
           type="text"
