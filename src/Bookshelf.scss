@@ -1,0 +1,21 @@
+.bookshelf-grid {
+  margin: 20px;
+  padding-left: 10px;
+  display: grid;
+  grid-template-columns: 400px 400px 400px;
+  grid-gap: 25px;
+  border-radius: 8px;
+}
+
+.shelf-title {
+  font-family: Poppins;
+}
+
+// Mobile Responsiveness
+@media only screen and (max-width: 600px) {
+  .bookshelf-grid {
+    grid-template-columns: 200px;
+    grid-gap: 5px;
+    padding-left: 0px;
+  }
+}
