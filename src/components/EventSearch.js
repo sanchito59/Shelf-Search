@@ -8,11 +8,12 @@ export default function EventSearch(props) {
       <form onSubmit={props.eventSearch}>
         <label>Zip Code: </label>
         <input
-          placeholder=" 97204"
+          className="search-input"
+          placeholder="97204"
           onChange={props.handleEventSearch}
           type="text"
         ></input>
-        <button>Search for Events</button>
+        <button className='search-button'>Search for Events</button>
       </form>
     </div>
   );
