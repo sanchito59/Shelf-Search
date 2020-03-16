@@ -78,11 +78,20 @@
 
 /* Search End */
 
+.select-params {
+  border: 1px solid black;
+  padding: 6px;
+  border-radius: 4px;
+}
+
 @media only screen and (max-width: 600px) {
   .App-header {
     /* background-repeat: no-repeat;
     background-attachment: fixed; */
     background-size: contain;
+  }
+  .select-params {
+    float: right;
   }
   .quote-of-the-day {
     font-size: 14px;

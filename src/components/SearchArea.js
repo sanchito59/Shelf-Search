@@ -4,7 +4,7 @@ import BookList from './BookList'
 // Styles/Assets
 import "./../App.css";
 
-const SearchArea = props => {
+const SearchArea = (props) => {
   // console.log('search props: ', props)
   return (
     <div className="search-area">
@@ -19,7 +19,7 @@ const SearchArea = props => {
         <input type="checkbox" id="ebook-param" value="ebook-param" onChange={props.handleEbookFilter}></input>
         <label htmlFor="ebook-param">e-book </label>
         {/* add logic to only show when booklist mounts? */}
-        <select defaultValue="Sort" onChange={props.handleSort}>
+        <select defaultValue="Sort" onChange={props.handleSort} className='select-params'>
           <option disabled value="Sort">
             Sort
           </option>
