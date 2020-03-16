@@ -40,10 +40,17 @@
 /* Search End */
 
 @media only screen and (max-width: 600px) {
+  .App-header {
+    /* background-repeat: no-repeat;
+    background-attachment: fixed; */
+    background-size: contain;
+  }
   .quote-of-the-day {
     font-size: 14px;
     width: 85%;
     margin-bottom: 0px;
+    /* Adjust display with event */
+    display: none;
   }
   .shelf-search-title {
     font-size: 30px;
