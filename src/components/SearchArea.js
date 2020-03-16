@@ -14,7 +14,7 @@ const SearchArea = props => {
           type="text"
           placeholder="cats, sci-fi, Absurdist philosophy etc."
         ></input>
-        <button type="submit">Search</button>
+        <button type="submit" className='search-button'>Search</button>
         <input type="checkbox" id="ebook-param" value="ebook-param" onChange={props.handleEbookFilter}></input>
         <label htmlFor="ebook-param">e-book </label>
         {/* add logic to only show when booklist mounts? */}

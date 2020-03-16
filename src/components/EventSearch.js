@@ -12,7 +12,7 @@ export default function EventSearch(props) {
           onChange={props.handleEventSearch}
           type="text"
         ></input>
-        <button>Search for Events</button>
+        <button className='search-button'>Search for Events</button>
       </form>
     </div>
   );

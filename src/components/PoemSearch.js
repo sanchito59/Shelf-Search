@@ -9,16 +9,17 @@ export default function PoemSearch(props) {
   return (
     <div className="search-area">
       <form onSubmit={props.poemSearch}>
+        <i className='fas fa-search'></i>
         <input
           placeholder="Wordsworth, Poe, Shakespeare"
           onChange={props.handlePoemSearch}
           type="text"
         ></input>
-        <button>Search</button>
+        <button className='search-button'>Search</button>
       </form>
       <PoemList
         poemList={props.poemList}
       />
-    </div>
+    </div >
   );
 }
