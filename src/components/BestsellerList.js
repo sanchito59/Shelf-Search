@@ -3,7 +3,7 @@ import './../BestsellerList.css'
 
 export default function BestsellerList(props) {
   return (
-    <div>
+    <div className="mobile-padding">
       <div className="bestseller-card">
         <h4><span className="bestseller-rank">{props.currentRank}|</span>
           <a href={props.amazonLink} target='_blank'><span className="bestseller-title">{props.title}</span></a></h4>

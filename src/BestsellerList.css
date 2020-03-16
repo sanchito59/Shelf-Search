@@ -63,3 +63,38 @@ h4 {
   font-size: 12px;
   font-weight: bold;
 }
+
+/* Mobile Responsiveness */
+
+@media only screen and (max-width: 600px) {
+  .outer-card-row {
+    grid-gap: 5px;
+    grid-template-columns: 135px;
+    margin-left: 8px;
+  }
+  h1 {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+  .bestseller-blurb {
+    display: none;
+  }
+  .mobile-padding {
+    padding-bottom: 0px;
+  }
+  .bestseller-card {
+    display: table-cell;
+    height: 200px;
+    font-family: Georgia;
+    padding: 0px;
+  }
+  .bestseller-card p {
+    display: none;
+  }
+  .bestseller-rank {
+    font-size: 40px;
+  }
+  .bestseller-title {
+    font-size: 14px;
+  }
+}
