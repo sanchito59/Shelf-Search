@@ -54,10 +54,19 @@ li {
 
 // Mobile Responsiveness
 @media only screen and (max-width: 600px) {
+  .navlinks {
+    margin-right: 35px;
+    font-size: 13px;
+  }
+
+  .navlinks a {
+    padding: 4px;
+  }
+
   .underbar {
-    height: 5px;
-    left: 40%;
-    top: 226px;
+    height: 3px;
+    left: 35%;
+    top: 230px;
     position: absolute;
     -webkit-transition: 0.5s ease;
   }
@@ -68,26 +77,26 @@ li {
     -webkit-transition: 0.5s ease;
 
     &:nth-of-type(1):hover~.underbar {
-      left: 12%;
-      width: 70px;
+      left: 17%;
+      width: 43px;
       background: rgb(230, 230, 230);
     }
 
     &:nth-of-type(2):hover~.underbar {
-      left: 26%;
-      width: 178.5px;
+      left: 28%;
+      width: 113px;
       background: rgb(230, 230, 230);
     }
 
     &:nth-of-type(3):hover~.underbar {
-      left: 62.2%;
-      width: 85.5px;
+      left: 57.6%;
+      width: 54px;
       background: rgb(230, 230, 230);
     }
 
     &:nth-of-type(4):hover~.underbar {
-      left: 79.25%;
-      width: 87px;
+      left: 71.5%;
+      width: 52.5px;
       background: rgb(230, 230, 230);
     }
 
