@@ -10,7 +10,7 @@ export default function TrendingBookshelf(props) {
   return (
     <div>
       <div>
-        <h1>{props.currentlyTrendingTitle}</h1>
+        <h1 className='shelf-title'>{props.currentlyTrendingTitle}</h1>
         <div className='bookshelf-grid'>
           {
             props.trendingBooks.map((book, i) => {
@@ -29,7 +29,7 @@ export default function TrendingBookshelf(props) {
       </div>
       <hr></hr>
       <div>
-        <h1>{props.classicLitTitle}</h1>
+        <h1 className='shelf-title'>{props.classicLitTitle}</h1>
         <div className='bookshelf-grid'>
           {
             props.classicLiterature.map((book, i) => {
@@ -48,7 +48,7 @@ export default function TrendingBookshelf(props) {
       </div>
       <hr></hr>
       <div>
-        <h1>{props.sciFiTitle}</h1>
+        <h1 className='shelf-title'>{props.sciFiTitle}</h1>
         <div className='bookshelf-grid'>
           {
             props.sciFi.map((book, i) => {

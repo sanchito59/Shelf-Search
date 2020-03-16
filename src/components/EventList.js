@@ -7,7 +7,7 @@ export default function Event(props) {
   const eventList = {}
   return (
     <div>
-      <h1>Events Near You!</h1>
+      <h1 className='event-list-title'>Events Near You!</h1>
       <div style={eventList}>
         {
           props.events.map((event, i) => {
