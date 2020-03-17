@@ -6,6 +6,7 @@
   color: white;
   padding: 8px;
   text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .navlinks a:hover {
@@ -28,25 +29,25 @@
   &:nth-of-type(1):hover~.underbar {
     left: 35%;
     width: 91.5px;
-    background: rgb(179, 125, 125);
+    background: #282c34;
   }
 
   &:nth-of-type(2):hover~.underbar {
     left: 40.7%;
     width: 215.5px;
-    background: rgb(179, 125, 125);
+    background: #282c34;
   }
 
   &:nth-of-type(3):hover~.underbar {
     left: 54.5%;
     width: 103px;
-    background: rgb(179, 125, 125);
+    background: #282c34;
   }
 
   &:nth-of-type(4):hover~.underbar {
     left: 60.8%;
     width: 100px;
-    background: rgb(179, 125, 125);
+    background: #282c34;
   }
 
   cursor: pointer;
