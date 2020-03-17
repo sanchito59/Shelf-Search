@@ -11,8 +11,8 @@ import Homepage from './components/Homepage';
 // Style/Assets
 import "./App.css";
 // Secrets
-const NYT_KEY = process.env.REACT_APP_NYT_KEY;
-const GOOD_READS_KEY = process.env.REACT_APP_GOOD_READS_KEY
+const NYT_KEY = `${process.env.REACT_APP_NYT_KEY}`;
+const GOOD_READS_KEY = `${process.env.REACT_APP_GOOD_READS_KEY}`
 class App extends React.Component {
   constructor(props) {
     super(props);
