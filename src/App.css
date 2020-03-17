@@ -22,11 +22,12 @@
 
 .quote-of-the-day {
   float: left;
-  width: 80%;
-  font-size: 17px;
+  width: 90%;
+  font-size: 16px;
   font-weight: bold;
   text-shadow: 1.5px 1.5px #282c34;
   font-family: Poppins, sans-serif;
+  overflow: none;
 }
 
 /* Header End */
@@ -63,13 +64,10 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 16px 0 rgba(0, 0, 0, 0.19);
   -webkit-transition-duration: 0.4s;
   /* Safari */
   transition-duration: 0.4s;
-}
-
-.search-button {
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 16px 0 rgba(0, 0, 0, 0.19);
 }
 
 .search-button:hover {
