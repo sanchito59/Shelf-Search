@@ -18,11 +18,14 @@
 
 .shelf-search-title {
   text-shadow: 3px 3px #282c34;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .quote-of-the-day {
   float: left;
-  width: 90%;
+  width: 80%;
+  height: 50px;
   font-size: 16px;
   font-weight: bold;
   text-shadow: 1.5px 1.5px #282c34;
