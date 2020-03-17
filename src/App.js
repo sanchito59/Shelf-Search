@@ -85,6 +85,7 @@ class App extends React.Component {
     const zip_input = this.state.eventSearchField;
     fetch(`https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
       method: 'get',
+      header: 'no-cors',
     }).then(response => {
       return response.text();
     }).then(function (data) {
