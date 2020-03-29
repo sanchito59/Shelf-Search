@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import PoetryPage from './components/PoetryPage';
 import EventsPage from './components/EventsPage';
-import SearchArea from "./components/SearchArea";
+import BookSearch from "./components/BookSearch";
 import Homepage from './components/Homepage';
 // Style/Assets
 import "./App.css";
@@ -320,7 +320,7 @@ class App extends React.Component {
             />
           } />
           <Route path='/bookSearch' render={() =>
-            <SearchArea
+            <BookSearch
               handleSearch={this.handleSearch}
               handleSort={this.handleSort}
               handleEbookFilter={this.handleEbookFilter}

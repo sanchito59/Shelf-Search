@@ -1,5 +1,7 @@
-import React from 'react';
+import React from "react";
 import styled from 'styled-components';
+// Components
+import BookList from './BookList'
 // Styles/Assets
 import "./../App.css";
 import searchIcon from './../assets/searchicon.png'
@@ -41,20 +43,38 @@ const SearchButton = styled.button`
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24), 0 12px 10px 0 rgba(0, 0, 0, 0.19);
       }
   `
-
-export default function EventSearch(props) {
+const SearchArea = (props) => {
+  // console.log('search props: ', props)
   return (
     <SearchFormDiv>
-      <form onSubmit={props.eventSearch}>
-        <label>Zip Code: </label>
+      <form action="" onSubmit={props.searchForBooks}>
         <SearchInput
-          className="search-input"
-          placeholder="97204"
-          onChange={props.handleEventSearch}
+          onChange={props.handleSearch}
           type="text"
+          placeholder="cats, sci-fi, Absurdist philosophy etc."
         />
-        <SearchButton>Search for Events</SearchButton>
+        <SearchButton>
+          Search
+        </SearchButton>
+        <input type="checkbox" id="ebook-param" value="ebook-param" onChange={props.handleEbookFilter}></input>
+        <label htmlFor="ebook-param">e-book </label>
+        {/* add logic to only show when booklist mounts? */}
+        <select defaultValue="Sort" onChange={props.handleSort} className='select-params'>
+          <option disabled value="Sort">
+            Sort
+          </option>
+          <option value="Alphabetical">A-Z Title</option>
+          <option value="Newest">Newest</option>
+          <option value="Oldest">Oldest</option>
+        </select>
       </form>
+      <BookList
+        books={props.books}
+        openLibraryBooks={props.openLibraryBooks}
+        availableEbooks={props.availableEbooks}
+      />
     </SearchFormDiv>
   );
-}
+};
+
+export default SearchArea;
