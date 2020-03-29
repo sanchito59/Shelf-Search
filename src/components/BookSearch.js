@@ -6,6 +6,10 @@ import BookList from './BookList'
 import "./../App.css";
 import searchIcon from './../assets/searchicon.png'
 
+const SearchFormDiv = styled.div`
+  margin-top: 12px;
+`
+
 const SearchInput = styled.input`
   text-indent: 10px;
   padding: 8px 20px;
@@ -42,7 +46,7 @@ const SearchButton = styled.button`
 const SearchArea = (props) => {
   // console.log('search props: ', props)
   return (
-    <div className="search-area">
+    <SearchFormDiv>
       <form action="" onSubmit={props.searchForBooks}>
         <SearchInput
           onChange={props.handleSearch}
@@ -69,7 +73,7 @@ const SearchArea = (props) => {
         openLibraryBooks={props.openLibraryBooks}
         availableEbooks={props.availableEbooks}
       />
-    </div>
+    </SearchFormDiv>
   );
 };
 

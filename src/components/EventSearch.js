@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import "./../App.css";
 import searchIcon from './../assets/searchicon.png'
 
+const SearchFormDiv = styled.div`
+  margin-top: 12px;
+`
+
 const SearchInput = styled.input`
   text-indent: 10px;
   padding: 8px 20px;
@@ -40,7 +44,7 @@ const SearchButton = styled.button`
 
 export default function EventSearch(props) {
   return (
-    <div className="search-area">
+    <SearchFormDiv>
       <form onSubmit={props.eventSearch}>
         <label>Zip Code: </label>
         <SearchInput
@@ -51,6 +55,6 @@ export default function EventSearch(props) {
         />
         <SearchButton>Search for Events</SearchButton>
       </form>
-    </div>
+    </SearchFormDiv>
   );
 }
