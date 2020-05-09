@@ -42,10 +42,12 @@ export default function SinglePoemDisplay(props) {
     }
   }
 
+  const { title, author, poem } = props;
+
   return (
     <div style={poemDiv}>
-      <h2>{props.title}</h2>
-      <h4>BY <span style={poemAuthor}>{props.author}</span></h4>
+      <h2>{title}</h2>
+      <h4>BY <span style={poemAuthor}>{author}</span></h4>
       <div style={poemBody}>
         <Speech
           stop={true}
@@ -53,14 +55,14 @@ export default function SinglePoemDisplay(props) {
           rate="0.7" // Not perfect, cadence is too quick
           displayText='Listen'
           style={textstyle}
-          text={typeof props.poem === 'undefined' ? 'Test Poem' :
-            props.poem.join('') // Works but not the best solution?
+          text={typeof poem === 'undefined' ? 'Test Poem' :
+            poem.join('') // Works but not the best solution?
           }
         />
         {/* This doesn't really work */}
         {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
         {
-          props.poem.map((line) => {
+          poem.map((line) => {
             return <li style={listStyle}>{line}</li>
           })
         }

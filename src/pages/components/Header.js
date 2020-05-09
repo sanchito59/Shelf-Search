@@ -3,7 +3,7 @@ import React from 'react';
 // Components
 import Navlinks from './Navlinks.js';
 // Styles/Assets
-import './../App.css';
+import './../../App.css';
 
 class Header extends React.Component {
   constructor(props) {

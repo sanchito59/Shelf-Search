@@ -1,17 +1,18 @@
 import React from 'react';
-import './../BestsellerList.css';
+import './../../BestsellerList.css';
 // Components
 import BestsellerList from './BestsellerList';
 
 export default function NYTBestsellers(props) {
-  // console.log('nyt props: ', props.bestSellers)
-  if (typeof props.bestSellers !== 'undefined') {
+  const { bestSellers } = props;
+  // console.log('nyt props: ', props)
+  if (typeof bestSellers !== 'undefined') {
     return (
       <div>
         <div className='outer-card-row'>
           <h1 className='header'>This Week's NYT Bestsellers: </h1>
           {
-            props.bestSellers.map((book, i) => {
+            bestSellers.map((book, i) => {
               return <BestsellerList
                 title={book.book_details[0].title}
                 author={book.book_details[0].author}

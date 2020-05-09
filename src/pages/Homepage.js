@@ -1,7 +1,7 @@
 import React from 'react';
 // Components
-import NYTBestsellers from './NYTBestsellers';
-import Bookshelf from './Bookshelf';
+import NYTBestsellers from './components/NYTBestsellers';
+import Bookshelf from './components/Bookshelf';
 // Styles/Assets
 // Trending
 import crazyRichAsians from './../assets/bookCovers/crazyRichAsians.jpg'
@@ -173,9 +173,10 @@ const sciFiList =
   ]
 
 export default function Homepage(props) {
+  const { bestSellers } = props;
   return (
     <div>
-      <NYTBestsellers bestSellers={props.bestSellers} />
+      <NYTBestsellers bestSellers={bestSellers} />
       <Bookshelf
         currentlyTrendingTitle={'Currently Trending'}
         trendingBooks={trendingBooksList}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // Styles/Assets
-import './../Navlinks.scss';
+import './../../Navlinks.scss';
 
 export default function Navlinks() {
   return (
