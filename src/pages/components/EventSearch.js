@@ -1,14 +1,13 @@
 import React from 'react';
-import styled from 'styled-components'
-// Components
-import PoemList from './PoemList';
+import styled from 'styled-components';
 // Styles/Assets
-import "./../App.css";
-import searchIcon from './../assets/searchicon.png'
+import "./../../App.css";
+import searchIcon from './../../assets/searchicon.png'
 
 const SearchFormDiv = styled.div`
   margin-top: 12px;
 `
+
 const SearchInput = styled.input`
   text-indent: 10px;
   padding: 8px 20px;
@@ -21,6 +20,7 @@ const SearchInput = styled.input`
       border: 2px solid rgb(151, 139, 139);
     }
 `
+
 const SearchButton = styled.button`
     background-color: rgb(204, 186, 107);
     border-radius: 8px;
@@ -42,24 +42,19 @@ const SearchButton = styled.button`
       }
   `
 
-export default function PoemSearch(props) {
-  // console.log('poem search props: ', props)
+export default function EventSearch(props) {
   return (
     <SearchFormDiv>
-      <form onSubmit={props.poemSearch}>
+      <form onSubmit={props.eventSearch}>
+        <label>Zip Code: </label>
         <SearchInput
           className="search-input"
-          placeholder="Wordsworth, Poe, Shakespeare"
-          onChange={props.handlePoemSearch}
-          type="text">
-        </SearchInput>
-        <SearchButton>
-          Search
-        </SearchButton>
+          placeholder="97204"
+          onChange={props.handleEventSearch}
+          type="text"
+        />
+        <SearchButton>Search for Events</SearchButton>
       </form>
-      <PoemList
-        poemList={props.poemList}
-      />
     </SearchFormDiv>
   );
 }

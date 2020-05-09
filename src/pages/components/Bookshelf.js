@@ -1,8 +1,6 @@
 import React from 'react';
-// Components
 import BookshelfCard from './BookshelfCard';
-// Styles/Assets
-import './../Bookshelf.scss'
+import './../../Bookshelf.scss'
 
 export default function TrendingBookshelf(props) {
   // console.log('bookshelf props: ', props)

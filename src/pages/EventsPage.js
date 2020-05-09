@@ -1,7 +1,7 @@
 import React from 'react';
 // Components
-import EventSearch from './EventSearch';
-import EventList from './EventList';
+import EventSearch from './components/EventSearch';
+import EventList from './components/EventList';
 
 export default function EventsPage(props) {
   // console.log('events page props: ', props);

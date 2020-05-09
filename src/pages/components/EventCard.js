@@ -1,6 +1,6 @@
 import React from 'react';
-// Styles/Assets
-import './../EventCard.css';
+import './../../EventCard.css';
+
 export default function EventCard(props) {
   // console.log('event card props: ', props)
   let date = props.date.slice(0, 10);

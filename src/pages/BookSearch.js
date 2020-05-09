@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 // Components
-import BookList from './BookList'
+import BookList from './components/BookList'
 // Styles/Assets
 import "./../App.css";
 import searchIcon from './../assets/searchicon.png'

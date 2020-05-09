@@ -1,5 +1,5 @@
 import React from 'react';
-import './../BestsellerList.css'
+import './../../BestsellerList.css'
 
 export default function BestsellerList(props) {
   return (

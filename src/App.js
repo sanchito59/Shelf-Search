@@ -3,11 +3,11 @@ import React from "react";
 import request from "superagent";
 import { Switch, Route } from 'react-router-dom';
 // Components
-import Header from "./components/Header";
-import PoetryPage from './components/PoetryPage';
-import EventsPage from './components/EventsPage';
-import BookSearch from "./components/BookSearch";
-import Homepage from './components/Homepage';
+import Header from "./pages/components/Header";
+import PoetryPage from './pages/PoetryPage';
+import EventsPage from './pages/EventsPage';
+import BookSearch from "./pages/BookSearch";
+import Homepage from './pages/Homepage';
 // Style/Assets
 import "./App.css";
 // Secrets

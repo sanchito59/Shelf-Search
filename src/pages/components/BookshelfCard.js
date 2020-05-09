@@ -1,6 +1,6 @@
 import React from 'react';
 // Styles/Assets
-import './../BookCardStyle.css'
+import './../../BookCardStyle.css'
 
 export default function BookshelfCard(props) {
   // console.log('bookshelf card: ', props)

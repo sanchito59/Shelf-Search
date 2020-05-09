@@ -1,5 +1,6 @@
 import React from 'react';
-import './../BookCardStyle.css'
+import './../../BookCardStyle.css';
+
 const OpenLibraryBookCard = (props) => {
   const capitalize = {
     textTransformation: 'capitalize'

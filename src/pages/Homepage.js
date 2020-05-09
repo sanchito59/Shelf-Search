@@ -1,7 +1,7 @@
 import React from 'react';
 // Components
-import NYTBestsellers from './NYTBestsellers';
-import Bookshelf from './Bookshelf';
+import NYTBestsellers from './components/NYTBestsellers';
+import Bookshelf from './components/Bookshelf';
 // Styles/Assets
 // Trending
 import crazyRichAsians from './../assets/bookCovers/crazyRichAsians.jpg'
