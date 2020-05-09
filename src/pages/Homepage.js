@@ -173,9 +173,10 @@ const sciFiList =
   ]
 
 export default function Homepage(props) {
+  const { bestSellers } = props;
   return (
     <div>
-      <NYTBestsellers bestSellers={props.bestSellers} />
+      <NYTBestsellers bestSellers={bestSellers} />
       <Bookshelf
         currentlyTrendingTitle={'Currently Trending'}
         trendingBooks={trendingBooksList}

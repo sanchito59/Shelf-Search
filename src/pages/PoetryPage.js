@@ -5,12 +5,13 @@ import PoemSearch from './components/PoemSearch';
 import './../PoemOfDay.css';
 
 export default function PoemOfDay(props) {
+  const { poemSearch, handlePoemSearch, poemList } = props;
   return (
     <div>
       <PoemSearch
-        poemSearch={props.poemSearch}
-        handlePoemSearch={props.handlePoemSearch}
-        poemList={props.poemList}
+        poemSearch={poemSearch}
+        handlePoemSearch={handlePoemSearch}
+        poemList={poemList}
       />
     </div>
   );

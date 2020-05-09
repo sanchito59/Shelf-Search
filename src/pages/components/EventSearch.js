@@ -43,14 +43,15 @@ const SearchButton = styled.button`
   `
 
 export default function EventSearch(props) {
+  const { eventSearch, handleEventSearch } = props;
   return (
     <SearchFormDiv>
-      <form onSubmit={props.eventSearch}>
+      <form onSubmit={eventSearch}>
         <label>Zip Code: </label>
         <SearchInput
           className="search-input"
           placeholder="97204"
-          onChange={props.handleEventSearch}
+          onChange={handleEventSearch}
           type="text"
         />
         <SearchButton>Search for Events</SearchButton>

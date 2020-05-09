@@ -43,14 +43,15 @@ const SearchButton = styled.button`
   `
 
 export default function PoemSearch(props) {
+  const { poemSearch, handlePoemSearch, poemList } = props;
   // console.log('poem search props: ', props)
   return (
     <SearchFormDiv>
-      <form onSubmit={props.poemSearch}>
+      <form onSubmit={poemSearch}>
         <SearchInput
           className="search-input"
           placeholder="Wordsworth, Poe, Shakespeare"
-          onChange={props.handlePoemSearch}
+          onChange={handlePoemSearch}
           type="text">
         </SearchInput>
         <SearchButton>
@@ -58,7 +59,7 @@ export default function PoemSearch(props) {
         </SearchButton>
       </form>
       <PoemList
-        poemList={props.poemList}
+        poemList={poemList}
       />
     </SearchFormDiv>
   );

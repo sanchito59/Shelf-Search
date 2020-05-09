@@ -37,29 +37,30 @@ const SearchButton = styled.button`
     cursor: pointer;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 16px 0 rgba(0, 0, 0, 0.19);
     -webkit-transition-duration: 0.4s;
-    /* Safari */
     transition-duration: 0.4s;
+    
       &:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24), 0 12px 10px 0 rgba(0, 0, 0, 0.19);
       }
   `
 const SearchArea = (props) => {
+  const { searchForBooks, handleSearch, handleEbookFilter, handleSort, books, openLibraryBooks, availableEbooks } = props;
   // console.log('search props: ', props)
   return (
     <SearchFormDiv>
-      <form action="" onSubmit={props.searchForBooks}>
+      <form action="" onSubmit={searchForBooks}>
         <SearchInput
-          onChange={props.handleSearch}
+          onChange={handleSearch}
           type="text"
           placeholder="cats, sci-fi, Absurdist philosophy etc."
         />
         <SearchButton>
           Search
         </SearchButton>
-        <input type="checkbox" id="ebook-param" value="ebook-param" onChange={props.handleEbookFilter}></input>
+        <input type="checkbox" id="ebook-param" value="ebook-param" onChange={handleEbookFilter}></input>
         <label htmlFor="ebook-param">e-book </label>
         {/* add logic to only show when booklist mounts? */}
-        <select defaultValue="Sort" onChange={props.handleSort} className='select-params'>
+        <select defaultValue="Sort" onChange={handleSort} className='select-params'>
           <option disabled value="Sort">
             Sort
           </option>
@@ -69,9 +70,9 @@ const SearchArea = (props) => {
         </select>
       </form>
       <BookList
-        books={props.books}
-        openLibraryBooks={props.openLibraryBooks}
-        availableEbooks={props.availableEbooks}
+        books={books}
+        openLibraryBooks={openLibraryBooks}
+        availableEbooks={availableEbooks}
       />
     </SearchFormDiv>
   );

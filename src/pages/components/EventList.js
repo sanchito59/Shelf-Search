@@ -3,6 +3,7 @@ import React from 'react';
 import EventCard from './EventCard';
 
 export default function Event(props) {
+  const { events } = props;
   // console.log('event props: ', props)
   const eventList = {}
   return (
@@ -10,7 +11,7 @@ export default function Event(props) {
       <h1 className='event-list-title'>Events Near You!</h1>
       <div style={eventList}>
         {
-          props.events.map((event, i) => {
+          events.map((event, i) => {
             return <EventCard
               eventTitle={event.title}
               eventAddress={event.address}

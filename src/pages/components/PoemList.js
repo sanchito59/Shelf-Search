@@ -4,12 +4,13 @@ import PoemOfTheDay from './PoemOfTheDay';
 import SinglePoemDisplay from './SinglePoemDisplay';
 
 export default function PoemList(props) {
+  const { poemList } = props;
   // console.log('PoemList props: ', props);
   return (
     <div>
       <PoemOfTheDay />
       {
-        props.poemList.map((poem, i) => {
+        poemList.map((poem, i) => {
           return <SinglePoemDisplay
             title={poem.title}
             author={poem.author}

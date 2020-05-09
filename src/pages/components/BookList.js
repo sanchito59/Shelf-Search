@@ -6,12 +6,13 @@ import OpenLibraryBookCard from './OpenLibraryBookCard';
 import EmbeddedBook from './EmbeddedBook';
 
 const BookList = (props) => {
+  const { availableEbooks, books, openLibraryBooks } = props;
   // console.log('BookList props: ', props);
   return (
     <div>
       <div className='embedded-book-wrapper'>
         {
-          props.availableEbooks.map((ebook, i) => {
+          availableEbooks.map((ebook, i) => {
             return <div><EmbeddedBook
               ebookURL={ebook.itemURL}
               key={i}
@@ -21,7 +22,7 @@ const BookList = (props) => {
       </div>
       <div className='book-list-wrapper'>
         {
-          props.books.map((book, i) => {
+          books.map((book, i) => {
             return <BookCard
               image={book.volumeInfo.imageLinks.thumbnail}
               previewLink={book.volumeInfo.previewLink}
@@ -38,7 +39,7 @@ const BookList = (props) => {
           })
         }
         {
-          props.openLibraryBooks.map((book, i) => {
+          openLibraryBooks.map((book, i) => {
             return <OpenLibraryBookCard
               coverIMG={'https://i.imgur.com/J5LVHEL.jpg'}
               title={book.title}
