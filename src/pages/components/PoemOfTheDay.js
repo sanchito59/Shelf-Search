@@ -1,5 +1,19 @@
 import React from 'react';
 import Speech from 'react-speech';
+import styled from 'styled-components';
+
+const StyledSpeech = styled(Speech)`
+  && {
+    background-color: pink;
+
+    .rs-stop {
+    background-color: pink !important;
+      :after {
+        content: 'ETSETSTE' !important;
+      }
+    } 
+  }
+`;
 
 export default function PoemOfTheDay(props) {
   const samplePoems = [
@@ -114,25 +128,6 @@ export default function PoemOfTheDay(props) {
     fontFamily: 'Caladea, sans-serif',
   }
 
-  // Speech
-  const textstyle = {
-    play: {
-      hover: {
-        backgroundColor: 'black',
-        color: 'white'
-      },
-      button: {
-        padding: '4',
-        fontFamily: 'Helvetica',
-        fontSize: '1.0em',
-        cursor: 'pointer',
-        pointerEvents: 'none',
-        outline: 'none',
-        backgroundColor: 'inherit',
-        border: 'none'
-      },
-    }
-  }
   const poemOfTheDayIndex = Math.floor(Math.random() * 5);
   return (
     <div>
@@ -141,14 +136,13 @@ export default function PoemOfTheDay(props) {
         <h2>{samplePoems[4].title}</h2>
         <h4>BY <span style={poemAuthor}>{samplePoems[4].author}</span></h4>
         <div style={poemBody}>
-          <Speech
-            stop={true}
+          <StyledSpeech
             textAsButton={true}
+            // pause={true}
+            stop={true}
             rate="0.7" // Not perfect, cadence is too quick
             displayText='Listen'
-            style={textstyle}
-            text={samplePoems[4].lines.join('') // Works but not the best solution?
-            }
+            text={samplePoems[4].lines.join('')} // Works but not the best solution?
           />
           {/* This doesn't really work */}
           {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}

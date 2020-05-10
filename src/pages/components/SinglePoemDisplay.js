@@ -22,26 +22,6 @@ export default function SinglePoemDisplay(props) {
     paddingBottom: '24px'
   }
 
-  // Speech
-  const textstyle = {
-    play: {
-      hover: {
-        backgroundColor: 'black',
-        color: 'white'
-      },
-      button: {
-        padding: '4',
-        fontFamily: 'Helvetica',
-        fontSize: '1.0em',
-        cursor: 'pointer',
-        pointerEvents: 'none',
-        outline: 'none',
-        backgroundColor: 'inherit',
-        border: 'none'
-      },
-    }
-  }
-
   const { title, author, poem } = props;
 
   return (
@@ -54,10 +34,8 @@ export default function SinglePoemDisplay(props) {
           textAsButton={true}
           rate="0.7" // Not perfect, cadence is too quick
           displayText='Listen'
-          style={textstyle}
           text={typeof poem === 'undefined' ? 'Test Poem' :
-            poem.join('') // Works but not the best solution?
-          }
+            poem.join('')} // Works but not the best solution?
         />
         {/* This doesn't really work */}
         {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
