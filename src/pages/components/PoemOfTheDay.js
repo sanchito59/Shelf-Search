@@ -112,6 +112,7 @@ export default function PoemOfTheDay(props) {
   const poemDiv = {
     textAlign: 'left',
     marginLeft: '30px',
+    marginRight: '30px',
     marginBottom: '30px'
   }
   const listStyle = {
