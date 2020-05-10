@@ -28,7 +28,6 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state)
     this.quoteOfTheDay();
   }
 
