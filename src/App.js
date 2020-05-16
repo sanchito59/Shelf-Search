@@ -17,6 +17,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Proxy URL
+      proxyurl: "https://cors-anywhere.herokuapp.com/",
       // Google API
       isLoggedIn: false,
       name: "",
@@ -83,7 +85,7 @@ class App extends React.Component {
   findAuthorEvents = () => {
     // e.preventDefault();
     const zip_input = this.state.eventSearchField;
-    fetch(`https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
+    fetch(`${this.state.proxyurl}https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
       method: 'get',
       header: 'no-cors',
     }).then(response => {
@@ -123,8 +125,6 @@ class App extends React.Component {
           q: this.state.searchField + "&download=epub"
         })
         .then(data => {
-          // console.log("Sample response for multiple books", data.body.items)
-          // console.log("Sample response for one book: ", data.body.items[0])
           let cleanData;
           if (typeof data.body.items !== "undefined") {
             cleanData = this.manageResponseProperties(data);
@@ -141,8 +141,6 @@ class App extends React.Component {
           q: this.state.searchField
         })
         .then(data => {
-          // console.log("Sample response for multiple books", data.body.items)
-          // console.log("Sample response for one book: ", data.body.items[0])
           let cleanData;
           if (typeof data.body.items !== "undefined") {
             cleanData = this.manageResponseProperties(data);
@@ -163,7 +161,6 @@ class App extends React.Component {
     }).then(json => {
       let books = json.docs;
       console.log('openlib: ', books);
-      // console.log('one openlib book: ', json.docs[0]);
       this.setState({ openLibraryBooks: books })
     }).catch(error => {
       console.log('Uh oh, ', error);
