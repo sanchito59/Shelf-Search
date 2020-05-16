@@ -10,9 +10,10 @@ import BookSearch from "./pages/BookSearch";
 import Homepage from './pages/Homepage';
 // Style/Assets
 import "./App.css";
-// Secrets
+
 const NYT_KEY = `${process.env.REACT_APP_NYT_KEY}`;
 const GOOD_READS_KEY = `${process.env.REACT_APP_GOOD_READS_KEY}`
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -167,7 +168,7 @@ class App extends React.Component {
     })
   }
 
-  searchForPDFs() {
+  searchForPDFs = () => {
     setTimeout(() => {
       for (let i = 0; i < 100; i++) {
         if (typeof this.state.openLibraryBooks[i] !== 'undefined') {
@@ -202,10 +203,9 @@ class App extends React.Component {
     }, 1000)
   }
 
-  poemSearch() {
-    console.log('pinged!')
-    const query = this.state.poemSearchField;
-    fetch(`http://poetrydb.org/author/${query}`, {
+  poemSearch = (e) => {
+    e.preventDefault();
+    fetch(`${this.state.proxyurl}http://poetrydb.org/author/${this.state.poemSearchField}`, {
       method: 'get',
       header: 'no-cors',
     }).then(response => {
@@ -215,7 +215,7 @@ class App extends React.Component {
       console.log('poemSearch: ', results);
       this.setState({ poetryDBpoems: results })
     }).catch(error => {
-      console.log('Uh oh, ', error);
+      console.err('Uh oh, ', error);
     })
   }
 

@@ -1,13 +1,11 @@
 import React from 'react';
-// Components
 import PoemList from './PoemList';
 import SearchFormDiv from './SearchFormDiv';
 import SearchInput from './SearchInput';
 import SearchButton from './SearchButton';
-// Styles/Assets
 import "./../../App.css";
 
-export default function PoemSearch(props) {
+const PoemSearch = (props) => {
   const { poemSearch, handlePoemSearch, poemList } = props;
   // console.log('poem search props: ', props)
   return (
@@ -19,13 +17,11 @@ export default function PoemSearch(props) {
           onChange={handlePoemSearch}
           type="text">
         </SearchInput>
-        <SearchButton>
-          Search
-        </SearchButton>
+        <SearchButton> Search </SearchButton>
       </form>
-      <PoemList
-        poemList={poemList}
-      />
+      <PoemList poemList={poemList} />
     </SearchFormDiv>
   );
 }
+
+export default PoemSearch;

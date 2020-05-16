@@ -1,21 +1,21 @@
 import React from 'react';
-import Speech from 'react-speech';
+import { Row, Col } from 'antd';
 import styled from 'styled-components';
+import SinglePoemDisplay from './SinglePoemDisplay';
 
-const StyledSpeech = styled(Speech)`
-  && {
-    background-color: pink;
+const PoemBody = styled.div`
+    font-family: Caladea, sans-serif;
+
+    .rs-container button {
+      margin-bottom: 20px;
+    }
 
     .rs-stop {
-    background-color: pink !important;
-      :after {
-        content: 'ETSETSTE' !important;
-      }
-    } 
-  }
+      width: 25px;
+    }
 `;
 
-export default function PoemOfTheDay(props) {
+const PoemOfTheDay = (props) => {
   const samplePoems = [
     {
       title: 'Alone Looking at the Mountain',
@@ -125,35 +125,19 @@ export default function PoemOfTheDay(props) {
     letterSpacing: '1px'
   }
 
-  const poemBody = {
-    fontFamily: 'Caladea, sans-serif',
-  }
-
   const poemOfTheDayIndex = Math.floor(Math.random() * 5);
   return (
-    <div>
-      <div style={poemDiv}>
-        <h1>Poem of the Day</h1>
-        <h2>{samplePoems[4].title}</h2>
-        <h4>BY <span style={poemAuthor}>{samplePoems[4].author}</span></h4>
-        <div style={poemBody}>
-          <StyledSpeech
-            textAsButton={true}
-            // pause={true}
-            stop={true}
-            rate="0.7" // Not perfect, cadence is too quick
-            displayText='Listen'
-            text={samplePoems[4].lines.join('')} // Works but not the best solution?
-          />
-          {/* This doesn't really work */}
-          {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
-          {
-            samplePoems[4].lines.map((line) => {
-              return <li style={listStyle}>{line}</li>
-            })
-          }
-        </div>
-      </div>
-    </div>
+    <Row>
+      {samplePoems.map((poem, i) => {
+        return <SinglePoemDisplay
+          title={poem.title}
+          author={poem.author}
+          poem={poem.lines}
+          key={i}
+        />
+      })}
+    </Row>
   );
 }
+
+export default PoemOfTheDay;
