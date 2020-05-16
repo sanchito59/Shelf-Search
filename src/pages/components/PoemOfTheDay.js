@@ -1,5 +1,5 @@
 import React from 'react';
-import Speech from 'react-speech';
+import { Row, Col } from 'antd';
 import styled from 'styled-components';
 import SinglePoemDisplay from './SinglePoemDisplay';
 
@@ -15,7 +15,7 @@ const PoemBody = styled.div`
     }
 `;
 
-export default function PoemOfTheDay(props) {
+const PoemOfTheDay = (props) => {
   const samplePoems = [
     {
       title: 'Alone Looking at the Mountain',
@@ -127,35 +127,17 @@ export default function PoemOfTheDay(props) {
 
   const poemOfTheDayIndex = Math.floor(Math.random() * 5);
   return (
-    samplePoems.map((poem, i) => {
-      return <SinglePoemDisplay
-        title={poem.title}
-        author={poem.author}
-        poem={poem.lines}
-        key={i}
-      />
-    })
-    // <div>
-    //   <div style={poemDiv}>
-    //     <h1>Poem of the Day</h1>
-    //     <h2>{samplePoems[4].title}</h2>
-    //     <h4>BY <span style={poemAuthor}>{samplePoems[4].author}</span></h4>
-    //     <PoemBody>
-    //       <Speech
-    //         textAsButton={true}
-    //         // pause={true}
-    //         stop={true}
-    //         rate="0.7" // Not perfect, cadence is too quick
-    //         displayText='Listen'
-    //         text={samplePoems[4].lines.join('')} // Works but not the best solution?
-    //       />
-    //       {
-    //         samplePoems[4].lines.map((line) => {
-    //           return <li style={listStyle}>{line}</li>
-    //         })
-    //       }
-    //     </PoemBody>
-    //   </div>
-    // </div>
+    <Row>
+      {samplePoems.map((poem, i) => {
+        return <SinglePoemDisplay
+          title={poem.title}
+          author={poem.author}
+          poem={poem.lines}
+          key={i}
+        />
+      })}
+    </Row>
   );
 }
+
+export default PoemOfTheDay;

@@ -1,11 +1,10 @@
 import React from 'react';
-// Components
 import PoemSearch from './components/PoemSearch';
-// Styles/Assets
 import './../PoemOfDay.css';
 
-export default function PoemOfDay(props) {
+const PoetryPage = (props) => {
   const { poemSearch, handlePoemSearch, poemList } = props;
+
   return (
     <div>
       <PoemSearch
@@ -16,3 +15,5 @@ export default function PoemOfDay(props) {
     </div>
   );
 }
+
+export default PoetryPage;

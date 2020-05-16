@@ -9,7 +9,7 @@ const FlexWrapper = styled.div`
   display: flex;
 `;
 
-export default function PoemList(props) {
+const PoemList = (props) => {
   const { poemList } = props;
   // console.log('PoemList props: ', props);
   return (
@@ -31,3 +31,5 @@ export default function PoemList(props) {
     </div>
   );
 }
+
+export default PoemList;
