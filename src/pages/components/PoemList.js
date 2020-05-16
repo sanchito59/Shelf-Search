@@ -1,34 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
-// Components
+import { Row } from 'antd';
 import PoemOfTheDay from './PoemOfTheDay';
-import TwitterContainer from './TwitterContainer';
 import SinglePoemDisplay from './SinglePoemDisplay';
 
-const FlexWrapper = styled.div`
-  display: flex;
-`;
+const PoemRow = styled(Row)`
+  justify-content: center;
+`
 
 const PoemList = (props) => {
   const { poemList } = props;
   // console.log('PoemList props: ', props);
   return (
-    <div>
-      {/* <FlexWrapper> */}
+    <>
       <PoemOfTheDay />
-      <TwitterContainer />
-      {/* </FlexWrapper> */}
-      {
-        poemList.map((poem, i) => {
-          return <SinglePoemDisplay
-            title={poem.title}
-            author={poem.author}
-            poem={poem.lines}
-            key={i}
-          />
-        })
-      }
-    </div>
+      <PoemRow gutter={80, 0}>
+        {
+          poemList.map((poem, i) => {
+            return <SinglePoemDisplay
+              title={poem.title}
+              author={poem.author}
+              poem={poem.lines}
+              key={i}
+            />
+          })
+        }
+      </PoemRow>
+    </>
   );
 }
 

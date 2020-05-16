@@ -1,5 +1,5 @@
 import React from 'react';
-import './../../BestsellerList.css';
+import './../../BestsellerList.scss';
 // Components
 import BestsellerList from './BestsellerList';
 

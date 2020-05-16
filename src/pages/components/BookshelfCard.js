@@ -1,8 +1,8 @@
 import React from 'react';
 // Styles/Assets
-import './../../BookCardStyle.css'
+import './../../BookCardStyle.scss'
 
-export default function BookshelfCard(props) {
+const BookshelfCard = (props) => {
   const { coverIMG, title, author, publisher, pageCount, ISBN } = props;
   // console.log('bookshelf card: ', props)
   return (
@@ -16,3 +16,5 @@ export default function BookshelfCard(props) {
     </div>
   );
 }
+
+export default BookshelfCard;

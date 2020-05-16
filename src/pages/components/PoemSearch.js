@@ -1,16 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 import PoemList from './PoemList';
 import SearchFormDiv from './SearchFormDiv';
 import SearchInput from './SearchInput';
 import SearchButton from './SearchButton';
 import "./../../App.css";
 
+const SearchForm = styled.form`
+  margin-bottom: 20px;
+`;
+
 const PoemSearch = (props) => {
   const { poemSearch, handlePoemSearch, poemList } = props;
   // console.log('poem search props: ', props)
   return (
     <SearchFormDiv>
-      <form onSubmit={poemSearch}>
+      <SearchForm onSubmit={poemSearch}>
         <SearchInput
           className="search-input"
           placeholder="Wordsworth, Poe, Shakespeare"
@@ -18,7 +23,7 @@ const PoemSearch = (props) => {
           type="text">
         </SearchInput>
         <SearchButton> Search </SearchButton>
-      </form>
+      </SearchForm>
       <PoemList poemList={poemList} />
     </SearchFormDiv>
   );

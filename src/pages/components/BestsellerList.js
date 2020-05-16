@@ -1,5 +1,5 @@
 import React from 'react';
-import './../../BestsellerList.css'
+import './../../BestsellerList.scss'
 
 export default function BestsellerList(props) {
   const { currentRank, amazonLink, title, author, description, weeksOnList, rankLastWeek } = props;

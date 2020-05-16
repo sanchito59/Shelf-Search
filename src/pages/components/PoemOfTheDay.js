@@ -2,6 +2,11 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import styled from 'styled-components';
 import SinglePoemDisplay from './SinglePoemDisplay';
+import TwitterContainer from './TwitterContainer';
+
+const PoemRow = styled(Row)`
+  justify-content: center;
+`
 
 const PoemBody = styled.div`
     font-family: Caladea, sans-serif;
@@ -125,9 +130,8 @@ const PoemOfTheDay = (props) => {
     letterSpacing: '1px'
   }
 
-  const poemOfTheDayIndex = Math.floor(Math.random() * 5);
   return (
-    <Row>
+    <PoemRow gutter={80, 0}>
       {samplePoems.map((poem, i) => {
         return <SinglePoemDisplay
           title={poem.title}
@@ -136,7 +140,10 @@ const PoemOfTheDay = (props) => {
           key={i}
         />
       })}
-    </Row>
+      <Col sm={24} md={12} lg={10}>
+        <TwitterContainer />
+      </Col>
+    </PoemRow>
   );
 }
 
