@@ -6,9 +6,22 @@ const Buffer = styled.div`
   margin-bottom: 30px;
 `;
 
+const StyledContainer = styled.section`
+  && {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+
+    @media only screen and (max-width: 768px) {
+      justify-content: flex-end;
+    }
+  }
+`;
+
 const TwitterContainer = () => {
   return (
-    <section className="twitterContainer">
+    <StyledContainer className="twitterContainer">
       <div className="twitter-embed">
         <Buffer />
         <TwitterTimelineEmbed
@@ -16,8 +29,8 @@ const TwitterContainer = () => {
           screenName="tswasteland_bot"
           options={{
             tweetLimit: "3",
-            // width: "400px",
-            // height: "300px",
+            width: "400px",
+            height: "300px",
           }}
           theme="dark"
           noHeader="true"
@@ -25,7 +38,7 @@ const TwitterContainer = () => {
           noFooter="true"
         ></TwitterTimelineEmbed>
       </div>
-    </section>
+    </StyledContainer>
   );
 };
 

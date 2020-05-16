@@ -19,13 +19,9 @@ export default function PoemSearch(props) {
           onChange={handlePoemSearch}
           type="text">
         </SearchInput>
-        <SearchButton>
-          Search
-        </SearchButton>
+        <SearchButton> Search </SearchButton>
       </form>
-      <PoemList
-        poemList={poemList}
-      />
+      <PoemList poemList={poemList} />
     </SearchFormDiv>
   );
 }

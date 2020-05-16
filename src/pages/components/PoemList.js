@@ -7,7 +7,6 @@ import SinglePoemDisplay from './SinglePoemDisplay';
 
 const FlexWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
 `;
 
 export default function PoemList(props) {
@@ -15,10 +14,10 @@ export default function PoemList(props) {
   // console.log('PoemList props: ', props);
   return (
     <div>
-      <FlexWrapper>
-        <PoemOfTheDay />
-        <TwitterContainer />
-      </FlexWrapper>
+      {/* <FlexWrapper> */}
+      <PoemOfTheDay />
+      <TwitterContainer />
+      {/* </FlexWrapper> */}
       {
         poemList.map((poem, i) => {
           return <SinglePoemDisplay

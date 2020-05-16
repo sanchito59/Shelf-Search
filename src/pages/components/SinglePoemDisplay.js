@@ -1,5 +1,49 @@
 import React from 'react';
+import styled from 'styled-components';
 import Speech from 'react-speech';
+
+const PoemBody = styled.div`
+    font-family: Caladea, sans-serif;
+    padding-bottom: 30px;
+
+    .rs-container button {
+      margin-bottom: 20px;
+    }
+    
+    .rs-stop {
+      width: 25px;
+    }
+
+    ul {
+      margin: 0; 
+      padding: 0;
+    }
+
+    li:first-child::first-letter {
+      font-size:26px;
+      font-style:italic;
+      padding-right:3px;
+    }
+    
+    .bot-left {
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .bot-left:before, .bot-left:after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: -3px;
+      
+    }
+
+    .bot-left:after {
+      right: -3px;
+      height: 3px;
+      background-image: -webkit-gradient(linear, 0 0, 30% 0, from(#000), to(transparent));
+    }
+`;
 
 export default function SinglePoemDisplay(props) {
   // console.log('singlePoemDisplay props: ', props);
@@ -28,7 +72,7 @@ export default function SinglePoemDisplay(props) {
     <div style={poemDiv}>
       <h2>{title}</h2>
       <h4>BY <span style={poemAuthor}>{author}</span></h4>
-      <div style={poemBody}>
+      <PoemBody>
         <Speech
           stop={true}
           textAsButton={true}
@@ -37,14 +81,14 @@ export default function SinglePoemDisplay(props) {
           text={typeof poem === 'undefined' ? 'Test Poem' :
             poem.join('')} // Works but not the best solution?
         />
-        {/* This doesn't really work */}
-        {document.getElementsByClassName('rs-stop').innerHTML = 'Stop'}
-        {
-          poem.map((line) => {
-            return <li style={listStyle}>{line}</li>
-          })
-        }
-      </div>
+        <ul className="bot-left">
+          {
+            poem.map((line) => {
+              return <li style={listStyle}>{line}</li>
+            })
+          }
+        </ul>
+      </PoemBody>
     </div>
   );
 }
