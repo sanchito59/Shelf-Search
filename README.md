@@ -10,7 +10,7 @@
 
  - - -
 
-![image of ebook search](https://i.imgur.com/QSZ15Ea.png, "read")
+![image of ebook search](https://i.imgur.com/NPgvBYr.png, "read")
 
 ### Setup/Installation Requirements
 
