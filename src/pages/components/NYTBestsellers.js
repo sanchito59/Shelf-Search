@@ -8,6 +8,7 @@ const BestsellerRow = styled(Row)`
 `;
 
 const SectionTitle = styled.h1`
+  font-family: Caldea, Georgia, sans-serif;
   color: black !important;
   margin: 0px;
 `;
@@ -52,7 +53,7 @@ const NYTBestsellers = (props) => {
         <BestsellerRow>
           <Col lg={14} sm={24}>
             <SectionTitle>This Week's NYT Bestsellers: </SectionTitle>
-            <BestSellerCarousel autoplay dotPosition="top">
+            <BestSellerCarousel dotPosition="top">
               {
                 bestSellers.map((book, i) => {
                   return <Bestseller

@@ -7,11 +7,9 @@ import PoetryPage from './pages/PoetryPage';
 import EventsPage from './pages/EventsPage';
 import BookSearch from "./pages/BookSearch";
 import Homepage from './pages/Homepage';
-// Style/Assets
 import "./App.scss";
 
 const NYT_KEY = `${process.env.REACT_APP_NYT_KEY}`;
-const GOOD_READS_KEY = `${process.env.REACT_APP_GOOD_READS_KEY}`
 
 class App extends React.Component {
   constructor(props) {
@@ -36,12 +34,8 @@ class App extends React.Component {
       // PoetryDB API
       poetryDBpoems: [],
       poemSearchField: '',
-      // GoodReads API
-      bookEvents: [],
-      eventSearchField: '97204',
     };
     this.poemSearch = this.poemSearch.bind(this);
-    this.findAuthorEvents = this.findAuthorEvents.bind(this);
     this.searchForBooks = this.searchForBooks.bind(this);
   }
 
@@ -61,39 +55,6 @@ class App extends React.Component {
       .catch(error => {
         console.log('Uh oh, ', error);
       });
-  }
-
-  findAuthorEvents = () => {
-    // e.preventDefault();
-    const zip_input = this.state.eventSearchField;
-    fetch(`${this.state.proxyurl}https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
-      method: 'get',
-      header: 'no-cors',
-    }).then(response => {
-      return response.text();
-    }).then(function (data) {
-      let parser = new DOMParser();
-      let xmlDoc = parser.parseFromString(data, 'text/html');
-      let events = xmlDoc.getElementsByTagName('event');
-      let eventsArray = [];
-      for (let i = 0; i < events.length; i++) {
-        let event = {};
-        event.title = events[i].childNodes[5].innerText;
-        event.address = events[i].childNodes[7].innerText;
-        event.city = events[i].childNodes[9].innerText;
-        event.state = events[i].childNodes[21].innerText;
-        event.date = events[i].childNodes[15].innerText;
-        event.access = events[i].childNodes[31].innerText;
-        event.sourceURL = events[i].childNodes[35].innerText;
-        eventsArray.push(event); // This doesn't contain all info, XML is inconsistent
-      }
-      // console.log(eventsArray);
-      return eventsArray;
-    }).then(eventsArray => {
-      this.setState({ bookEvents: eventsArray });
-    }).catch(error => {
-      console.log('author event error: ', error)
-    })
   }
 
   searchGoogleBooks = e => {
@@ -167,7 +128,6 @@ class App extends React.Component {
               return response.json();
             }).then(json => {
               if (json.items.length > 0) {
-                console.log('ebook access: ', json.items)
                 this.setState({ openLibPDFs: json.items })
               } else {
                 console.log('no ebook/PDF available!');
@@ -192,7 +152,6 @@ class App extends React.Component {
       return response.json();
     }).then(json => {
       let results = json;
-      console.log('poemSearch: ', results);
       this.setState({ poetryDBpoems: results })
     }).catch(error => {
       console.err('Uh oh, ', error);
@@ -201,7 +160,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getBestsellersNYT();
-    this.findAuthorEvents();
   }
 
   searchForBooks = e => {
@@ -217,11 +175,6 @@ class App extends React.Component {
 
   handlePoemSearch = e => {
     this.setState({ poemSearchField: e.target.value });
-  }
-
-  handleEventSearch = e => {
-    this.setState({ eventSearchField: e.target.value })
-    console.log(e.target.value)
   }
 
   handleSort = e => {
@@ -288,11 +241,7 @@ class App extends React.Component {
               poemList={this.state.poetryDBpoems}
             />} />
           <Route path='/events' render={() =>
-            <EventsPage
-              events={this.state.bookEvents}
-              searchForEvents={this.findAuthorEvents}
-              handleEventSearch={this.handleEventSearch}
-            />
+            <EventsPage />
           } />
           <Route path='/bookSearch' render={() =>
             <BookSearch
