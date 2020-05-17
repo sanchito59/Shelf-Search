@@ -4,6 +4,7 @@ import { Carousel, Col, Row } from 'antd';
 import Bestseller from './Bestseller';
 
 const BestsellerRow = styled(Row)`
+  margin-top: 20px;
   justify-content: center;
 `;
 
