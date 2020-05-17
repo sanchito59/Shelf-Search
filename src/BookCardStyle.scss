@@ -46,15 +46,20 @@ iframe {
 /* Bookshelves */
 
 .bookshelfCard {
+  margin: 0 auto;
   background-color: #444;
   text-align: left;
-  color: #fff;
+  color: #fff !important;
+
+  h2,
+  h4 {
+    color: #fff !important;
+  }
+
   border-radius: 5px;
   padding: 10px;
   font-size: 110%;
   overflow: hidden;
-  /* width: 32ch;
-  height: 48ch; */
   background: grey;
   box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.5s;
@@ -74,23 +79,34 @@ iframe {
 
 /* Mobile Responsiveness */
 
+@media only screen and (min-width: 767px) {
+  .bookshelfCard {
+    width: 320px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .bookshelfCard {
     padding: 8px;
     font-size: 100%;
     border: 5px solid white;
   }
+
   .bookshelfCard h2 {
     font-size: 100%;
   }
-  .ISBN, .publisher {
+
+  .ISBN,
+  .publisher {
     display: none;
   }
+
   .book-list-wrapper {
     margin: 2px;
     grid-template-columns: 375px;
     border-radius: 8px;
   }
+
   .embedded-book-wrapper {
     margin: 2px;
     margin-top: 45px;
@@ -99,6 +115,7 @@ iframe {
     grid-gap: 30px;
     border-radius: 8px;
   }
+
   iframe {
     width: 365px;
     height: 365px;

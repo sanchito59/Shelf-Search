@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Speech from 'react-speech';
+import { Col } from 'antd';
 
 const PoemBody = styled.div`
     font-family: Caladea, sans-serif;
@@ -49,7 +50,8 @@ export default function SinglePoemDisplay(props) {
   // console.log('singlePoemDisplay props: ', props);
   const poemDiv = {
     textAlign: 'left',
-    marginLeft: '30px'
+    marginLeft: '30px',
+    color: 'black !important',
   }
   const listStyle = {
     listStyle: 'none',
@@ -69,26 +71,28 @@ export default function SinglePoemDisplay(props) {
   const { title, author, poem } = props;
 
   return (
-    <div style={poemDiv}>
-      <h2>{title}</h2>
-      <h4>BY <span style={poemAuthor}>{author}</span></h4>
-      <PoemBody>
-        <Speech
-          stop={true}
-          textAsButton={true}
-          rate="0.7" // Not perfect, cadence is too quick
-          displayText='Listen'
-          text={typeof poem === 'undefined' ? 'Test Poem' :
-            poem.join('')} // Works but not the best solution?
-        />
-        <ul className="bot-left">
-          {
-            poem.map((line) => {
-              return <li style={listStyle}>{line}</li>
-            })
-          }
-        </ul>
-      </PoemBody>
-    </div>
+    <Col sm={24} md={12} lg={16}>
+      <div style={poemDiv}>
+        <h2>{title}</h2>
+        <h4>BY <span style={poemAuthor}>{author}</span></h4>
+        <PoemBody>
+          <Speech
+            stop={true}
+            textAsButton={true}
+            rate="0.7" // Not perfect, cadence is too quick
+            displayText='Listen'
+            text={typeof poem === 'undefined' ? 'Test Poem' :
+              poem.join('')} // Works but not the best solution?
+          />
+          <ul className="bot-left">
+            {
+              poem.map((line) => {
+                return <li style={listStyle}>{line}</li>
+              })
+            }
+          </ul>
+        </PoemBody>
+      </div>
+    </Col>
   );
 }

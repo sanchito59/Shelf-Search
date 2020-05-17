@@ -1,70 +1,96 @@
 import React from 'react';
+import styled from 'styled-components';
 import BookshelfCard from './BookshelfCard';
-import './../../Bookshelf.scss'
+import { Col, Row } from 'antd';
 
-export default function TrendingBookshelf(props) {
+const ShelfRow = styled(Row)`
+  justify-content: center;
+`;
+
+const ShelfTitle = styled.h1`
+  && {
+    font-family: Georgia;
+    color: black !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+`;
+
+const Divider = styled.hr`
+  width: 80%;
+`;
+
+const Bookshelf = (props) => {
   const { currentlyTrendingTitle, trendingBooks, classicLitTitle, classicLiterature, sciFiTitle, sciFi } = props;
   // console.log('bookshelf props: ', props)
 
   return (
     <div>
       <div>
-        <h1 className='shelf-title'>{currentlyTrendingTitle}</h1>
-        <div className='bookshelf-grid'>
+        <ShelfTitle>{currentlyTrendingTitle}</ShelfTitle>
+        <ShelfRow gutter={[0, 40]}>
           {
             trendingBooks.map((book, i) => {
-              return <BookshelfCard
-                title={book.title}
-                author={book.author}
-                publisher={book.publisher}
-                ISBN={book.ISBN}
-                coverIMG={book.coverIMG}
-                pageCount={book.pages}
-                key={i}
-              />
+              return <Col lg={8} sm={24}>
+                <BookshelfCard
+                  title={book.title}
+                  author={book.author}
+                  publisher={book.publisher}
+                  ISBN={book.ISBN}
+                  coverIMG={book.coverIMG}
+                  pageCount={book.pages}
+                  key={i}
+                />
+              </Col>
             })
           }
-        </div>
+        </ShelfRow>
       </div>
-      <hr></hr>
+      <Divider />
       <div>
-        <h1 className='shelf-title'>{classicLitTitle}</h1>
-        <div className='bookshelf-grid'>
+        <ShelfTitle>{classicLitTitle}</ShelfTitle>
+        <ShelfRow gutter={[0, 40]}>
           {
             classicLiterature.map((book, i) => {
-              return <BookshelfCard
-                title={book.title}
-                author={book.author}
-                publisher={book.publisher}
-                ISBN={book.ISBN}
-                coverIMG={book.coverIMG}
-                pageCount={book.pages}
-                key={i}
-              />
+              return <Col lg={8} sm={24}>
+                <BookshelfCard
+                  title={book.title}
+                  author={book.author}
+                  publisher={book.publisher}
+                  ISBN={book.ISBN}
+                  coverIMG={book.coverIMG}
+                  pageCount={book.pages}
+                  key={i}
+                />
+              </Col>
             })
           }
-        </div>
+        </ShelfRow>
       </div>
-      <hr></hr>
+      <Divider />
       <div>
-        <h1 className='shelf-title'>{sciFiTitle}</h1>
-        <div className='bookshelf-grid'>
+        <ShelfTitle>{sciFiTitle}</ShelfTitle>
+        <ShelfRow gutter={[0, 40]}>
           {
             sciFi.map((book, i) => {
-              return <BookshelfCard
-                title={book.title}
-                author={book.author}
-                publisher={book.publisher}
-                ISBN={book.ISBN}
-                coverIMG={book.coverIMG}
-                pageCount={book.pages}
-                key={i}
-              />
+              return <Col lg={8} sm={24}>
+                <BookshelfCard
+                  title={book.title}
+                  author={book.author}
+                  publisher={book.publisher}
+                  ISBN={book.ISBN}
+                  coverIMG={book.coverIMG}
+                  pageCount={book.pages}
+                  key={i}
+                />
+              </Col>
             })
           }
-        </div>
+        </ShelfRow>
       </div>
-      <hr></hr>
+      <Divider />
     </div>
   );
 }
+
+export default Bookshelf;

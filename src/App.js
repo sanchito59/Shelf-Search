@@ -1,4 +1,3 @@
-// Functionality
 import React from "react";
 import request from "superagent";
 import { Switch, Route } from 'react-router-dom';
