@@ -1,19 +1,35 @@
 import React from 'react';
-import './../../BestsellerList.scss';
-// Components
-import BestsellerList from './BestsellerList';
+import styled from 'styled-components';
+import { Col, Row } from 'antd';
+import Bestseller from './Bestseller';
 
-export default function NYTBestsellers(props) {
+const BestsellerRow = styled(Row)`
+  justify-content: center;
+`;
+
+const TitleColumn = styled(Col)`
+  margin: 20px;
+  line-height: 5;
+`;
+
+const SectionTitle = styled.h1`
+  color: black !important;
+  margin: 0px;
+`;
+
+const NYTBestsellers = (props) => {
   const { bestSellers } = props;
   // console.log('nyt props: ', props)
   if (typeof bestSellers !== 'undefined') {
     return (
       <div>
-        <div className='outer-card-row'>
-          <h1 className='header'>This Week's NYT Bestsellers: </h1>
+        <BestsellerRow>
+          <TitleColumn lg={10} sm={24}>
+            <SectionTitle>This Week's NYT Bestsellers: </SectionTitle>
+          </TitleColumn>
           {
             bestSellers.map((book, i) => {
-              return <BestsellerList
+              return <Bestseller
                 title={book.book_details[0].title}
                 author={book.book_details[0].author}
                 currentRank={book.rank}
@@ -25,7 +41,7 @@ export default function NYTBestsellers(props) {
               />
             })
           }
-        </div>
+        </BestsellerRow>
       </div>
     )
   } else {
@@ -34,3 +50,5 @@ export default function NYTBestsellers(props) {
     );
   }
 }
+
+export default NYTBestsellers;
