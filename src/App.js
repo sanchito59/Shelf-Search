@@ -20,11 +20,6 @@ class App extends React.Component {
       // Proxy URL
       proxyurl: "https://cors-anywhere.herokuapp.com/",
       // Google API
-      isLoggedIn: false,
-      name: "",
-      email: "",
-      url: "",
-      access_token: "",
       googleBooks: [],
       searchField: "",
       sort: "",
@@ -275,14 +270,12 @@ class App extends React.Component {
       if (this.state.sort === "Newest") {
         // substring checks 4 digit year, , i.e. '1994' or '0000' in case of manageResponseData data
         return (
-          parseInt(b.volumeInfo.publishedDate.substring(0, 4)) -
-          parseInt(a.volumeInfo.publishedDate.substring(0, 4))
+          parseInt(b.volumeInfo.publishedDate.substring(0, 4)) - parseInt(a.volumeInfo.publishedDate.substring(0, 4))
         );
       } else if (this.state.sort === "Oldest") {
         // switch 'a' and 'b' to flip sort
         return (
-          parseInt(a.volumeInfo.publishedDate.substring(0, 4)) -
-          parseInt(b.volumeInfo.publishedDate.substring(0, 4))
+          parseInt(a.volumeInfo.publishedDate.substring(0, 4)) - parseInt(b.volumeInfo.publishedDate.substring(0, 4))
         );
       } else if (this.state.sort === "Alphabetical") {
         if (a.volumeInfo.title < b.volumeInfo.title) {

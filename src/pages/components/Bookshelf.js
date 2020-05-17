@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BookshelfCard from './BookshelfCard';
+import ScrollUp from './ScrollUp';
 import { Col, Row } from 'antd';
 
 const ShelfRow = styled(Row)`
@@ -67,6 +68,7 @@ const Bookshelf = (props) => {
           }
         </ShelfRow>
       </div>
+      <ScrollUp />
       <Divider />
       <div>
         <ShelfTitle>{sciFiTitle}</ShelfTitle>

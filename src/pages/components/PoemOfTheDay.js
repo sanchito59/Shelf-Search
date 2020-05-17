@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import styled from 'styled-components';
 import SinglePoemDisplay from './SinglePoemDisplay';
+import ScrollUp from './ScrollUp';
 import TwitterContainer from './TwitterContainer';
 
 const PoemRow = styled(Row)`
@@ -141,6 +142,7 @@ const PoemOfTheDay = (props) => {
         />
       })}
       <Col sm={24} md={12} lg={10}>
+        <ScrollUp />
         <TwitterContainer />
       </Col>
     </PoemRow>

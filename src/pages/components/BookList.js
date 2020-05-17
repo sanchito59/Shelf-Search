@@ -1,7 +1,7 @@
 import React from 'react';
 import './../../App.css';
-// Components
 import BookCard from './BookCard';
+import ScrollUp from './ScrollUp';
 import OpenLibraryBookCard from './OpenLibraryBookCard';
 import EmbeddedBook from './EmbeddedBook';
 
@@ -38,6 +38,7 @@ const BookList = (props) => {
             />
           })
         }
+        <ScrollUp />
         {
           openLibraryBooks.map((book, i) => {
             return <OpenLibraryBookCard

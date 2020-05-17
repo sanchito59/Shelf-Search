@@ -1,6 +1,6 @@
 import React from 'react';
-// Components
 import EventCard from './EventCard';
+import ScrollUp from './ScrollUp';
 
 export default function Event(props) {
   const { events } = props;
@@ -8,6 +8,7 @@ export default function Event(props) {
   const eventList = {}
   return (
     <div>
+      <ScrollUp />
       <h1 className='event-list-title'>Events Near You!</h1>
       <div style={eventList}>
         {
