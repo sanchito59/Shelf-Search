@@ -7,9 +7,10 @@ import TwitterContainer from './TwitterContainer';
 
 const PoemRow = styled(Row)`
   justify-content: center;
+  width: 100%;
 `;
 
-const PoemOfTheDay = (props) => {
+const PoemOfTheDay = () => {
   const samplePoems = [
     {
       title: 'Alone Looking at the Mountain',
@@ -98,9 +99,6 @@ const PoemOfTheDay = (props) => {
         'of children calling in the grove of lemon trees,',
         'where my heart is as helpless as crushed birds.']
     },
-    // {},
-    // {},
-    // {},
   ]
 
   return (

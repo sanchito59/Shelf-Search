@@ -10,7 +10,7 @@ const PoemRow = styled(Row)`
 
 const PoemList = (props) => {
   const { poemList } = props;
-  // console.log('PoemList props: ', props);
+
   return (
     <>
       <PoemOfTheDay />

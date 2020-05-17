@@ -7,7 +7,7 @@ import EmbeddedBook from './EmbeddedBook';
 
 const BookList = (props) => {
   const { availableEbooks, books, openLibraryBooks } = props;
-  // console.log('BookList props: ', props);
+
   return (
     <div>
       <div className='embedded-book-wrapper'>

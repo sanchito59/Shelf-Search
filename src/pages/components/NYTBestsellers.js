@@ -47,7 +47,7 @@ const BestSellerCarousel = styled(Carousel)`
 
 const NYTBestsellers = (props) => {
   const { bestSellers } = props;
-  // console.log('nyt props: ', props)
+
   if (typeof bestSellers !== 'undefined') {
     return (
       <div>

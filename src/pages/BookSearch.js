@@ -9,7 +9,7 @@ import "./../App.scss";
 
 const SearchArea = (props) => {
   const { searchForBooks, handleSearch, handleEbookFilter, handleSort, books, openLibraryBooks, availableEbooks } = props;
-  // console.log('search props: ', props)
+
   return (
     <SearchFormDiv>
       <form action="" onSubmit={searchForBooks}>
