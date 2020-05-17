@@ -276,8 +276,8 @@ iframe {
 .underbar {
   height: 5px;
   left: 40%;
-  top: 214px;
-  background: #282c34;
+  top: 145px;
+  background: #cccccc;
   position: absolute;
   -webkit-transition: 0.5s ease;
 }
@@ -293,7 +293,7 @@ iframe {
   }
 
   &:nth-of-type(2):hover~.underbar {
-    left: 40.45%;
+    left: 40.3%;
     width: 215.5px;
   }
 
@@ -303,7 +303,7 @@ iframe {
   }
 
   &:nth-of-type(4):hover~.underbar {
-    left: 61%;
+    left: 61.25%;
     width: 96.5px;
   }
 
