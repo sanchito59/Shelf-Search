@@ -1,5 +1,6 @@
 import React from 'react';
-import './../../BookCardStyle.scss';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import './../../App.scss';
 
 const BookCard = (props) => {
   const { image, title, author, publisher, publishedDate, ISBN, previewLink } = props;
@@ -9,7 +10,7 @@ const BookCard = (props) => {
       class="book-card">
       <div>
         <a href={previewLink} target="_blank" className="preview-link">
-          <img src={image} alt="book cover thumbnail"></img>
+          <LazyLoadImage src={image} alt="book cover thumbnail" />
           <h2>{title}</h2>
           <h4>Author: {author}</h4>
           <p>{publisher}</p>

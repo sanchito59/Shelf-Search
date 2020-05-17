@@ -1,5 +1,6 @@
 import React from 'react';
-import './../../BookCardStyle.scss';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import './../../App.scss';
 
 const OpenLibraryBookCard = (props) => {
   const capitalize = {
@@ -11,7 +12,7 @@ const OpenLibraryBookCard = (props) => {
     <div class="book-card">
       <div>
         <div>
-          <img src={coverIMG} alt="book cover thumbnail"></img>
+          <LazyLoadImage src={coverIMG} alt="book cover thumbnail" />
           <h2 style={capitalize}>{title}</h2>
           <h4>Author: {author}</h4>
           <p>{typeof publisher === 'undefined' ? publisher : publisher[0]}</p>

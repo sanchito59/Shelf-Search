@@ -5,7 +5,7 @@ import SearchFormDiv from './components/SearchFormDiv';
 import SearchButton from './components/SearchButton';
 import SearchInput from './components/SearchInput';
 // Styles/Assets
-import "./../App.css";
+import "./../App.scss";
 
 const SearchArea = (props) => {
   const { searchForBooks, handleSearch, handleEbookFilter, handleSort, books, openLibraryBooks, availableEbooks } = props;

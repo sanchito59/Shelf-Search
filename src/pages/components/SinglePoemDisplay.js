@@ -63,11 +63,6 @@ export default function SinglePoemDisplay(props) {
     letterSpacing: '1px'
   }
 
-  const poemBody = {
-    fontFamily: 'Caladea, sans-serif',
-    paddingBottom: '24px'
-  }
-
   const { title, author, poem } = props;
 
   return (

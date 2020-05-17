@@ -1,13 +1,13 @@
 import React from 'react';
-// Styles/Assets
-import './../../BookCardStyle.scss'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import './../../App.scss'
 
 const BookshelfCard = (props) => {
   const { coverIMG, title, author, publisher, pageCount, ISBN } = props;
   // console.log('bookshelf card: ', props)
   return (
     <div className="bookshelfCard">
-      <img src={coverIMG} alt="book cover thumbnail" className='bookshelfIMG'></img>
+      <LazyLoadImage src={coverIMG} alt="book cover thumbnail" className='bookshelfIMG' />
       <h2>{title}</h2>
       <h4>Author: {author}</h4>
       <p className='publisher'>Publisher: {publisher}</p>

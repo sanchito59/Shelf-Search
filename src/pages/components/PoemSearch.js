@@ -4,7 +4,7 @@ import PoemList from './PoemList';
 import SearchFormDiv from './SearchFormDiv';
 import SearchInput from './SearchInput';
 import SearchButton from './SearchButton';
-import "./../../App.css";
+import "./../../App.scss";
 
 const SearchForm = styled.form`
   margin-bottom: 20px;

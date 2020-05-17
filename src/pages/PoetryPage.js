@@ -1,6 +1,6 @@
 import React from 'react';
 import PoemSearch from './components/PoemSearch';
-import './../PoemOfDay.css';
+import './../App.scss';
 
 const PoetryPage = (props) => {
   const { poemSearch, handlePoemSearch, poemList } = props;

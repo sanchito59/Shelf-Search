@@ -1,5 +1,5 @@
 import React from 'react';
-import './../../EventCard.css';
+import './../../App.scss';
 
 export default function EventCard(props) {
   const { date, eventAddress, eventTitle, eventCity, eventState } = props;

@@ -8,7 +8,7 @@ import EventsPage from './pages/EventsPage';
 import BookSearch from "./pages/BookSearch";
 import Homepage from './pages/Homepage';
 // Style/Assets
-import "./App.css";
+import "./App.scss";
 
 const NYT_KEY = `${process.env.REACT_APP_NYT_KEY}`;
 const GOOD_READS_KEY = `${process.env.REACT_APP_GOOD_READS_KEY}`

@@ -1,5 +1,5 @@
 import React from 'react';
-import './../../App.css';
+import './../../App.scss';
 import BookCard from './BookCard';
 import ScrollUp from './ScrollUp';
 import OpenLibraryBookCard from './OpenLibraryBookCard';

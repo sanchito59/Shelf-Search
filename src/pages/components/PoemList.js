@@ -14,7 +14,7 @@ const PoemList = (props) => {
   return (
     <>
       <PoemOfTheDay />
-      <PoemRow gutter={80, 0}>
+      <PoemRow gutter={[80, 0]}>
         {
           poemList.map((poem, i) => {
             return <SinglePoemDisplay
