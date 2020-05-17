@@ -2,7 +2,7 @@ import React from 'react';
 import SearchFormDiv from './SearchFormDiv';
 import SearchInput from './SearchInput';
 import SearchButton from './SearchButton';
-import "./../../App.css";
+import "./../../App.scss";
 
 export default function EventSearch(props) {
   const { eventSearch, handleEventSearch } = props;

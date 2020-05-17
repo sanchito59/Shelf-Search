@@ -7,18 +7,6 @@ import TwitterContainer from './TwitterContainer';
 
 const PoemRow = styled(Row)`
   justify-content: center;
-`
-
-const PoemBody = styled.div`
-    font-family: Caladea, sans-serif;
-
-    .rs-container button {
-      margin-bottom: 20px;
-    }
-
-    .rs-stop {
-      width: 25px;
-    }
 `;
 
 const PoemOfTheDay = (props) => {
@@ -114,25 +102,9 @@ const PoemOfTheDay = (props) => {
     // {},
     // {},
   ]
-  // Style
-  const poemDiv = {
-    textAlign: 'left',
-    marginLeft: '30px',
-    marginRight: '30px',
-    marginBottom: '30px'
-  }
-  const listStyle = {
-    listStyle: 'none',
-  }
-
-  const poemAuthor = {
-    textTransform: 'uppercase',
-    textDecoration: 'underline',
-    letterSpacing: '1px'
-  }
 
   return (
-    <PoemRow gutter={80, 0}>
+    <PoemRow gutter={[80, 0]}>
       {samplePoems.map((poem, i) => {
         return <SinglePoemDisplay
           title={poem.title}

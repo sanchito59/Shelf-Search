@@ -1,5 +1,5 @@
 import React from 'react';
-import './../../BookCardStyle.scss';
+import './../../App.scss';
 
 const BookCard = (props) => {
   const { image, title, author, publisher, publishedDate, ISBN, previewLink } = props;

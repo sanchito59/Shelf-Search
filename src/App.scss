@@ -1,0 +1,383 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  color: white !important;
+}
+
+/* Header */
+
+.App-header {
+  background-image: url('./assets/booksHeader.jpg');
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  text-shadow: 1.5px 1.5px #282c34;
+}
+
+.shelf-search-title {
+  text-shadow: 3px 3px #282c34;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.quote-of-the-day {
+  float: left;
+  width: 80%;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1.5px 1.5px #282c34;
+  font-family: Poppins, sans-serif;
+  overflow: none;
+}
+
+/* Header End */
+
+.select-params {
+  border: 1px solid black;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+@media only screen and (max-width: 600px) {
+  .App-header {
+    /* background-repeat: no-repeat;
+    background-attachment: fixed; */
+    background-size: contain;
+  }
+
+  .select-params {
+    float: right;
+  }
+
+  .quote-of-the-day {
+    font-size: 14px;
+    width: 85%;
+    margin-bottom: 0px;
+    /* Adjust display with event */
+    display: none;
+  }
+
+  .shelf-search-title {
+    font-size: 30px;
+    margin-bottom: 0px;
+  }
+}
+
+/* EVENT CARD */
+
+.event-list-title {
+  font-family: Poppins;
+}
+
+.outerDiv {
+  text-align: left;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 8px;
+  width: 65%;
+  margin-bottom: 24px;
+}
+
+.innerDiv {
+  text-align: left;
+  background-color: #F4FCFF;
+  padding: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.eventTitleDiv {
+  background-color: #DAF5FF;
+  height: 4rem;
+  padding: 5px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 2px solid black;
+}
+
+.eventTitle {
+  font-size: 20px;
+  padding-left: 15px;
+  color: #00445E;
+}
+
+.addressQueryStyle {
+  color: #00445E;
+  text-decoration: none;
+}
+
+.addressQueryStyle:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+
+@media only screen and (max-width: 600px) {
+  .outerDiv {
+    width: 90%;
+  }
+
+  .eventTitle {
+    font-size: 16px;
+  }
+}
+
+/* EVENT CARD */
+
+/* BOOKCARD */
+
+.book-list-wrapper {
+  justify-content: space-evenly;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 400px 400px 400px;
+  grid-gap: 30px;
+  border-radius: 8px;
+}
+
+.embedded-book-wrapper {
+  margin: 40px;
+  display: grid;
+  grid-template-columns: 525px 525px;
+  grid-gap: 30px;
+  border-radius: 8px;
+}
+
+iframe {
+  width: 525px;
+  height: 525px;
+}
+
+.book-card {
+  background-color: #444;
+  text-align: left;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 12px;
+  font-size: 125%;
+  background: grey;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
+  will-change: transform;
+  border: 10px solid white;
+}
+
+.book-card:hover {
+  box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.5);
+}
+
+.preview-link {
+  color: white;
+}
+
+/* Bookshelves */
+
+.bookshelfCard {
+  margin: 0 auto;
+  background-color: #444;
+  text-align: left;
+  color: #fff !important;
+
+  h2,
+  h4 {
+    color: #fff !important;
+  }
+
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 110%;
+  overflow: hidden;
+  background: grey;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
+  will-change: transform;
+  border: 10px solid white;
+}
+
+.bookshelfCard:hover {
+  box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.5);
+}
+
+.bookshelfIMG {
+  width: 100px;
+}
+
+/* Bookshelves End */
+
+/* Mobile Responsiveness */
+
+@media only screen and (min-width: 767px) {
+  .bookshelfCard {
+    width: 320px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .bookshelfCard {
+    width: 250px;
+    padding: 8px;
+    font-size: 100%;
+    border: 5px solid white;
+  }
+
+  .bookshelfCard h2 {
+    font-size: 100%;
+  }
+
+  .book-list-wrapper {
+    margin: 2px;
+    grid-template-columns: 375px;
+    border-radius: 8px;
+  }
+
+  .embedded-book-wrapper {
+    margin: 2px;
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: 375px;
+    grid-gap: 30px;
+    border-radius: 8px;
+  }
+
+  iframe {
+    width: 365px;
+    height: 365px;
+  }
+}
+
+/* BOOKCARD */
+
+/* NAVLINKS*/
+.navlinks {
+  margin-bottom: 16px;
+}
+
+.navlinks a {
+  color: white;
+  font-family: Georgia;
+  padding: 8px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.navlinks a:hover {
+  color: rgb(240, 240, 240);
+}
+
+.underbar {
+  height: 5px;
+  left: 40%;
+  top: 214px;
+  background: #282c34;
+  position: absolute;
+  -webkit-transition: 0.5s ease;
+}
+
+.navlinks li {
+  list-style: none;
+  float: left;
+  -webkit-transition: 0.5s ease;
+
+  &:nth-of-type(1):hover~.underbar {
+    left: 34.9%;
+    width: 86.5px;
+  }
+
+  &:nth-of-type(2):hover~.underbar {
+    left: 40.45%;
+    width: 215.5px;
+  }
+
+  &:nth-of-type(3):hover~.underbar {
+    left: 54.5%;
+    width: 103px;
+  }
+
+  &:nth-of-type(4):hover~.underbar {
+    left: 61%;
+    width: 96.5px;
+  }
+
+  cursor: pointer;
+}
+
+// Mobile Responsiveness
+@media only screen and (max-width: 600px) {
+  .navlinks {
+    margin-right: 35px;
+    font-size: 13px;
+  }
+
+  .navlinks a {
+    padding: 4px;
+  }
+
+  .underbar {
+    height: 3px;
+    left: 35%;
+    top: 102px;
+    position: absolute;
+    -webkit-transition: 0.5s ease;
+    background: rgb(230, 230, 230);
+  }
+
+  .navlinks li {
+    list-style: none;
+    float: left;
+    -webkit-transition: 0.5s ease;
+
+    &:nth-of-type(1):hover~.underbar {
+      left: 17%;
+      width: 43px;
+    }
+
+    &:nth-of-type(2):hover~.underbar {
+      left: 28%;
+      width: 113px;
+    }
+
+    &:nth-of-type(3):hover~.underbar {
+      left: 57.6%;
+      width: 54px;
+    }
+
+    &:nth-of-type(4):hover~.underbar {
+      left: 71.5%;
+      width: 52.5px;
+    }
+
+    cursor: pointer;
+  }
+}
+
+/* NAVLINKS*/
+
+/* PoemOfDay*/
+.poem-div {
+  margin: 20px;
+  font-family: Caladea, sans-serif;
+  text-align: left;
+  background: grey;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.4);
+  width: 300px;
+  color: white;
+  border: 4px solid white;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.poem-title,
+.poem-of-the-day {
+  text-decoration: underline;
+}
+
+/* PoemOfDay*/
