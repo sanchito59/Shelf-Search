@@ -1,4 +1,5 @@
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './../../App.scss'
 
 const BookshelfCard = (props) => {
@@ -6,7 +7,7 @@ const BookshelfCard = (props) => {
   // console.log('bookshelf card: ', props)
   return (
     <div className="bookshelfCard">
-      <img src={coverIMG} alt="book cover thumbnail" className='bookshelfIMG'></img>
+      <LazyLoadImage src={coverIMG} alt="book cover thumbnail" className='bookshelfIMG' />
       <h2>{title}</h2>
       <h4>Author: {author}</h4>
       <p className='publisher'>Publisher: {publisher}</p>

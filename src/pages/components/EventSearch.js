@@ -4,8 +4,9 @@ import SearchInput from './SearchInput';
 import SearchButton from './SearchButton';
 import "./../../App.scss";
 
-export default function EventSearch(props) {
+const EventSearch = (props) => {
   const { eventSearch, handleEventSearch } = props;
+
   return (
     <SearchFormDiv>
       <form onSubmit={eventSearch}>
@@ -21,3 +22,5 @@ export default function EventSearch(props) {
     </SearchFormDiv>
   );
 }
+
+export default EventSearch;
