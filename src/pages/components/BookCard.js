@@ -1,25 +1,39 @@
 import React from 'react';
+import styled from 'styled-components';
+import BookContainer from './BookContainer';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './../../App.scss';
+
+const BookCover = styled(LazyLoadImage)`
+  width: 100%;
+  max-height: 40%;
+  padding: 25px;
+`;
+
+const TextWrapper = styled.div`
+  width: 100%;
+  padding: 20px;
+  color: black;
+`;
+
+const BookTitle = styled.h2`
+`;
 
 const BookCard = (props) => {
   const { image, title, author, publisher, publishedDate, ISBN, previewLink } = props;
 
   return (
-    <div
-      class="book-card">
-      <div>
-        <a href={previewLink} target="_blank" className="preview-link">
-          <LazyLoadImage src={image} alt="book cover thumbnail" />
-          <h2>{title}</h2>
+    <BookContainer>
+      <a href={previewLink} target="_blank" className="preview-link">
+        <BookCover src={image} alt="book cover thumbnail" />
+        <TextWrapper>
+          <BookTitle>{title}</BookTitle>
           <h4>Author: {author}</h4>
-          <p>{publisher}</p>
-          <p>Published Date: {publishedDate === '0000' ? 'Not available' : publishedDate.substring(0, 4)}</p>
+          <p>{publisher} - {publishedDate === '0000' ? 'Not available' : publishedDate.substring(0, 4)} - </p>
           <p>ISBN: {ISBN}</p>
-          <p>Preview: <a href={previewLink} target="_blank" className="preview-link">{title}</a></p>
-        </a>
-      </div>
-    </div>
+        </TextWrapper>
+      </a>
+    </BookContainer>
   )
 }
 

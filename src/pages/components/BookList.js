@@ -1,15 +1,22 @@
 import React from 'react';
-import './../../App.scss';
+import styled from 'styled-components';
+import { Col, Row } from 'antd';
 import BookCard from './BookCard';
 import ScrollUp from './ScrollUp';
 import OpenLibraryBookCard from './OpenLibraryBookCard';
 import EmbeddedBook from './EmbeddedBook';
+import './../../App.scss';
+
+const BookResults = styled(Row)`
+  width: 100%;
+  justify-content: center;
+`;
 
 const BookList = (props) => {
   const { availableEbooks, books, openLibraryBooks } = props;
 
   return (
-    <div>
+    <>
       <div className='embedded-book-wrapper'>
         {
           availableEbooks.map((ebook, i) => {
@@ -20,28 +27,30 @@ const BookList = (props) => {
           })
         }
       </div>
-      <div className='book-list-wrapper'>
+      <BookResults gutter={[60, 60]}>
         {
           books.map((book, i) => {
-            return <BookCard
-              image={book.volumeInfo.imageLinks.thumbnail}
-              previewLink={book.volumeInfo.previewLink}
-              title={book.volumeInfo.title}
-              author={book.volumeInfo.authors}
-              publisher={book.volumeInfo.publisher}
-              publishedDate={book.volumeInfo.publishedDate}
-              downloadLinkForDevices={book.accessInfo.epub.acsTokenLink}
-              googleBookId={book.id}
-              // Need error handling for 'TypeError: Cannot read property '0' of undefined' on some queries
-              ISBN={book.volumeInfo.industryIdentifiers[0].identifier}
-              key={i}
-            />
+            return <Col lg={7} md={9} sm={20}>
+              <BookCard
+                image={book.volumeInfo.imageLinks.thumbnail}
+                previewLink={book.volumeInfo.previewLink}
+                title={book.volumeInfo.title}
+                author={book.volumeInfo.authors}
+                publisher={book.volumeInfo.publisher}
+                publishedDate={book.volumeInfo.publishedDate}
+                downloadLinkForDevices={book.accessInfo.epub.acsTokenLink}
+                googleBookId={book.id}
+                // Need error handling for 'TypeError: Cannot read property '0' of undefined' on some queries
+                ISBN={book.volumeInfo.industryIdentifiers[0].identifier}
+                key={i}
+              />
+            </Col>
           })
         }
         <ScrollUp />
         {
           openLibraryBooks.map((book, i) => {
-            return <OpenLibraryBookCard
+            return <Col lg={7} md={9} sm={20}> <OpenLibraryBookCard
               coverIMG={'https://i.imgur.com/J5LVHEL.jpg'}
               title={book.title}
               author={book.author_name}
@@ -51,10 +60,11 @@ const BookList = (props) => {
               publishedDate={book.publish_date}
               key={i}
             />
+            </Col>
           })
         }
-      </div>
-    </div>
+      </BookResults>
+    </>
   )
 }
 
