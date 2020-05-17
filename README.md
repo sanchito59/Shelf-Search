@@ -6,7 +6,7 @@
 
 [Shelf Search](https://shelf-search.herokuapp.com/#/) is a webapp based around finding information about literary events in your area, poetry, and ebook/PDF availability. On [Shelf Search](https://shelf-search.herokuapp.com/#/), you are able to search for a book by author, title, genre, etc., and the query will return any available PDFs/ebooks if found. As well, you can search for poetry by author and pull up all available poems, with built in text-to-speech buttons for audio playback. The site also contains other literary features, such as a dynamic New York Time's Bestseller List for reading suggestions and tools to find literary events in your area or with a general zip-code search.
 
-![image of homepage](https://i.imgur.com/S8gyMj9.png, "read")
+![image of homepage](https://i.imgur.com/encVQDt.png, "read")
 
  - - -
 
