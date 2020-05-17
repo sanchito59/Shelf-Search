@@ -52,7 +52,6 @@ class App extends React.Component {
   searchGoogleBooks = e => {
     e.preventDefault();
     if (this.state.ebookFilter === 'ebook-param') {
-      console.log('ebookfilter api state: ', this.state)
       request
         .get("https://www.googleapis.com/books/v1/volumes")
         .query({

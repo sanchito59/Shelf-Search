@@ -17,6 +17,10 @@ const SectionTitle = styled.h1`
 const BestSellerCarousel = styled(Carousel)`
   padding: 20px;
 
+  .slick-list {
+    margin-top: 20px;
+  }
+
   .slick-dots {
     height: 0px;
 

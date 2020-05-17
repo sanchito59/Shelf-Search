@@ -1,3 +1,7 @@
+html {
+  overflow-x: hidden; // used for book results overflowing...
+}
+
 .App {
   text-align: center;
 }
@@ -9,7 +13,7 @@ h1 {
 /* Header */
 
 .App-header {
-  background-image: url('./assets/booksHeader.jpg');
+  background-image: url("./assets/booksHeader.jpg");
   min-height: 15vh;
   display: flex;
   flex-direction: column;
@@ -26,17 +30,6 @@ h1 {
   margin-bottom: 16px;
 }
 
-.quote-of-the-day {
-  float: left;
-  width: 80%;
-  height: 50px;
-  font-size: 16px;
-  font-weight: bold;
-  text-shadow: 1.5px 1.5px #282c34;
-  font-family: Poppins, sans-serif;
-  overflow: none;
-}
-
 /* Header End */
 
 .select-params {
@@ -47,21 +40,11 @@ h1 {
 
 @media only screen and (max-width: 600px) {
   .App-header {
-    /* background-repeat: no-repeat;
-    background-attachment: fixed; */
     background-size: contain;
   }
 
   .select-params {
     float: right;
-  }
-
-  .quote-of-the-day {
-    font-size: 14px;
-    width: 85%;
-    margin-bottom: 0px;
-    /* Adjust display with event */
-    display: none;
   }
 
   .shelf-search-title {
@@ -87,14 +70,14 @@ h1 {
 
 .innerDiv {
   text-align: left;
-  background-color: #F4FCFF;
+  background-color: #f4fcff;
   padding: 20px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
 
 .eventTitleDiv {
-  background-color: #DAF5FF;
+  background-color: #daf5ff;
   height: 4rem;
   padding: 5px;
   border-top-left-radius: 8px;
@@ -105,11 +88,11 @@ h1 {
 .eventTitle {
   font-size: 20px;
   padding-left: 15px;
-  color: #00445E;
+  color: #00445e;
 }
 
 .addressQueryStyle {
-  color: #00445E;
+  color: #00445e;
   text-decoration: none;
 }
 
@@ -134,15 +117,6 @@ h1 {
 
 /* BOOKCARD */
 
-.book-list-wrapper {
-  justify-content: space-evenly;
-  margin: 20px;
-  display: grid;
-  grid-template-columns: 400px 400px 400px;
-  grid-gap: 30px;
-  border-radius: 8px;
-}
-
 .embedded-book-wrapper {
   margin: 40px;
   display: grid;
@@ -154,25 +128,6 @@ h1 {
 iframe {
   width: 525px;
   height: 525px;
-}
-
-.book-card {
-  background-color: #444;
-  text-align: left;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 12px;
-  font-size: 125%;
-  background: grey;
-  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.5s;
-  will-change: transform;
-  border: 10px solid white;
-}
-
-.book-card:hover {
-  box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.5);
 }
 
 .preview-link {
@@ -233,12 +188,6 @@ iframe {
     font-size: 100%;
   }
 
-  .book-list-wrapper {
-    margin: 2px;
-    grid-template-columns: 375px;
-    border-radius: 8px;
-  }
-
   .embedded-book-wrapper {
     margin: 2px;
     margin-top: 45px;
@@ -274,7 +223,7 @@ iframe {
 }
 
 .underbar {
-  height: 5px;
+  height: 3.5px;
   left: 40%;
   top: 145px;
   background: #cccccc;
