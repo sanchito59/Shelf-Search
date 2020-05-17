@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Col, Row } from 'antd';
 
-const BestSellerCard = styled(Col)`
+const BestSellerCard = styled.div`
   font-family: Caladea, sans-serif;
   background-color: rgb(100, 100, 100);
   margin: 20px;
@@ -84,7 +84,7 @@ const Bestseller = (props) => {
   const { currentRank, amazonLink, title, author, description, weeksOnList, rankLastWeek } = props;
 
   return (
-    <BestSellerCard lg={10} sm={24}>
+    <BestSellerCard>
       <InformationRow>
         <Col lg={4}>
           <Rank>{currentRank} |</Rank>
