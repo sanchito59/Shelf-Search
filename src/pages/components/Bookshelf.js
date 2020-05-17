@@ -23,7 +23,6 @@ const Divider = styled.hr`
 
 const Bookshelf = (props) => {
   const { currentlyTrendingTitle, trendingBooks, classicLitTitle, classicLiterature, sciFiTitle, sciFi } = props;
-  // console.log('bookshelf props: ', props)
 
   return (
     <div>

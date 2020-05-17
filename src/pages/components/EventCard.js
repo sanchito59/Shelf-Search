@@ -3,7 +3,7 @@ import './../../App.scss';
 
 export default function EventCard(props) {
   const { date, eventAddress, eventTitle, eventCity, eventState } = props;
-  // console.log('event card props: ', props)
+
   let newDate = date.slice(0, 10);
   let year = newDate.slice(0, 4);
   let monthDay = newDate.slice(5, 9);

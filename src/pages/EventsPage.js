@@ -1,5 +1,4 @@
 import React from 'react';
-// Components
 import EventSearch from './components/EventSearch';
 import EventList from './components/EventList';
 
@@ -15,7 +14,6 @@ class EventsPage extends React.Component {
     }
     this.findAuthorEvents = this.findAuthorEvents.bind(this);
   }
-  // const { eventSearch, handleEventSearch } = props;
 
   findAuthorEvents = () => {
     // e.preventDefault();
@@ -41,7 +39,6 @@ class EventsPage extends React.Component {
         event.sourceURL = events[i].childNodes[35].innerText;
         eventsArray.push(event); // This doesn't contain all info, XML is inconsistent
       }
-      console.log(eventsArray);
       return eventsArray;
     }).then(eventsArray => {
       this.setState({ bookEvents: eventsArray });
@@ -61,12 +58,11 @@ class EventsPage extends React.Component {
   render() {
     return (
       <div>
-        <EventSearch eventSearch={this.findAuthorEvents}
+        <EventSearch
+          eventSearch={this.findAuthorEvents}
           handleEventSearch={this.handleEventSearch}
         />
-        <EventList
-          events={this.state.bookEvents}
-        />
+        <EventList events={this.state.bookEvents} />
       </div>
     );
   }

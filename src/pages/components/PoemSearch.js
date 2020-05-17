@@ -12,7 +12,7 @@ const SearchForm = styled.form`
 
 const PoemSearch = (props) => {
   const { poemSearch, handlePoemSearch, poemList } = props;
-  // console.log('poem search props: ', props)
+
   return (
     <SearchFormDiv>
       <SearchForm onSubmit={poemSearch}>

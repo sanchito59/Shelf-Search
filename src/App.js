@@ -15,8 +15,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // Proxy URL
-      proxyurl: "https://cors-anywhere.herokuapp.com/",
       // Google API
       googleBooks: [],
       searchField: "",
@@ -26,16 +24,10 @@ class App extends React.Component {
       NYTBestsellers: [],
       bestsellerISBNs: [],
       bestSellerCoverLinks: [],
-      // Poems One API
-      poemOfDay: [],
       // OpenLibrary API
       openLibraryBooks: [],
       openLibPDFs: [],
-      // PoetryDB API
-      poetryDBpoems: [],
-      poemSearchField: '',
     };
-    this.poemSearch = this.poemSearch.bind(this);
     this.searchForBooks = this.searchForBooks.bind(this);
   }
 
@@ -143,21 +135,6 @@ class App extends React.Component {
     }, 1000)
   }
 
-  poemSearch = (e) => {
-    e.preventDefault();
-    fetch(`${this.state.proxyurl}http://poetrydb.org/author/${this.state.poemSearchField}`, {
-      method: 'get',
-      header: 'no-cors',
-    }).then(response => {
-      return response.json();
-    }).then(json => {
-      let results = json;
-      this.setState({ poetryDBpoems: results })
-    }).catch(error => {
-      console.err('Uh oh, ', error);
-    })
-  }
-
   componentDidMount() {
     this.getBestsellersNYT();
   }
@@ -172,10 +149,6 @@ class App extends React.Component {
   handleSearch = e => {
     this.setState({ searchField: e.target.value });
   };
-
-  handlePoemSearch = e => {
-    this.setState({ poemSearchField: e.target.value });
-  }
 
   handleSort = e => {
     this.setState({ sort: e.target.value });
@@ -234,12 +207,8 @@ class App extends React.Component {
             <Homepage bestSellers={this.state.NYTBestsellers} />
           } />
           <Route path="/poetry" render={() =>
-            <PoetryPage
-              poem={this.state.poemOfDay}
-              poemSearch={this.poemSearch}
-              handlePoemSearch={this.handlePoemSearch}
-              poemList={this.state.poetryDBpoems}
-            />} />
+            <PoetryPage />
+          } />
           <Route path='/events' render={() =>
             <EventsPage />
           } />

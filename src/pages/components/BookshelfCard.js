@@ -4,7 +4,7 @@ import './../../App.scss'
 
 const BookshelfCard = (props) => {
   const { coverIMG, title, author, publisher, pageCount, ISBN } = props;
-  // console.log('bookshelf card: ', props)
+
   return (
     <div className="bookshelfCard">
       <LazyLoadImage src={coverIMG} alt="book cover thumbnail" className='bookshelfIMG' />

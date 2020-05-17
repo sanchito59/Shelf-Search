@@ -47,7 +47,7 @@ const PoemBody = styled.div`
 `;
 
 export default function SinglePoemDisplay(props) {
-  // console.log('singlePoemDisplay props: ', props);
+
   const poemDiv = {
     textAlign: 'left',
     marginLeft: '30px',

@@ -4,7 +4,7 @@ import ScrollUp from './ScrollUp';
 
 export default function Event(props) {
   const { events } = props;
-  // console.log('event props: ', props)
+
   const eventList = {}
   return (
     <div>
