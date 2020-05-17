@@ -8,7 +8,7 @@ export default function EventCard(props) {
   let year = newDate.slice(0, 4);
   let monthDay = newDate.slice(5, 9);
   let managedDate = monthDay + '-' + year;
-  const addressQuery = `https://www.google.com/search?q=` + eventAddress
+  const addressQuery = `https://www.google.com/search?q=` + eventAddress + " " + eventCity + ", " + eventState
   return (
     <div className='outerDiv'>
       <div className='eventTitleDiv'>
@@ -16,7 +16,7 @@ export default function EventCard(props) {
       </div>
       <div className='innerDiv'>
         <h3><i class="fa fa-calendar" aria-hidden="true"></i>: {managedDate}</h3>
-        <h3><i className="fas fa-map-marker-alt"></i> <a className='addressQueryStyle' href={addressQuery}>{eventAddress}</a></h3>
+        <h3><i className="fas fa-map-marker-alt"></i> <a className='addressQueryStyle' href={addressQuery} target="_blank">{eventAddress}</a></h3>
         <h4>{eventCity}</h4>
         <h4>{eventState}</h4>
       </div>
