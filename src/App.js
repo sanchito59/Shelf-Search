@@ -108,7 +108,6 @@ class App extends React.Component {
             console.log('information not available');
           } else {
             let isbn = this.state.openLibraryBooks[i].isbn[0];
-            console.log('isbn: ', isbn)
             fetch(
               // const proxyurl = "https://cors-anywhere.herokuapp.com/";
               // using the heroku proxy URL to get around CORS hits the rate limit quickly

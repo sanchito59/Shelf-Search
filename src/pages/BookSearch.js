@@ -1,10 +1,8 @@
 import React from "react";
-// Components
 import BookList from './components/BookList';
 import SearchFormDiv from './components/SearchFormDiv';
 import SearchButton from './components/SearchButton';
 import SearchInput from './components/SearchInput';
-// Styles/Assets
 import "./../App.scss";
 
 const SearchArea = (props) => {
