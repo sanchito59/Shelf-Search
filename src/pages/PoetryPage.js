@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PoemSearch from './components/PoemSearch';
-import './../App.scss';
 
 const PoetryPage = () => {
   const [search, setSearch] = useState();
@@ -15,9 +14,9 @@ const PoetryPage = () => {
     }).then(response => {
       return response.json();
     }).then(json => {
-      setPoemResults(json)
+      json.length > 0 && setPoemResults(json);
     }).catch(error => {
-      console.err('Uh oh, ', error);
+      console.log('Uh oh, ', error);
     })
   }
 

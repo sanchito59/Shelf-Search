@@ -4,7 +4,7 @@ export default function EmbeddedBook(props) {
   const { ebookURL } = props;
   return (
     <div>
-      <iframe src={ebookURL + "?ui=embed"}></iframe>
+      <iframe title="scrollable ebook" src={ebookURL + "?ui=embed"}></iframe>
     </div>
   );
 }

@@ -33,9 +33,9 @@ const TwitterContainer = () => {
             height: "300px",
           }}
           theme="dark"
-          noHeader="true"
-          noBorders="true"
-          noFooter="true"
+          noHeader={true}
+          noBorders={true}
+          noFooter={true}
         ></TwitterTimelineEmbed>
       </div>
     </StyledContainer>

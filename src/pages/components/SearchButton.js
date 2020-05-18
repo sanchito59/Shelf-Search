@@ -10,7 +10,8 @@ const SearchButton = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 4px;
+  margin-right: 12px;
   cursor: pointer;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 16px 0 rgba(0, 0, 0, 0.19);
   -webkit-transition-duration: 0.4s;

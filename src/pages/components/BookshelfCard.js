@@ -1,6 +1,5 @@
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import './../../App.scss'
 
 const BookshelfCard = (props) => {
   const { coverIMG, title, author, publisher, pageCount, ISBN } = props;

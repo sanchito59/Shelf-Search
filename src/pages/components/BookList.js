@@ -5,7 +5,6 @@ import BookCard from './BookCard';
 import ScrollUp from './ScrollUp';
 import OpenLibraryBookCard from './OpenLibraryBookCard';
 import EmbeddedBook from './EmbeddedBook';
-import './../../App.scss';
 
 const BookResults = styled(Row)`
   width: 100%;

@@ -20,7 +20,7 @@ const ScrollUpButton = styled(BackTop)`
 const ScrollUp = () => {
   return (
     <ScrollUpButton visibilityHeight="1000">
-      <i class="fas fa-arrow-up"></i>
+      <i className="fas fa-arrow-up"></i>
     </ScrollUpButton>
   );
 }

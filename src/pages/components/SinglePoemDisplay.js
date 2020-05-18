@@ -81,8 +81,8 @@ export default function SinglePoemDisplay(props) {
           />
           <ul className="bot-left">
             {
-              poem.map((line) => {
-                return <li style={listStyle}>{line}</li>
+              poem.map((line, key) => {
+                return <li key={key} style={listStyle}>{line}</li>
               })
             }
           </ul>

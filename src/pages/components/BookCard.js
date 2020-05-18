@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import BookContainer from './BookContainer';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import './../../App.scss';
 
 const BookCover = styled(LazyLoadImage)`
   width: 100%;

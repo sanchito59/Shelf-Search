@@ -1,6 +1,5 @@
 import React from 'react';
 import Navlinks from './Navlinks.js';
-import './../../App.scss';
 
 const Header = () => {
   return (

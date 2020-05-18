@@ -36,10 +36,9 @@ class App extends React.Component {
       { method: 'get', }).then(response => {
         return response.json();
       }).then(json => {
-        let books = json.results;
         let bestSellerData = [];
         for (let i = 0; i < 15; i++) {
-          bestSellerData.push(books[i].isbns[0].isbn10);
+          bestSellerData.push(json.results[i].isbns[0].isbn10);
         }
         this.setState({ NYTBestsellers: json.results });
         this.setState({ bestsellerISBNs: bestSellerData });
