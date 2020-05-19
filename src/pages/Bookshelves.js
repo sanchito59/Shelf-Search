@@ -143,7 +143,9 @@ class Bookshelves extends React.Component {
               })}
             </SingleBookShelf>
           )}
+
           {/* <Route path={`/bookshelves/:bookshelfId`} component={Bookshelf} /> */}
+
         </div>
       </div>
     )
