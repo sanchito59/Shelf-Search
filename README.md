@@ -2,7 +2,7 @@
 
 ## By **Chris Sanchez**
 
-## Live Demo of [Shelf Search](https://shelf-search.herokuapp.com/#/) - **Event searching isn't hosted**
+## Live Demo of [Shelf Search](https://shelf-search.herokuapp.com/#/)
 
 [Shelf Search](https://shelf-search.herokuapp.com/#/) is a webapp based around finding information about literary events in your area, poetry, and ebook/PDF availability. On [Shelf Search](https://shelf-search.herokuapp.com/#/), you are able to search for a book by author, title, genre, etc., and the query will return any available PDFs/ebooks if found. As well, you can search for poetry by author and pull up all available poems, with built in text-to-speech buttons for audio playback. The site also contains other literary features, such as a dynamic New York Time's Bestseller List for reading suggestions and tools to find literary events in your area or with a general zip-code search.
 
@@ -42,12 +42,15 @@
 * JavaScript
 * React.js
 * Webpack / NPM
-* CSS3/SASS/SCSS HTML5
+* CSS3/SASS/SCSS/HTML5
+* Styled Components
 * API
 
 ## Future Plans / Stretch Goals
 
 * User accounts / authentication
+* Optimization of initial load
+* Complete overhaul of all components to styled components
 * Full CRUD user bookshelves built from queried results
 * Book stats tracker, i.e.how many books read, average time per page, average page length of books read, book rating, etc.
 
