@@ -6,6 +6,8 @@ import Header from "./pages/components/Header";
 import PoetryPage from './pages/PoetryPage';
 import EventsPage from './pages/EventsPage';
 import BookSearch from "./pages/BookSearch";
+import Bookshelves from "./pages/Bookshelves";
+import Bookshelf from "./pages/Bookshelf";
 import Homepage from './pages/Homepage';
 import "./App.scss";
 
@@ -208,6 +210,12 @@ class App extends React.Component {
           } />
           <Route path='/events' render={() =>
             <EventsPage />
+          } />
+          <Route path='/bookshelves' render={() =>
+            <Bookshelves />
+          } />
+          <Route path='/bookshelves/:id' render={() =>
+            <Bookshelf />
           } />
           <Route path='/bookSearch' render={() =>
             <BookSearch
