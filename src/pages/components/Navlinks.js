@@ -1,15 +1,43 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import LeftMenu from './LeftMenu'
+import { Drawer, Button } from 'antd';
 
-export default function Navlinks() {
-  return (
-    <div className='navlinks'>
-      <ul>
-        <li><Link to='/' className='navlink'>Home |</Link></li>
-        <li><Link to='/bookSearch' className='navlink'>Search for Books |</Link></li> <li><Link to='/events' className='navlink'>Events |</Link></li>
-        <li><Link to='/poetry' className='navlink'>Poetry</Link></li>
-        <div className="underbar"></div>
-      </ul>
-    </div>
-  );
+class Navbar extends React.Component {
+  state = {
+    current: 'mail',
+    visible: false
+  }
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+  render() {
+    return (
+      <nav className="menuBar">
+        <div className="menuCon">
+          <div className="leftMenu">
+            <LeftMenu />
+          </div>
+          <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
+            <span className="barsBtn"></span>
+          </Button>
+          <Drawer
+            placement="right"
+            closable={false}
+            onClose={this.onClose}
+            visible={this.state.visible}
+          >
+            <LeftMenu />
+          </Drawer>
+        </div>
+      </nav>
+    );
+  }
 }
+export default Navbar;

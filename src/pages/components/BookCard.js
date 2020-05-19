@@ -19,7 +19,7 @@ const BookTitle = styled.h2`
 `;
 
 const BookCard = (props) => {
-  const { image, title, author, publisher, publishedDate, ISBN, previewLink } = props;
+  const { image, title, author, pageCount, publisher, publishedDate, ISBN, previewLink } = props;
 
   return (
     <BookContainer>

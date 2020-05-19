@@ -206,57 +206,126 @@ iframe {
 /* BOOKCARD */
 
 /* NAVLINKS*/
-.navlinks {
-  margin-bottom: 16px;
-}
 
-.navlinks a {
-  color: white;
-  font-family: Georgia;
-  padding: 8px;
-  text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.1);
+.ant-menu {
+  background: none;
 }
-
-.navlinks a:hover {
-  color: rgb(240, 240, 240);
+.ant-menu-item {
+  a {
+    color: white !important;
+  }
 }
-
-.underbar {
-  height: 3.5px;
-  left: 40%;
-  top: 145px;
-  background: #cccccc;
-  position: absolute;
-  -webkit-transition: 0.5s ease;
+.menuBar {
+  height: 55px;
+  padding: 0 20px;
+  overflow: auto;
+  box-shadow: 0 0 30px #f3f1f1;
+  background-image: url("./assets/booksHeader.jpg");
 }
-
-.navlinks li {
-  list-style: none;
+.menuCon {
+  width: 100%;
   float: left;
-  -webkit-transition: 0.5s ease;
+  overflow-y: hidden;
+}
+.menuCon .ant-menu-item {
+  padding: 0px 5px;
+  font-size: 24px !important;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 55px;
+}
+.menuCon .ant-menu-submenu-title {
+  padding: 10px 20px;
+}
+.menuCon .ant-menu-item a,
+.menuCon .ant-menu-submenu-title a {
+  padding: 10px 15px;
+}
+.menuCon .ant-menu-horizontal {
+  border-bottom: none;
+}
+.menuCon .leftMenu {
+  float: left;
+  font-size: 135%;
+}
+.menuCon {
+  float: right;
+}
+.barsMenu {
+  float: right;
+  height: 32px;
+  padding: 6px;
+  margin-top: 8px;
+  display: none;
+  background: none;
+}
+.barsBtn {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #1890ff;
+  position: relative;
+}
+.barsBtn:after,
+.barsBtn:before {
+  content: attr(x);
+  width: 20px;
+  position: absolute;
+  top: -6px;
+  left: 0;
+  height: 2px;
+  background: #1890ff;
+}
+.barsBtn:after {
+  top: auto;
+  bottom: -6px;
+}
+.ant-drawer-body {
+  padding: 0;
+}
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item,
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-submenu {
+  display: inline-block;
+  width: 100%;
+}
+.ant-drawer-body .ant-menu-horizontal {
+  border-bottom: none;
+}
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover {
+  border-bottom-color: transparent;
+}
 
-  &:nth-of-type(1):hover~.underbar {
-    left: 34.9%;
-    width: 86.5px;
+.ant-menu-item-selected {
+  border: 0px !important;
+}
+
+@media (max-width: 767px) {
+  .barsMenu {
+    display: inline-block;
   }
 
-  &:nth-of-type(2):hover~.underbar {
-    left: 40.45%;
-    width: 215.5px;
+  .ant-menu-item {
+    a {
+      color: black !important;
+    }
   }
 
-  &:nth-of-type(3):hover~.underbar {
-    left: 54.3%;
-    width: 107px;
+  .ant-btn .barsMenu {
+    background-color: rgba(141, 204, 255, 0.3);
+  }
+  .leftMenu {
+    display: none;
   }
 
-  &:nth-of-type(4):hover~.underbar {
-    left: 61.1%;
-    width: 100px;
+  .logo a {
+    margin-left: -20px;
   }
-
-  cursor: pointer;
+  .menuCon .ant-menu-item,
+  .menuCon .ant-menu-submenu-title {
+    padding: 1px 20px;
+  }
+  .logo a {
+    padding: 10px 20px;
+  }
 }
 
 // Mobile Responsiveness
@@ -284,22 +353,22 @@ iframe {
     float: left;
     -webkit-transition: 0.5s ease;
 
-    &:nth-of-type(1):hover~.underbar {
+    &:nth-of-type(1):hover ~ .underbar {
       left: 17%;
       width: 43px;
     }
 
-    &:nth-of-type(2):hover~.underbar {
+    &:nth-of-type(2):hover ~ .underbar {
       left: 28%;
       width: 113px;
     }
 
-    &:nth-of-type(3):hover~.underbar {
+    &:nth-of-type(3):hover ~ .underbar {
       left: 57.6%;
       width: 54px;
     }
 
-    &:nth-of-type(4):hover~.underbar {
+    &:nth-of-type(4):hover ~ .underbar {
       left: 71.5%;
       width: 52.5px;
     }
@@ -330,3 +399,83 @@ iframe {
 }
 
 /* PoemOfDay*/
+
+// BOOKSHELF API
+
+ul.shelfList {
+  width: 70%;
+  text-align: left;
+  padding: 0 25px;
+}
+
+li.shelf {
+  list-style-type: none;
+  font-family: Tahoma;
+  font-size: 1.2em;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+li.shelf:hover .deleteShelfBtn {
+  visibility: visible;
+  opacity: 1;
+}
+
+label.shelfLabel {
+  color: black;
+}
+
+input[placeholder] {
+  font-size: 1.1em;
+}
+
+.container {
+  width: 40%;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.header {
+  color: black;
+  padding: 5px;
+  text-align: center;
+  font-family: Tahoma, sans-serif;
+}
+
+.inputContainer {
+  padding: 15px;
+}
+
+.inputContainer .shelfInput {
+  padding: 10px;
+  width: 100%;
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+
+.listWrapper {
+  bottom: 50px;
+  top: 160px;
+  right: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.deleteShelfBtn {
+  float: right;
+  color: red;
+  background: rgba(0, 0, 0, 0);
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 10px 5px;
+  visibility: hidden;
+  opacity: 0;
+  line-height: 0;
+  margin-right: 5px;
+  cursor: default;
+}
+// BOOKSHELF API

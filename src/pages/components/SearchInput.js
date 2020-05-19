@@ -7,7 +7,7 @@ const SearchInput = styled.input`
   margin: 8px 0;
   box-sizing: border-box;
   background-image: url(${searchIcon});
-  background-position: 2.5px 5px;
+  background-position: 4px 9px;
   background-repeat: no-repeat;
 
     &:hover {
