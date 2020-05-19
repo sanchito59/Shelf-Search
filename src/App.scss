@@ -10,28 +10,6 @@ h1 {
   color: white !important;
 }
 
-/* Header */
-
-.App-header {
-  background-image: url("./assets/booksHeader.jpg");
-  min-height: 15vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  text-shadow: 1.5px 1.5px #282c34;
-}
-
-.shelf-search-title {
-  text-shadow: 3px 3px #282c34;
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-/* Header End */
-
 .select-params {
   border: 1px solid black;
   padding: 6px;
@@ -45,11 +23,6 @@ h1 {
 
   .select-params {
     float: right;
-  }
-
-  .shelf-search-title {
-    font-size: 30px;
-    margin-bottom: 0px;
   }
 }
 
@@ -210,11 +183,13 @@ iframe {
 .ant-menu {
   background: none;
 }
+
 .ant-menu-item {
   a {
     color: white !important;
   }
 }
+
 .menuBar {
   height: 55px;
   padding: 0 20px;
@@ -222,34 +197,42 @@ iframe {
   box-shadow: 0 0 30px #f3f1f1;
   background-image: url("./assets/booksHeader.jpg");
 }
+
 .menuCon {
   width: 100%;
   float: left;
   overflow-y: hidden;
 }
+
 .menuCon .ant-menu-item {
   padding: 0px 5px;
   font-size: 24px !important;
   background-color: rgba(0, 0, 0, 0.1);
   height: 55px;
 }
+
 .menuCon .ant-menu-submenu-title {
   padding: 10px 20px;
 }
+
 .menuCon .ant-menu-item a,
 .menuCon .ant-menu-submenu-title a {
   padding: 10px 15px;
 }
+
 .menuCon .ant-menu-horizontal {
   border-bottom: none;
 }
+
 .menuCon .leftMenu {
   float: left;
   font-size: 135%;
 }
+
 .menuCon {
   float: right;
 }
+
 .barsMenu {
   float: right;
   height: 32px;
@@ -258,6 +241,7 @@ iframe {
   display: none;
   background: none;
 }
+
 .barsBtn {
   display: block;
   width: 20px;
@@ -265,6 +249,7 @@ iframe {
   background: #1890ff;
   position: relative;
 }
+
 .barsBtn:after,
 .barsBtn:before {
   content: attr(x);
@@ -275,22 +260,27 @@ iframe {
   height: 2px;
   background: #1890ff;
 }
+
 .barsBtn:after {
   top: auto;
   bottom: -6px;
 }
+
 .ant-drawer-body {
   padding: 0;
 }
-.ant-drawer-body .ant-menu-horizontal > .ant-menu-item,
-.ant-drawer-body .ant-menu-horizontal > .ant-menu-submenu {
+
+.ant-drawer-body .ant-menu-horizontal>.ant-menu-item,
+.ant-drawer-body .ant-menu-horizontal>.ant-menu-submenu {
   display: inline-block;
   width: 100%;
 }
+
 .ant-drawer-body .ant-menu-horizontal {
   border-bottom: none;
 }
-.ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover {
+
+.ant-drawer-body .ant-menu-horizontal>.ant-menu-item:hover {
   border-bottom-color: transparent;
 }
 
@@ -312,6 +302,7 @@ iframe {
   .ant-btn .barsMenu {
     background-color: rgba(141, 204, 255, 0.3);
   }
+
   .leftMenu {
     display: none;
   }
@@ -319,65 +310,16 @@ iframe {
   .logo a {
     margin-left: -20px;
   }
+
   .menuCon .ant-menu-item,
   .menuCon .ant-menu-submenu-title {
     padding: 1px 20px;
   }
+
   .logo a {
     padding: 10px 20px;
   }
 }
-
-// Mobile Responsiveness
-@media only screen and (max-width: 600px) {
-  .navlinks {
-    margin-right: 35px;
-    font-size: 13px;
-  }
-
-  .navlinks a {
-    padding: 4px;
-  }
-
-  .underbar {
-    height: 3px;
-    left: 35%;
-    top: 102px;
-    position: absolute;
-    -webkit-transition: 0.5s ease;
-    background: rgb(230, 230, 230);
-  }
-
-  .navlinks li {
-    list-style: none;
-    float: left;
-    -webkit-transition: 0.5s ease;
-
-    &:nth-of-type(1):hover ~ .underbar {
-      left: 17%;
-      width: 43px;
-    }
-
-    &:nth-of-type(2):hover ~ .underbar {
-      left: 28%;
-      width: 113px;
-    }
-
-    &:nth-of-type(3):hover ~ .underbar {
-      left: 57.6%;
-      width: 54px;
-    }
-
-    &:nth-of-type(4):hover ~ .underbar {
-      left: 71.5%;
-      width: 52.5px;
-    }
-
-    cursor: pointer;
-  }
-}
-
-/* NAVLINKS*/
 
 /* PoemOfDay*/
 .poem-div {
@@ -478,4 +420,5 @@ input[placeholder] {
   margin-right: 5px;
   cursor: default;
 }
+
 // BOOKSHELF API
