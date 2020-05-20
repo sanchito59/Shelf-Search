@@ -79,18 +79,16 @@ class App extends React.Component {
   }
 
   searchForPDFs = () => {
+    this.setState({ openLibPDFs: [] })
     setTimeout(() => {
       for (let i = 0; i < 100; i++) {
         if (typeof this.state.openLibraryBooks[i] !== 'undefined') {
           if (typeof this.state.openLibraryBooks[i].isbn === 'undefined') {
-            console.log('information not available');
+            // console.log('information not available');
           } else {
             let isbn = this.state.openLibraryBooks[i].isbn[0];
             fetch(
-              // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-              // using the heroku proxy URL to get around CORS hits the rate limit quickly
-              // proxyurl + 
-              `https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
+              `https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=https://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`, {
               method: 'get',
             }).then(response => {
               return response.json();
@@ -98,7 +96,7 @@ class App extends React.Component {
               if (json.items.length > 0) {
                 this.setState({ openLibPDFs: json.items })
               } else {
-                console.log('no ebook/PDF available!');
+                // console.log('no ebook/PDF available!');
               }
             }).catch(error => {
               console.log('error: ', error)

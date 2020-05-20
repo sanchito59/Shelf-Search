@@ -7,6 +7,7 @@ import OpenLibraryBookCard from './OpenLibraryBookCard';
 import EmbeddedBook from './EmbeddedBook';
 
 const BookResults = styled(Row)`
+  margin: 0px !important;
   width: 100%;
   justify-content: center;
 `;
@@ -16,16 +17,16 @@ const BookList = (props) => {
 
   return (
     <>
-      <div className='embedded-book-wrapper'>
+      <BookResults gutter={[0, 60]}>
         {
           availableEbooks.map((ebook, i) => {
-            return <div><EmbeddedBook
+            return <Col lg={10} md={24} sm={24}><EmbeddedBook
               ebookURL={ebook.itemURL}
               key={i}
-            /> <br></br></div>
+            /> <br></br></Col>
           })
         }
-      </div>
+      </BookResults>
       <BookResults gutter={[60, 60]}>
         {
           books.map((book, i) => {
