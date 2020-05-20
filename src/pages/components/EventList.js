@@ -4,7 +4,6 @@ import ScrollUp from './ScrollUp';
 
 export default function Event(props) {
   const { events } = props;
-  console.log(events);
 
   return (
     <>
