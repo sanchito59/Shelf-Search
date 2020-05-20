@@ -56,19 +56,19 @@ const NYT_KEY = `${process.env.REACT_APP_NYT_KEY}`;
 const NYTBestsellers = () => {
   const [bestSellers, setBestSellers] = useState(undefined)
   const [call, setCall] = useState(false)
-  const [bestSellerISBNs, setBestSellerISBNs] = useState([])
+  // const [bestSellerISBNs, setBestSellerISBNs] = useState([])
 
   useEffect(() => {
     fetch(`https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=${NYT_KEY}`,
       { method: 'get', }).then(response => {
         return response.json();
       }).then(json => {
-        let bestSellerData = [];
-        for (let i = 0; i < 15; i++) {
-          bestSellerData.push(json.results[i].isbns[0].isbn10);
-        }
+        // let bestSellerData = [];
+        // for (let i = 0; i < 15; i++) {
+        //   bestSellerData.push(json.results[i].isbns[0].isbn10);
+        // }
         setBestSellers(json.results);
-        setBestSellerISBNs(bestSellerData);
+        // setBestSellerISBNs(bestSellerData);
       })
       .catch(error => {
         console.log('Uh oh, ', error);
