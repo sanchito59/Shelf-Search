@@ -10,8 +10,9 @@ const SearchInput = styled.input`
   background-position: 4px 9px;
   background-repeat: no-repeat;
 
-    &:hover {
+    &:hover, &:focus {
       border: 2px solid rgb(151, 139, 139);
+      outline: none;
     }
 `;
 

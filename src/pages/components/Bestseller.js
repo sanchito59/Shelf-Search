@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Col, Row } from 'antd';
 
 const BestSellerCard = styled.div`
-  font-family: Caladea, sans-serif;
+  font-family: Garamond, sans-serif;
   background-color: rgb(100, 100, 100);
   margin: 20px;
   padding: 20px;

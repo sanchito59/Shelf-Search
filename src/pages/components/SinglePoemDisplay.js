@@ -4,7 +4,7 @@ import Speech from 'react-speech';
 import { Col } from 'antd';
 
 const PoemBody = styled.div`
-    font-family: Caladea, sans-serif;
+    font-family: Georgia, sans-serif;
     padding-bottom: 30px;
 
     .rs-container button {

@@ -12,6 +12,7 @@ const SectionTitle = styled.h1`
   font-family: Caldea, Georgia, sans-serif;
   color: black !important;
   margin: 0px;
+  font-size: 2.5em;
 `;
 
 const BestSellerCarousel = styled(Carousel)`
