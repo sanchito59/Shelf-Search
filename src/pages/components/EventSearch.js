@@ -25,9 +25,7 @@ const EventSearch = (props) => {
         />
         <SearchButton>Search for Events</SearchButton>
         <select defaultValue="Sort" className='select-params' onChange={handleSort}>
-          <option disabled value="Sort">
-            Sort
-          </option>
+          <option disabled value="Sort"> Sort </option>
           <option value="UPCOMING">Upcoming</option>
           <option value="ASC">A-Z City</option>
           <option value="DESC">Z-A City</option>
