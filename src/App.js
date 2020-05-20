@@ -71,7 +71,7 @@ class App extends React.Component {
       return response.json();
     }).then(json => {
       let books = json.docs;
-      console.log('openlib: ', books);
+      // console.log('openlib: ', books);
       this.setState({ openLibraryBooks: books })
     }).catch(error => {
       console.log('Uh oh, ', error);
