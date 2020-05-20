@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Carousel, Col, Row } from 'antd';
 import Bestseller from './Bestseller';
@@ -23,6 +23,7 @@ const BestSellerCarousel = styled(Carousel)`
 
   .slick-dots {
     height: 0px;
+    z-index: 0;
 
     li {
       margin: 0 8px;
@@ -49,12 +50,33 @@ const BestSellerCarousel = styled(Carousel)`
   }
 `;
 
-const NYTBestsellers = (props) => {
-  const { bestSellers } = props;
+const NYT_KEY = `${process.env.REACT_APP_NYT_KEY}`;
+
+const NYTBestsellers = () => {
+  const [bestSellers, setBestSellers] = useState(undefined)
+  const [call, setCall] = useState(false)
+  const [bestSellerISBNs, setBestSellerISBNs] = useState([])
+
+  useEffect(() => {
+    fetch(`https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=${NYT_KEY}`,
+      { method: 'get', }).then(response => {
+        return response.json();
+      }).then(json => {
+        let bestSellerData = [];
+        for (let i = 0; i < 15; i++) {
+          bestSellerData.push(json.results[i].isbns[0].isbn10);
+        }
+        setBestSellers(json.results);
+        setBestSellerISBNs(bestSellerData);
+      })
+      .catch(error => {
+        console.log('Uh oh, ', error);
+      });
+  }, [call])
 
   if (typeof bestSellers !== 'undefined') {
     return (
-      <div>
+      <>
         <BestsellerRow>
           <Col lg={14} sm={24}>
             <SectionTitle>This Week's NYT Bestsellers: </SectionTitle>
@@ -76,11 +98,11 @@ const NYTBestsellers = (props) => {
             </BestSellerCarousel>
           </Col>
         </BestsellerRow>
-      </div>
+      </ >
     )
   } else {
     return (
-      <div>NYT Bestsellers unavailable.</div>
+      <>NYT Bestsellers unavailable.</>
     );
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import request from "superagent";
 import { Switch, Route } from 'react-router-dom';
 // Components
-import Header from "./pages/components/Header";
+import Navlinks from "./pages/components/Navlinks";
 import PoetryPage from './pages/PoetryPage';
 import EventsPage from './pages/EventsPage';
 import BookSearch from "./pages/BookSearch";
@@ -10,8 +10,6 @@ import Bookshelves from "./pages/Bookshelves";
 import Bookshelf from "./pages/Bookshelf";
 import Homepage from './pages/Homepage';
 import "./App.scss";
-
-const NYT_KEY = `${process.env.REACT_APP_NYT_KEY}`;
 
 class App extends React.Component {
   constructor(props) {
@@ -22,32 +20,11 @@ class App extends React.Component {
       searchField: "",
       sort: "",
       ebookCheck: "",
-      // NYT API
-      NYTBestsellers: [],
-      bestsellerISBNs: [],
-      bestSellerCoverLinks: [],
       // OpenLibrary API
       openLibraryBooks: [],
       openLibPDFs: [],
     };
     this.searchForBooks = this.searchForBooks.bind(this);
-  }
-
-  getBestsellersNYT = () => {
-    fetch('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=' + NYT_KEY,
-      { method: 'get', }).then(response => {
-        return response.json();
-      }).then(json => {
-        let bestSellerData = [];
-        for (let i = 0; i < 15; i++) {
-          bestSellerData.push(json.results[i].isbns[0].isbn10);
-        }
-        this.setState({ NYTBestsellers: json.results });
-        this.setState({ bestsellerISBNs: bestSellerData });
-      })
-      .catch(error => {
-        console.log('Uh oh, ', error);
-      });
   }
 
   searchGoogleBooks = e => {
@@ -134,10 +111,6 @@ class App extends React.Component {
     }, 1000)
   }
 
-  componentDidMount() {
-    this.getBestsellersNYT();
-  }
-
   searchForBooks = e => {
     this.setState({ openLibPDFs: [] }) // Wipe EmbeddedBook in BookList each search
     this.searchGoogleBooks(e);
@@ -200,10 +173,10 @@ class App extends React.Component {
     });
     return (
       <div className="App">
-        <Header />
+        <Navlinks />
         <Switch>
           <Route exact path='/' render={() =>
-            <Homepage bestSellers={this.state.NYTBestsellers} />
+            <Homepage />
           } />
           <Route path="/poetry" render={() =>
             <PoetryPage />

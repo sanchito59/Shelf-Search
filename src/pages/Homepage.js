@@ -176,7 +176,7 @@ export default function Homepage(props) {
   const { bestSellers } = props;
   return (
     <div>
-      <NYTBestsellers bestSellers={bestSellers} />
+      <NYTBestsellers />
       <Bookshelf
         currentlyTrendingTitle={'Currently Trending'}
         trendingBooks={trendingBooksList}
