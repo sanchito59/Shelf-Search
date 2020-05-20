@@ -11,6 +11,7 @@ class EventsPage extends React.Component {
       proxyurl: "https://cors-anywhere.herokuapp.com/",
       eventSearchField: '97204',
       bookEvents: [],
+      sort: "",
     }
     this.findAuthorEvents = this.findAuthorEvents.bind(this);
   }
@@ -51,18 +52,56 @@ class EventsPage extends React.Component {
     this.setState({ eventSearchField: e.target.value })
   }
 
+  handleSort = e => {
+    this.setState({ sort: e.target.value });
+  };
+
   componentDidMount() {
     this.findAuthorEvents();
   }
 
   render() {
+    const sortedEvents = this.state.bookEvents.sort((a, b) => {
+      const cityA = a.city.toUpperCase();
+      const cityB = b.city.toUpperCase();
+      if (this.state.sort === "ASC") {
+        let comparison = 0;
+        if (cityA > cityB) {
+          comparison = 1;
+        } else if (cityA < cityB) {
+          comparison = -1;
+        }
+        return comparison;
+      } else if (this.state.sort === "DESC") {
+        let comparison = 0;
+        if (cityA > cityB) {
+          comparison = 1;
+        } else if (cityA < cityB) {
+          comparison = -1;
+        }
+        return comparison * -1;
+      } else if (this.state.sort === "UPCOMING") {
+        const dateA = a.date;
+        const dateB = b.date;
+        let comparison = 0;
+        if (dateA > dateB) {
+          comparison = 1;
+        } else if (dateA < dateB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      return this.state.bookEvents;
+    });
+
     return (
       <div>
         <EventSearch
           eventSearch={this.findAuthorEvents}
           handleEventSearch={this.handleEventSearch}
+          handleSort={this.handleSort}
         />
-        <EventList events={this.state.bookEvents} />
+        <EventList events={sortedEvents} />
       </div>
     );
   }
