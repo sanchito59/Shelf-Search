@@ -82,7 +82,7 @@ const classicLiteratureList =
       title: 'Wuthering Heights',
       author: 'Emily Brontë',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '883899901011',
       coverIMG: wutheringHeights,
       pages: '418 pages',
     },
@@ -90,7 +90,7 @@ const classicLiteratureList =
       title: 'The Stranger',
       author: 'Albert Camus',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '04049901134',
       coverIMG: theStranger,
       pages: '136 pages',
     },
@@ -98,7 +98,7 @@ const classicLiteratureList =
       title: 'Pride and Prejudice',
       author: 'Jane Austin',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '8HD384809',
       coverIMG: prideAndPrejudice,
       pages: '228 pages',
     },
@@ -106,7 +106,7 @@ const classicLiteratureList =
       title: 'The Catcher in The Rye',
       author: 'J.D. Salinger',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '09902214044',
       coverIMG: catcherInRye,
       pages: '144 pages',
     },
@@ -114,7 +114,7 @@ const classicLiteratureList =
       title: '1984',
       author: 'George Orwell',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '7008183811',
       coverIMG: orwell1984,
       pages: '166 pages',
     },
@@ -134,7 +134,7 @@ const sciFiList =
       title: 'Fahrenheit 451',
       author: 'Ray Bradbury',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '9847909921',
       coverIMG: fahrenheit451,
       pages: '212 pages',
     },
@@ -142,7 +142,7 @@ const sciFiList =
       title: 'The Martian',
       author: 'Andy Weir',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '88930395093',
       coverIMG: theMartian,
       pages: '188 pages',
     },
@@ -150,7 +150,7 @@ const sciFiList =
       title: 'Nueromancer',
       author: 'William Gibson',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '97373803644',
       coverIMG: nueromancer,
       pages: '466 pages',
     },
@@ -158,7 +158,7 @@ const sciFiList =
       title: 'Stranger In A Strange Land',
       author: 'Robert A. Heinlein',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '890100991522',
       coverIMG: strangerInStrangeLand,
       pages: '390 pages',
     },
@@ -166,14 +166,13 @@ const sciFiList =
       title: 'Foundation Series (#1)',
       author: 'Isaac Asimov',
       publisher: 'Anchor',
-      ISBN: '9780345803788',
+      ISBN: '98704801431',
       coverIMG: foundationSeries,
       pages: '254 pages',
     },
   ]
 
-export default function Homepage(props) {
-  const { bestSellers } = props;
+const Homepage = () => {
   return (
     <div>
       <NYTBestsellers />
@@ -188,3 +187,5 @@ export default function Homepage(props) {
     </div>
   );
 }
+
+export default Homepage;
