@@ -14,10 +14,10 @@ class EventsPage extends React.Component {
       sort: "",
     }
     this.findAuthorEvents = this.findAuthorEvents.bind(this);
+    this.searchForAuthorEvents = this.searchForAuthorEvents.bind(this);
   }
 
-  findAuthorEvents = () => {
-    // e.preventDefault();
+  goodReadsCall = () => {
     const zip_input = this.state.eventSearchField;
     fetch(`${this.state.proxyurl}https://www.goodreads.com/event/index.xml?search[postal_code]=${zip_input}&key=${GOOD_READS_KEY}`, {
       method: 'get',
@@ -46,6 +46,15 @@ class EventsPage extends React.Component {
     }).catch(error => {
       console.log('author event error: ', error)
     })
+  }
+
+  findAuthorEvents = () => {
+    this.goodReadsCall()
+  }
+
+  searchForAuthorEvents = (e) => {
+    e.preventDefault();
+    this.goodReadsCall();
   }
 
   handleEventSearch = e => {
@@ -97,7 +106,7 @@ class EventsPage extends React.Component {
     return (
       <div>
         <EventSearch
-          eventSearch={this.findAuthorEvents}
+          eventSearch={this.searchForAuthorEvents}
           handleEventSearch={this.handleEventSearch}
           handleSort={this.handleSort}
         />
