@@ -2,12 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import LeftMenu from './LeftMenu'
 import { Drawer, Button } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
 
 const Nav = styled.nav`
   position: fixed;
   top: 0px;
   width: 100%;
   z-index: 1;
+`;
+
+const OpenMenu = styled(MenuOutlined)`
+  font-size: 24px;
+  float: right; 
+  height: 32px;
+  padding: 6px;
+  margin-top: 10px;
+  display: none;
+  background: none;
+  
+  
+  @media (max-width: 767px) {
+    display: inline-block;
+  }
 `;
 
 class Navbar extends React.Component {
@@ -25,9 +41,7 @@ class Navbar extends React.Component {
           <div className="leftMenu">
             <LeftMenu />
           </div>
-          <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
-            <span className="barsBtn"></span>
-          </Button>
+          <OpenMenu onClick={this.showDrawer} />
           <Drawer
             placement="right"
             closable={false}
