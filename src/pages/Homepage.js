@@ -4,6 +4,7 @@ import NYTBestsellers from './components/NYTBestsellers';
 import Bookshelf from './components/Bookshelf';
 // Styles/Assets
 // Trending
+import crawdadsSing from './../assets/bookCovers/crawdadsSing.jpg'
 import crazyRichAsians from './../assets/bookCovers/crazyRichAsians.jpg'
 import becoming from './../assets/bookCovers/becoming.jpg'
 import philosopherStone from './../assets/bookCovers/philosopherStone.jpg'
@@ -26,6 +27,14 @@ import foundationSeries from './../assets/bookCovers/foundationSeries.jpg'
 
 const trendingBooksList =
   [
+    {
+      title: 'Where the Crawdads Sing',
+      author: 'Delia Owens',
+      publisher: 'G.P. Putnam\'s Sons',
+      ISBN: '0735219095',
+      coverIMG: crawdadsSing,
+      pages: '384 pages',
+    },
     {
       title: 'Crazy Rich Asians',
       author: 'Kevin Kwan',
@@ -81,7 +90,7 @@ const classicLiteratureList =
     {
       title: 'Wuthering Heights',
       author: 'Emily Brontë',
-      publisher: 'Anchor',
+      publisher: 'Penguin',
       ISBN: '883899901011',
       coverIMG: wutheringHeights,
       pages: '418 pages',
@@ -89,7 +98,7 @@ const classicLiteratureList =
     {
       title: 'The Stranger',
       author: 'Albert Camus',
-      publisher: 'Anchor',
+      publisher: 'Bantam',
       ISBN: '04049901134',
       coverIMG: theStranger,
       pages: '136 pages',
@@ -97,7 +106,7 @@ const classicLiteratureList =
     {
       title: 'Pride and Prejudice',
       author: 'Jane Austin',
-      publisher: 'Anchor',
+      publisher: 'Penguin',
       ISBN: '8HD384809',
       coverIMG: prideAndPrejudice,
       pages: '228 pages',
@@ -105,7 +114,7 @@ const classicLiteratureList =
     {
       title: 'The Catcher in The Rye',
       author: 'J.D. Salinger',
-      publisher: 'Anchor',
+      publisher: 'Bantam',
       ISBN: '09902214044',
       coverIMG: catcherInRye,
       pages: '144 pages',
@@ -113,7 +122,7 @@ const classicLiteratureList =
     {
       title: '1984',
       author: 'George Orwell',
-      publisher: 'Anchor',
+      publisher: 'Penguin',
       ISBN: '7008183811',
       coverIMG: orwell1984,
       pages: '166 pages',
@@ -125,7 +134,7 @@ const sciFiList =
     {
       title: 'Dune',
       author: 'Frank Herbert',
-      publisher: 'Anchor',
+      publisher: 'Bantam',
       ISBN: '9780345803788',
       coverIMG: dune,
       pages: '458 pages',
@@ -141,7 +150,7 @@ const sciFiList =
     {
       title: 'The Martian',
       author: 'Andy Weir',
-      publisher: 'Anchor',
+      publisher: 'Penguin',
       ISBN: '88930395093',
       coverIMG: theMartian,
       pages: '188 pages',
@@ -149,7 +158,7 @@ const sciFiList =
     {
       title: 'Nueromancer',
       author: 'William Gibson',
-      publisher: 'Anchor',
+      publisher: 'Random House',
       ISBN: '97373803644',
       coverIMG: nueromancer,
       pages: '466 pages',
@@ -157,7 +166,7 @@ const sciFiList =
     {
       title: 'Stranger In A Strange Land',
       author: 'Robert A. Heinlein',
-      publisher: 'Anchor',
+      publisher: 'Scribner',
       ISBN: '890100991522',
       coverIMG: strangerInStrangeLand,
       pages: '390 pages',
@@ -165,7 +174,7 @@ const sciFiList =
     {
       title: 'Foundation Series (#1)',
       author: 'Isaac Asimov',
-      publisher: 'Anchor',
+      publisher: 'Scribner',
       ISBN: '98704801431',
       coverIMG: foundationSeries,
       pages: '254 pages',
