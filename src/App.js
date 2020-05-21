@@ -110,7 +110,7 @@ class App extends React.Component {
   }
 
   searchForBooks = e => {
-    this.setState({ openLibPDFs: [] }) // Wipe EmbeddedBook in BookList each search
+    this.setState({ openLibPDFs: [] }) // wipe ebooks on each search
     this.searchGoogleBooks(e);
     this.searchOpenLibrary();
     this.searchForPDFs();

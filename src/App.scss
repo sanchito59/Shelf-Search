@@ -27,55 +27,6 @@ h1 {
   }
 }
 
-/* EVENT CARD */
-
-.event-list-title {
-  font-family: Poppins;
-}
-
-.outerDiv {
-  text-align: left;
-  margin: 0 auto;
-  border: 2px solid black;
-  border-radius: 8px;
-  width: 65%;
-  margin-bottom: 24px;
-}
-
-.innerDiv {
-  text-align: left;
-  background-color: #f4fcff;
-  padding: 20px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-.eventTitleDiv {
-  background-color: #daf5ff;
-  height: 4rem;
-  padding: 5px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-bottom: 2px solid black;
-}
-
-.eventTitle {
-  font-size: 20px;
-  padding-left: 15px;
-  color: #00445e;
-  line-height: 2.5;
-}
-
-.addressQueryStyle {
-  color: #00445e;
-  text-decoration: none;
-}
-
-.addressQueryStyle:hover {
-  color: black;
-  text-decoration: underline;
-}
-
 /* Mobile Responsiveness */
 
 @media only screen and (max-width: 600px) {
@@ -272,8 +223,8 @@ iframe {
   padding: 0;
 }
 
-.ant-drawer-body .ant-menu-horizontal>.ant-menu-item,
-.ant-drawer-body .ant-menu-horizontal>.ant-menu-submenu {
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item,
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-submenu {
   display: inline-block;
   width: 100%;
 }
@@ -282,7 +233,7 @@ iframe {
   border-bottom: none;
 }
 
-.ant-drawer-body .ant-menu-horizontal>.ant-menu-item:hover {
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover {
   border-bottom-color: transparent;
 }
 
