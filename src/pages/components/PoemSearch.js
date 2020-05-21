@@ -10,7 +10,7 @@ const SearchForm = styled.form`
 `;
 
 const PoemSearch = (props) => {
-  const { poemSearch, handlePoemSearch, poemList } = props;
+  const { poemSearch, handlePoemSearch, handlePoemSort, poemList } = props;
 
   return (
     <SearchFormDiv>
@@ -22,6 +22,11 @@ const PoemSearch = (props) => {
           type="text">
         </SearchInput>
         <SearchButton> Search </SearchButton>
+        <select defaultValue="Sort" className='select-params' onChange={handlePoemSort}>
+          <option disabled value="Sort"> Sort </option>
+          <option value="ASC">A-Z Title</option>
+          <option value="DESC">Z-A Title</option>
+        </select>
       </SearchForm>
       <PoemList poemList={poemList} />
     </SearchFormDiv>
