@@ -173,21 +173,11 @@ class App extends React.Component {
       <div className="App">
         <Navlinks />
         <Switch>
-          <Route exact path='/' render={() =>
-            <Homepage />
-          } />
-          <Route path="/poetry" render={() =>
-            <PoetryPage />
-          } />
-          <Route path='/events' render={() =>
-            <EventsPage />
-          } />
-          <Route path='/bookshelves' render={() =>
-            <Bookshelves />
-          } />
-          <Route path='/bookshelves/:id' render={() =>
-            <Bookshelf />
-          } />
+          <Route exact path='/' render={() => <Homepage />} />
+          <Route path="/poetry" render={() => <PoetryPage />} />
+          <Route path='/events' render={() => <EventsPage />} />
+          <Route path='/bookshelves' render={() => <Bookshelves />} />
+          <Route path='/bookshelves/:id' render={() => <Bookshelf />} />
           <Route path='/bookSearch' render={() =>
             <BookSearch
               handleSearch={this.handleSearch}

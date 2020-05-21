@@ -8,13 +8,14 @@ const Buffer = styled.div`
 
 const StyledContainer = styled.section`
   && {
-    margin-left: 30px;
+    margin-left: 380px;
     margin-right: 30px;
     margin-bottom: 30px;
     text-align: left;
 
     @media only screen and (max-width: 768px) {
       justify-content: flex-end;
+      margin-left: 30px;
     }
   }
 `;
@@ -28,7 +29,7 @@ const TwitterContainer = () => {
           sourceType="profile"
           screenName="tswasteland_bot"
           options={{
-            tweetLimit: "3",
+            tweetLimit: "1",
             width: "400px",
             height: "300px",
           }}
