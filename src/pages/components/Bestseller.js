@@ -9,9 +9,11 @@ const BestSellerCard = styled.div`
   padding: 20px;
   border-radius: 4px;
   border: 2px solid rgb(171, 171, 171);
+  text-shadow: 0px 2px 3px #555;
 `;
 
 const InformationRow = styled(Row)`
+  text-shadow: 0px 2px 3px #555;
   justify-content: center;
   color: white;
 `;
@@ -27,6 +29,7 @@ const Rank = styled.h4`
 
 const TitleColumn = styled(Col)`
   text-align: left;
+  font-family: 'Josefin Sans', cursive;
 
   span {
     text-decoration: underline;
@@ -56,8 +59,13 @@ const BlurbColumn = styled(Col)`
 `;
 
 const Blurb = styled.p`
+  font-family: 'Josefin Sans', cursive;
   letter-spacing: 1px;
   font-weight: bold;
+`;
+
+const HistoricalRank = styled(Col)`
+  font-family: 'Josefin Sans', cursive;
 `;
 
 const AmazonButton = styled.a`
@@ -68,6 +76,7 @@ const AmazonButton = styled.a`
   border-radius: 4px;
   text-align: center;
   text-decoration: none;
+  text-shadow: none;
   display: inline-block;
   font-size: 16px;
   margin: 16px 2px;
@@ -95,9 +104,9 @@ const Bestseller = (props) => {
         <Col lg={6}><AmazonButton href={amazonLink} target='_blank'><i className="fab fa-amazon"></i> Buy</AmazonButton></Col>
         <Divider />
         <BlurbColumn lg={20}><Blurb>{description}</Blurb></BlurbColumn>
-        <Col lg={8}>Current Rank: {currentRank}</Col>
-        <Col lg={8}>Weeks on List: {weeksOnList}</Col>
-        <Col lg={8}>Rank Last Week: {rankLastWeek}</Col>
+        <HistoricalRank lg={8}>Current Rank: {currentRank}</HistoricalRank>
+        <HistoricalRank lg={8}>Weeks on List: {weeksOnList}</HistoricalRank>
+        <HistoricalRank lg={8}>Rank Last Week: {rankLastWeek}</HistoricalRank>
       </InformationRow>
     </BestSellerCard>
   );

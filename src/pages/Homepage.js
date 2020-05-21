@@ -76,7 +76,7 @@ const classicLiteratureList =
       publisher: 'Charles Scribner\'s Sons',
       ISBN: '9780345803788',
       coverIMG: haveAndHaveNot,
-      pages: '544 pages',
+      pages: '312 pages',
     },
     {
       title: 'Wuthering Heights',
@@ -84,7 +84,7 @@ const classicLiteratureList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: wutheringHeights,
-      pages: '544 pages',
+      pages: '418 pages',
     },
     {
       title: 'The Stranger',
@@ -92,7 +92,7 @@ const classicLiteratureList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: theStranger,
-      pages: '544 pages',
+      pages: '136 pages',
     },
     {
       title: 'Pride and Prejudice',
@@ -100,7 +100,7 @@ const classicLiteratureList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: prideAndPrejudice,
-      pages: '544 pages',
+      pages: '228 pages',
     },
     {
       title: 'The Catcher in The Rye',
@@ -108,7 +108,7 @@ const classicLiteratureList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: catcherInRye,
-      pages: '544 pages',
+      pages: '144 pages',
     },
     {
       title: '1984',
@@ -116,7 +116,7 @@ const classicLiteratureList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: orwell1984,
-      pages: '544 pages',
+      pages: '166 pages',
     },
   ]
 
@@ -128,7 +128,7 @@ const sciFiList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: dune,
-      pages: '544 pages',
+      pages: '458 pages',
     },
     {
       title: 'Fahrenheit 451',
@@ -136,7 +136,7 @@ const sciFiList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: fahrenheit451,
-      pages: '544 pages',
+      pages: '212 pages',
     },
     {
       title: 'The Martian',
@@ -144,7 +144,7 @@ const sciFiList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: theMartian,
-      pages: '544 pages',
+      pages: '188 pages',
     },
     {
       title: 'Nueromancer',
@@ -152,7 +152,7 @@ const sciFiList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: nueromancer,
-      pages: '544 pages',
+      pages: '466 pages',
     },
     {
       title: 'Stranger In A Strange Land',
@@ -160,7 +160,7 @@ const sciFiList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: strangerInStrangeLand,
-      pages: '544 pages',
+      pages: '390 pages',
     },
     {
       title: 'Foundation Series (#1)',
@@ -168,7 +168,7 @@ const sciFiList =
       publisher: 'Anchor',
       ISBN: '9780345803788',
       coverIMG: foundationSeries,
-      pages: '544 pages',
+      pages: '254 pages',
     },
   ]
 
