@@ -103,10 +103,12 @@ const Bestseller = (props) => {
         </TitleColumn>
         <Col lg={6}><AmazonButton href={amazonLink} target='_blank'><i className="fab fa-amazon"></i> Buy</AmazonButton></Col>
         <Divider />
-        <BlurbColumn lg={20}><Blurb>{description}</Blurb></BlurbColumn>
-        <HistoricalRank lg={8}>Current Rank: {currentRank}</HistoricalRank>
-        <HistoricalRank lg={8}>Weeks on List: {weeksOnList}</HistoricalRank>
-        <HistoricalRank lg={8}>Rank Last Week: {rankLastWeek}</HistoricalRank>
+        <BlurbColumn lg={20}>
+          <Blurb>{description}</Blurb>
+        </BlurbColumn>
+        <HistoricalRank lg={8} md={24} sm={24}>Current Rank: {currentRank}</HistoricalRank>
+        <HistoricalRank lg={8} md={24} sm={24}>Weeks on List: {weeksOnList}</HistoricalRank>
+        <HistoricalRank lg={8} md={24} sm={24}>Rank Last Week: {rankLastWeek}</HistoricalRank>
       </InformationRow>
     </BestSellerCard>
   );
