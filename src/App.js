@@ -1,6 +1,7 @@
 import React from "react";
 import request from "superagent";
 import { Switch, Route } from 'react-router-dom';
+require('newrelic');
 // Components
 import Navlinks from "./pages/components/Navlinks";
 import PoetryPage from './pages/PoetryPage';
