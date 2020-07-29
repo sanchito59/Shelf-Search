@@ -120,8 +120,8 @@ class App extends React.Component {
     this.setState({ searchField: e.target.value });
   };
 
-  handleSort = e => {
-    this.setState({ sort: e.target.value });
+  handleSort = value => {
+    this.setState({ sort: value });
   };
 
   handleEbookFilter = e => {

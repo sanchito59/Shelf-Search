@@ -1,19 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Select } from 'antd';
 import PoemList from './PoemList';
-import SearchFormDiv from './SearchFormDiv';
+import SearchForm from './SearchForm';
 import SearchInput from './SearchInput';
 import SearchButton from './SearchButton';
+import SearchSettings from './SearchSettings';
 
-const SearchForm = styled.form`
-  margin-bottom: 20px;
-`;
+const { Option } = Select;
 
 const PoemSearch = (props) => {
   const { poemSearch, handlePoemSearch, handlePoemSort, poemList } = props;
 
   return (
-    <SearchFormDiv>
+    <>
       <SearchForm onSubmit={poemSearch}>
         <SearchInput
           className="search-input"
@@ -22,14 +21,16 @@ const PoemSearch = (props) => {
           type="text">
         </SearchInput>
         <SearchButton> Search </SearchButton>
-        <select defaultValue="Sort" className='select-params' onChange={handlePoemSort}>
-          <option disabled value="Sort"> Sort </option>
-          <option value="ASC">A-Z Title</option>
-          <option value="DESC">Z-A Title</option>
-        </select>
+        <SearchSettings>
+          <Select defaultValue="Sort" style={{ width: 90 }} onChange={handlePoemSort}>
+            <Option disabled value="Sort"> Sort </Option>
+            <Option value="ASC">A-Z Title</Option>
+            <Option value="DESC">Z-A Title</Option>
+          </Select>
+        </SearchSettings>
       </SearchForm>
       <PoemList poemList={poemList} />
-    </SearchFormDiv>
+    </>
   );
 }
 

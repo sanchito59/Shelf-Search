@@ -19,6 +19,11 @@ const ShelfTitle = styled.h1`
 
 const Divider = styled.hr`
   width: 80%;
+  height: 1.5px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #282c34;;
+  border-radius: 8px;
 `;
 
 const Bookshelf = (props) => {

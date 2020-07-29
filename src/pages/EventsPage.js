@@ -61,8 +61,8 @@ class EventsPage extends React.Component {
     this.setState({ eventSearchField: e.target.value })
   }
 
-  handleSort = e => {
-    this.setState({ sort: e.target.value });
+  handleSort = value => {
+    this.setState({ sort: value });
   };
 
   componentDidMount() {

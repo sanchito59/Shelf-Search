@@ -5,6 +5,7 @@ const SearchInput = styled.input`
   text-indent: 10px;
   padding: 8px 20px;
   margin: 8px 0;
+  margin-right: 8px;
   box-sizing: border-box;
   background-image: url(${searchIcon});
   background-position: 4px 9px;

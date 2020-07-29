@@ -26,8 +26,8 @@ const PoetryPage = () => {
     setSearch(e.target.value);
   }
 
-  const handlePoemSort = e => {
-    setSort(e.target.value)
+  const handlePoemSort = value => {
+    setSort(value)
   }
 
   const sortedPoems = poemResults.sort((a, b) => {
